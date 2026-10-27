@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#b8452a">
+<title>Raízes em Mapas — Cultura Africana e Afro-Brasileira para Professores</title>
+<meta name="description" content="Mapas mentais ilustrados, sequências didáticas e projeto pronto para o 20 de Novembro. Alinhado à BNCC e à Lei 10.639/03.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --bg:#fbf6ee; --surface:#ffffff; --ink:#1d1410; --muted:#6b5a4e;
+    --terra:#b8452a; --terra-dark:#8f321c; --ocre:#e0a028; --verde:#2f6b4f;
+    --line:#ead9c3; --soft:#f4e7d4; --cta:#1f8a4c; --cta-dark:#176b3a;
+    --font:Poppins,system-ui,-apple-system,"Segoe UI",sans-serif; --radius:16px; --shadow:0 10px 30px -12px rgba(60,30,10,.25);
+    --ease:cubic-bezier(.22,1,.36,1);
+    --safe-b:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17110d; --surface:#221a14; --ink:#f5ece0; --muted:#c2b09f;
+      --line:#3a2c21; --soft:#2b2018;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17110d; --surface:#221a14; --ink:#f5ece0; --muted:#c2b09f;
+    --line:#3a2c21; --soft:#2b2018;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--font);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+  img{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--font);line-height:1.2;letter-spacing:-.012em;word-spacing:.04em}
+  h1{font-weight:800}
+  h2{font-weight:800}
+  h3{font-weight:700;letter-spacing:-.01em}
+  b,strong{font-weight:700}
+  h2{font-size:clamp(1.45rem,6vw,2.25rem);text-align:center;margin-bottom:.5rem}
+  .sub{color:var(--muted);text-align:center;max-width:620px;margin:0 auto 1.6rem;font-size:.95rem;font-weight:400}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  section{padding:52px 0}
+  @media(min-width:760px){section{padding:72px 0}}
+  .alt{background:var(--soft)}
+
+  /* ===== animações (só transform/opacity → GPU, 60fps) ===== */
+  .js .rv{opacity:0;transform:translate3d(0,28px,0);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
+  .js .rv.in{opacity:1;transform:none}
+  .js .rv.zoom{transform:scale(.94)}
+  .js .rv.zoom.in{transform:none}
+  @keyframes floaty{0%,100%{transform:translate3d(0,0,0) rotate(-1deg)}50%{transform:translate3d(0,-10px,0) rotate(1deg)}}
+  @keyframes shine{0%,60%{transform:translateX(-120%) skewX(-20deg)}100%{transform:translateX(320%) skewX(-20deg)}}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+  @keyframes slide{to{transform:translate3d(-66px,0,0)}}
+  @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
+  @keyframes flip{0%{transform:translateY(-40%);opacity:0}100%{transform:none;opacity:1}}
+  @keyframes blink{50%{opacity:.35}}
+
+  /* faixa topo */
+  .bar{background:var(--ink);color:var(--bg);text-align:center;font-size:.82rem;font-weight:600;padding:9px 16px}
+  .bar b{color:var(--ocre);display:inline-block}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff5a3c;margin-right:6px;vertical-align:1px;animation:blink 1.4s infinite}
+
+  /* padrão decorativo (CSS puro) com movimento contínuo */
+  .pattern{height:12px;overflow:hidden;position:relative}
+  .pattern::before{content:"";position:absolute;inset:0 -66px 0 0;
+    background:repeating-linear-gradient(90deg,var(--terra) 0 24px,var(--ocre) 24px 36px,var(--verde) 36px 60px,var(--ink) 60px 66px);
+    animation:slide 2.4s linear infinite;will-change:transform}
+
+  /* ===== hero (mobile-first) ===== */
+  .hero{padding:28px 0 40px;overflow:hidden}
+  .hero-grid{display:flex;flex-direction:column}
+  .hero-text{display:contents}
+  .eyebrow{order:1;align-self:center;display:inline-block;background:var(--terra);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:14px}
+  .hero h1{order:2;font-size:clamp(1.6rem,7vw,3rem);margin-bottom:18px;text-align:center}
+  .hero h1 em{font-style:normal;color:var(--terra);position:relative;white-space:nowrap}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.18em;background:var(--ocre);opacity:.45;z-index:-1;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--ease) .5s}
+  .hero.in h1 em::after{transform:scaleX(1)}
+  .hero-media{order:3;width:min(86%,380px);align-self:center;margin-bottom:22px}
+  .hero-media .ph{animation:floaty 6s ease-in-out infinite;will-change:transform}
+  .hero p.lead{order:4;font-size:1.02rem;color:var(--muted);margin-bottom:18px;text-align:center}
+  .checks{order:5;list-style:none;display:grid;gap:10px;margin-bottom:24px}
+  .checks li{padding-left:30px;position:relative;font-size:.96rem}
+  .checks li::before{content:"";position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:50%;background:var(--verde) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
+  .hero .cta-box{order:6;text-align:center}
+  @media(min-width:860px){
+    .hero{padding:56px 0 64px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .hero-text{display:block}
+    .eyebrow{align-self:auto}
+    .hero h1,.hero p.lead{text-align:left}
+    .hero .cta-box{text-align:left}
+    .hero-media{width:auto;margin:0}
+  }
+
+  /* botão */
+  .btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--cta);color:#fff;font-weight:800;font-size:1rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none;min-height:58px;padding:16px 22px;border-radius:14px;box-shadow:0 6px 0 var(--cta-dark),0 12px 24px -10px rgba(31,138,76,.6);transition:transform .15s var(--ease),box-shadow .15s var(--ease);text-align:center;border:0;cursor:pointer;width:100%;max-width:460px;margin:0 auto;touch-action:manipulation;user-select:none}
+  .btn::after{content:"";position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:shine 3.2s var(--ease) infinite;will-change:transform}
+  .btn.pulse{animation:pulse 2.2s ease-in-out infinite}
+  .btn:active{transform:translateY(4px) scale(.98);box-shadow:0 2px 0 var(--cta-dark)}
+  @media(hover:hover){.btn:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--cta-dark)}}
+  @media(min-width:860px){.hero .btn{margin:0}}
+  .micro{font-size:.8rem;color:var(--muted);margin-top:12px}
+
+  /* placeholder de imagem: some quando a imagem real existe */
+  .ph{position:relative;background:var(--soft);border:2px dashed var(--line);border-radius:var(--radius);overflow:hidden;aspect-ratio:var(--ar,4/3)}
+  .ph img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1;opacity:0;transition:opacity .5s}
+  .ph::after{content:attr(data-label);position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:10px;font-size:.74rem;color:var(--muted);font-weight:600}
+  .ph.ok{border:0;box-shadow:var(--shadow)}
+  .ph.ok img{opacity:1}
+
+  /* contador */
+  .count{display:flex;gap:8px;justify-content:center;margin:6px 0 4px}
+  .count div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 6px;flex:1;max-width:92px;text-align:center;overflow:hidden}
+  .count b{display:block;font-weight:800;letter-spacing:-.02em;font-size:1.6rem;line-height:1.2;color:var(--terra)}
+  .count b.flip{animation:flip .45s var(--ease)}
+  .count span{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+
+  /* seletor de etapa: chips com rolagem horizontal no mobile */
+  .tabs{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px 18px;padding:4px 16px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  @media(min-width:760px){.tabs{justify-content:center;overflow:visible;margin:0 0 24px}}
+  .tab{flex-shrink:0;scroll-snap-align:start;min-height:44px;border:2px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 16px;border-radius:999px;font:600 .9rem var(--font);cursor:pointer;transition:background-color .25s,color .25s,border-color .25s,transform .15s;touch-action:manipulation}
+  .tab:active{transform:scale(.95)}
+  .tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;max-width:760px;margin:0 auto;box-shadow:var(--shadow)}
+  .panel-in{transition:opacity .35s var(--ease),transform .35s var(--ease)}
+  .panel-in.out{opacity:0;transform:translate3d(14px,0,0)}
+  .panel h3{font-size:1.15rem;margin-bottom:6px}
+  .panel ul{list-style:none;display:grid;gap:8px}
+  .panel li{padding-left:22px;position:relative;font-size:.95rem}
+  .panel li::before{content:"◆";position:absolute;left:0;color:var(--terra);font-size:.8rem;top:2px}
+
+  /* carrossel (mobile) → grade (desktop) */
+  .carousel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:4px 16px 8px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .carousel::-webkit-scrollbar{display:none}
+  .carousel > *{flex:0 0 72%;scroll-snap-align:center}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+  .dots i{width:8px;height:8px;border-radius:99px;background:var(--line);transition:transform .3s var(--ease),background-color .3s}
+  .dots i.on{background:var(--terra);transform:scaleX(2.2)}
+  .hint{text-align:center;font-size:.78rem;color:var(--muted);margin-top:6px}
+  @media(min-width:760px){
+    .carousel{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:0}
+    .dots,.hint{display:none}
+  }
+
+  /* cards */
+  .grid{display:grid;gap:12px}
+  @media(min-width:760px){.grid{gap:16px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .card h3{font-size:1.02rem;margin:0 0 4px}
+  .card p{color:var(--muted);font-size:.92rem}
+  .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;background:var(--soft);flex-shrink:0;transition:transform .5s var(--ease)}
+  .card.in .ico{transform:rotate(-8deg) scale(1.08)}
+  /* "o que você recebe": linha compacta no mobile */
+  .feat{display:flex;gap:14px;align-items:flex-start}
+  @media(min-width:760px){.feat{display:block}.feat .ico{margin-bottom:10px}}
+  .tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:999px;background:var(--verde);color:#fff;margin-bottom:6px}
+  .tag.new{background:var(--terra)}
+
+  /* antes/depois */
+  .vs{display:grid;gap:12px}
+  @media(min-width:760px){.vs{grid-template-columns:1fr 1fr;gap:16px}}
+  .vs .card{border-width:2px}
+  .vs .before{border-color:#d9a596}
+  .vs .after{border-color:#8fc0a6}
+  .vs ul{list-style:none;display:grid;gap:8px;margin-top:10px;font-size:.95rem}
+
+  /* bônus: imagem à esquerda no mobile */
+  .bonus{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:start}
+  .bonus .ph{--ar:1/1}
+  .bonus .price{font-size:.85rem;color:var(--muted);margin-top:6px}
+  .bonus .price s{margin-right:6px}
+  .bonus .price b{color:var(--verde)}
+  @media(min-width:760px){.bonus{display:flex;flex-direction:column}}
+
+  /* calculadora */
+  .calc{max-width:640px;margin:0 auto;text-align:center}
+  .calc input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:99px;background:var(--line);margin:22px 0 14px;outline:none}
+  .calc input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;border-radius:50%;background:var(--terra);border:4px solid var(--surface);box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer}
+  .calc input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--terra);border:4px solid var(--surface);cursor:pointer}
+  .calc .big{font-weight:800;letter-spacing:-.02em;font-size:clamp(2.2rem,10vw,3.2rem);color:var(--terra);line-height:1.1;margin-top:8px}
+
+  /* oferta */
+  .offer{max-width:560px;margin:0 auto;background:var(--surface);border:3px solid var(--terra);border-radius:22px;padding:24px 16px;box-shadow:var(--shadow);text-align:center;position:relative}
+  .ribbon{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--terra);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;white-space:nowrap}
+  .offer ul{list-style:none;text-align:left;display:grid;gap:8px;margin:16px 0}
+  .offer li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:8px;font-size:.9rem}
+  .offer li span:last-child{color:var(--muted);white-space:nowrap}
+  .from{color:var(--muted);display:inline-block;position:relative}
+  .from::after{content:"";position:absolute;left:-4px;right:-4px;top:52%;height:2px;background:var(--terra);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease) .3s}
+  .offer.in .from::after{transform:scaleX(1)}
+  .price-big{font-weight:800;letter-spacing:-.02em;font-size:clamp(3rem,15vw,3.6rem);color:var(--verde);line-height:1;margin:6px 0;display:inline-block}
+  .offer.in .price-big{animation:pop .7s var(--ease) .8s both}
+  .bumps{text-align:left;margin:18px 0;display:grid;gap:10px}
+  .bump{display:flex;gap:12px;align-items:flex-start;border:2px dashed var(--ocre);background:color-mix(in srgb,var(--ocre) 10%,var(--surface));border-radius:12px;padding:14px 12px;cursor:pointer;transition:transform .2s var(--ease),border-color .2s;touch-action:manipulation;font-size:.92rem}
+  .bump:active{transform:scale(.98)}
+  .bump:has(input:checked){border-style:solid;border-color:var(--cta)}
+  .bump input{width:24px;height:24px;margin-top:1px;accent-color:var(--cta);flex-shrink:0}
+  .bump small{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .total{font-weight:700;margin:6px 0 16px;font-size:1.05rem}
+  .total span{display:inline-block}
+  .total span.pop{animation:pop .45s var(--ease)}
+
+  /* garantia */
+  .guar{display:grid;gap:18px;align-items:center;max-width:760px;margin:0 auto;text-align:center}
+  @media(min-width:640px){.guar{grid-template-columns:140px 1fr;text-align:left}.guar h2{text-align:left}}
+  .seal{width:128px;height:128px;border-radius:50%;margin:0 auto;display:grid;place-items:center;text-align:center;background:var(--ocre);color:#1d1410;font:800 .95rem/1.15 var(--font);border:6px double #1d1410;transition:transform 1s var(--ease)}
+  .js .seal{transform:rotate(-180deg) scale(.6)}
+  .js .guar.in .seal{transform:none}
+
+  /* depoimentos */
+  .quote{font-style:italic}
+  .who{margin-top:10px;font-weight:600;font-style:normal;color:var(--ink)}
+
+  /* faq */
+  details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px;min-height:56px;touch-action:manipulation}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--terra);transition:transform .3s var(--ease);flex-shrink:0}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);padding:0 16px 16px;font-size:.95rem}
+  details[open] p{animation:flip .4s var(--ease)}
+
+  footer{padding:32px 16px calc(110px + var(--safe-b));text-align:center;color:var(--muted);font-size:.8rem}
+
+  /* CTA fixo mobile */
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px calc(10px + var(--safe-b));display:flex;align-items:center;gap:12px;z-index:50;transform:translate3d(0,110%,0);transition:transform .4s var(--ease);will-change:transform}
+  .sticky.show{transform:none}
+  .sticky .btn{min-height:50px;padding:12px 16px;font-size:.95rem;box-shadow:none;flex:1}
+  .sticky .p{line-height:1.1;white-space:nowrap}
+  .sticky .p small{display:block;font-size:.7rem;color:var(--muted);text-decoration:line-through}
+  .sticky .p b{font-weight:800;letter-spacing:-.02em;font-size:1.4rem;color:var(--verde)}
+  @media(min-width:860px){.sticky{display:none}footer{padding-bottom:32px}}
+
+  /* barra de progresso de leitura */
+  .progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--terra);transform-origin:left;transform:scaleX(0);z-index:60;will-change:transform}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .js .rv{opacity:1;transform:none}
+    .js .seal{transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<div class="bar"><span class="dot"></span>Faltam <b id="diasBar">--</b> dias para o 20 de Novembro</div>
+<div class="pattern"></div>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow rv">Lei 10.639/03 • Alinhado à BNCC</span>
+      <h1 class="rv" style="--d:.08s">Ensine Cultura Africana e Afro-Brasileira com <em>segurança</em> e aulas que os alunos lembram</h1>
+      <p class="lead rv" style="--d:.24s">Mapas mentais ilustrados, sequências didáticas e um projeto completo para o 20 de Novembro, organizados por etapa de ensino.</p>
+      <ul class="checks">
+        <li class="rv" style="--d:.3s">+300 mapas mentais por tema e etapa</li>
+        <li class="rv" style="--d:.38s">3 versões: colorida, para colorir e “complete o mapa”</li>
+        <li class="rv" style="--d:.46s">Projeto 20 de Novembro pronto, passo a passo</li>
+      </ul>
+      <div class="cta-box rv" style="--d:.54s">
+        <a class="btn pulse" href="#oferta">QUERO MEU KIT RAÍZES →</a>
+        <p class="micro">✔ Acesso imediato · 🔒 Pagamento seguro · 🛡 7 dias de garantia</p>
+      </div>
+    </div>
+    <div class="hero-media rv zoom" style="--d:.16s">
+      <div class="ph" style="--ar:1/1" data-label="img/hero.png — mockup do produto">
+        <img src="img/hero.png" alt="Mockup do Kit Raízes em Mapas" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SELETOR DE ETAPA -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="rv">Para qual turma você dá aula?</h2>
+    <p class="sub rv">Toque na etapa e veja o que o kit entrega para você.</p>
+    <div class="tabs rv" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-k="ei">Educação Infantil</button>
+      <button class="tab" role="tab" aria-selected="false" data-k="f1">Fundamental I</button>
+      <button class="tab" role="tab" aria-selected="false" data-k="f2">Fundamental II</button>
+      <button class="tab" role="tab" aria-selected="false" data-k="em">Ensino Médio</button>
+    </div>
+    <div class="panel rv"><div class="panel-in" id="panel"></div></div>
+  </div>
+</section>
+
+<!-- PRÉVIA -->
+<section>
+  <div class="wrap">
+    <h2 class="rv">Veja uma prévia dos mapas</h2>
+    <p class="sub rv">Layout limpo, ilustrações e linguagem adequada para cada idade.</p>
+    <div class="carousel rv" data-dots="d1">
+      <div class="ph" style="--ar:3/4" data-label="img/mapa-01.webp"><img src="img/mapa-01.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+      <div class="ph" style="--ar:3/4" data-label="img/mapa-02.webp"><img src="img/mapa-02.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+      <div class="ph" style="--ar:3/4" data-label="img/mapa-03.webp"><img src="img/mapa-03.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+      <div class="ph" style="--ar:3/4" data-label="img/mapa-04.webp"><img src="img/mapa-04.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+      <div class="ph" style="--ar:3/4" data-label="img/mapa-05.webp"><img src="img/mapa-05.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+      <div class="ph" style="--ar:3/4" data-label="img/mapa-06.webp"><img src="img/mapa-06.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+      <div class="ph" style="--ar:3/4" data-label="img/mapa-07.webp"><img src="img/mapa-07.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+      <div class="ph" style="--ar:3/4" data-label="img/mapa-08.webp"><img src="img/mapa-08.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+    </div>
+    <div class="dots" id="d1"></div>
+    <p class="hint">← deslize para ver mais →</p>
+  </div>
+</section>
+
+<!-- ANTES / DEPOIS -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="rv">Chega de montar aula do zero</h2>
+    <p class="sub rv">A lei exige o tema o ano inteiro, mas o material costuma chegar tarde, espalhado ou superficial.</p>
+    <div class="vs">
+      <div class="card before rv">
+        <h3>😩 Sem o kit</h3>
+        <ul>
+          <li>✖ Horas pesquisando em sites soltos</li>
+          <li>✖ Medo de reproduzir estereótipos</li>
+          <li>✖ Conteúdo que só aparece em novembro</li>
+          <li>✖ Atividades que não conversam com a BNCC</li>
+        </ul>
+      </div>
+      <div class="card after rv" style="--d:.12s">
+        <h3>😊 Com o Kit Raízes</h3>
+        <ul>
+          <li>✔ Tudo organizado por tema e etapa</li>
+          <li>✔ Guia de linguagem e abordagem respeitosa</li>
+          <li>✔ Calendário para trabalhar o ano todo</li>
+          <li>✔ Habilidades da BNCC em cada mapa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ RECEBE -->
+<section>
+  <div class="wrap">
+    <h2 class="rv">O que você recebe</h2>
+    <p class="sub rv">Um sistema para planejar, aplicar e avaliar.</p>
+    <div class="grid g3">
+      <div class="card feat rv"><div class="ico">🗺️</div><div><h3>+300 mapas mentais</h3><p>Reinos africanos, diáspora, quilombos, personalidades, arte, música, culinária e língua.</p></div></div>
+      <div class="card feat rv" style="--d:.06s"><div class="ico">🖍️</div><div><h3>3 versões de cada mapa</h3><p>Colorida para projetar, P&amp;B para colorir e “complete o mapa” para o aluno.</p></div></div>
+      <div class="card feat rv" style="--d:.12s"><div class="ico">🎯</div><div><h3>Códigos da BNCC</h3><p>Habilidades indicadas em cada mapa, prontas para o plano de aula.</p></div></div>
+      <div class="card feat rv"><div class="ico">📆</div><div><h3>Calendário afro-brasileiro</h3><p>Datas e temas para os 12 meses, não só para novembro.</p></div></div>
+      <div class="card feat rv" style="--d:.06s"><div class="ico">🧭</div><div><h3>Guia de abordagem</h3><p>Termos recomendados, erros comuns e como conduzir conversas sobre racismo.</p></div></div>
+      <div class="card feat rv" style="--d:.12s"><div class="ico">📱</div><div><h3>Acesso no celular</h3><p>Área organizada por pastas: baixe só o que vai usar na semana.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BÔNUS -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="rv">Bônus inclusos hoje</h2>
+    <p class="sub rv">Comprando agora, você leva também:</p>
+    <div class="grid g4">
+      <div class="card bonus rv">
+        <div class="ph" data-label="bonus-1.png"><img src="img/bonus-1.png" alt="Bônus 1" loading="lazy"></div>
+        <div><span class="tag new">Novo</span><h3>Projeto 20 de Novembro</h3><p>Sequência de 2 semanas com roteiro diário e culminância.</p><div class="price"><s>R$ 47</s><b>GRÁTIS</b></div></div>
+      </div>
+      <div class="card bonus rv" style="--d:.06s">
+        <div class="ph" data-label="bonus-2.png"><img src="img/bonus-2.png" alt="Bônus 2" loading="lazy"></div>
+        <div><span class="tag">Bônus</span><h3>+100 atividades com gabarito</h3><p>Caça-palavras, linha do tempo e interpretação, por etapa.</p><div class="price"><s>R$ 37</s><b>GRÁTIS</b></div></div>
+      </div>
+      <div class="card bonus rv" style="--d:.12s">
+        <div class="ph" data-label="bonus-3.png"><img src="img/bonus-3.png" alt="Bônus 3" loading="lazy"></div>
+        <div><span class="tag">Bônus</span><h3>Linha do tempo gigante</h3><p>Painel em folhas A4 para montar no mural da sala.</p><div class="price"><s>R$ 27</s><b>GRÁTIS</b></div></div>
+      </div>
+      <div class="card bonus rv" style="--d:.18s">
+        <div class="ph" data-label="bonus-4.png"><img src="img/bonus-4.png" alt="Bônus 4" loading="lazy"></div>
+        <div><span class="tag">Bônus</span><h3>+50 dinâmicas e jogos</h3><p>Quiz, júri simulado e brincadeiras de origem africana.</p><div class="price"><s>R$ 27</s><b>GRÁTIS</b></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section>
+  <div class="wrap calc rv">
+    <h2>Quanto tempo você vai economizar?</h2>
+    <p class="sub" style="margin-bottom:0">Arraste para indicar quantas aulas sobre o tema você prepara por mês.</p>
+    <input type="range" id="aulas" min="1" max="20" value="6" aria-label="Aulas por mês">
+    <p><b id="aulasTxt">6</b> aulas/mês × ~1h30 de preparo cada</p>
+    <p class="big"><span id="horas">108</span> horas/ano</p>
+    <p class="micro">de volta para você. Estimativa ilustrativa.</p>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="alt" id="oferta">
+  <div class="wrap">
+    <h2 class="rv">Garanta seu kit antes do 20 de Novembro</h2>
+    <div class="count rv" aria-label="Contagem regressiva">
+      <div><b id="cd-d">0</b><span>dias</span></div>
+      <div><b id="cd-h">0</b><span>horas</span></div>
+      <div><b id="cd-m">0</b><span>min</span></div>
+      <div><b id="cd-s">0</b><span>seg</span></div>
+    </div>
+    <p class="sub rv" style="margin-bottom:28px">Preço promocional de lançamento até a data.</p>
+
+    <div class="offer rv zoom" id="offer">
+      <span class="ribbon">🔥 Oferta de lançamento</span>
+      <h3 style="font-size:1.35rem;margin-top:6px">Kit Raízes em Mapas</h3>
+      <ul>
+        <li><span>+300 mapas mentais (3 versões)</span><span>R$ 97</span></li>
+        <li><span>Guia de abordagem + calendário</span><span>R$ 27</span></li>
+        <li><span>Projeto 20 de Novembro</span><span>R$ 47</span></li>
+        <li><span>+100 atividades com gabarito</span><span>R$ 37</span></li>
+        <li><span>Linha do tempo gigante</span><span>R$ 27</span></li>
+        <li><span>+50 dinâmicas e jogos</span><span>R$ 27</span></li>
+      </ul>
+      <p class="from">Valor total: R$ 262</p>
+      <p class="micro" style="margin:0">hoje por apenas</p>
+      <p class="price-big">R$ 17</p>
+      <p class="micro" style="margin-top:0">pagamento único · acesso vitalício</p>
+
+      <div class="bumps">
+        <label class="bump"><input type="checkbox" data-v="9.9"><span><b>Sim! Quero a versão editável no Canva por + R$ 9,90</b><small>Mude cores, fontes e coloque o nome da sua escola.</small></span></label>
+        <label class="bump"><input type="checkbox" data-v="12.9"><span><b>Sim! Quero os slides prontos por + R$ 12,90</b><small>40 apresentações de 10 a 15 slides, uma por tema.</small></span></label>
+      </div>
+      <p class="total">Total: <span id="total">R$ 17,00</span></p>
+
+      <a class="btn pulse" id="buy" href="#checkout">QUERO MEU KIT AGORA →</a>
+      <p class="micro">🔒 Compra segura · PIX, cartão e boleto · Acesso no e-mail</p>
+    </div>
+  </div>
+</section>
+
+<!-- NA PRÁTICA -->
+<section>
+  <div class="wrap">
+    <h2 class="rv">Como professores estão usando</h2>
+    <p class="sub rv">Na lousa digital, impresso em A3 no mural ou em folha para o aluno completar.</p>
+    <div class="carousel rv" data-dots="d2">
+      <div class="ph" style="--ar:4/5" data-label="img/uso-1.jpg — foto real"><img src="img/uso-1.jpg" alt="Material em uso em sala" loading="lazy"></div>
+      <div class="ph" style="--ar:4/5" data-label="img/uso-2.jpg — foto real"><img src="img/uso-2.jpg" alt="Material em uso em sala" loading="lazy"></div>
+      <div class="ph" style="--ar:4/5" data-label="img/uso-3.jpg — foto real"><img src="img/uso-3.jpg" alt="Material em uso em sala" loading="lazy"></div>
+      <div class="ph" style="--ar:4/5" data-label="img/uso-4.jpg — foto real"><img src="img/uso-4.jpg" alt="Material em uso em sala" loading="lazy"></div>
+    </div>
+    <div class="dots" id="d2"></div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS (substituir por depoimentos reais, com autorização) -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="rv">O que dizem os professores</h2>
+    <p class="sub rv">Depoimentos de quem já usa o material.</p>
+    <div class="carousel rv" data-dots="d3" style="--w:86%">
+      <div class="card"><p class="quote">[Depoimento real 1: cole aqui o texto enviado pela professora]</p><p class="who">— Nome, cidade/UF, etapa</p></div>
+      <div class="card"><p class="quote">[Depoimento real 2]</p><p class="who">— Nome, cidade/UF, etapa</p></div>
+      <div class="card"><p class="quote">[Depoimento real 3]</p><p class="who">— Nome, cidade/UF, etapa</p></div>
+    </div>
+    <div class="dots" id="d3"></div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section>
+  <div class="wrap">
+    <div class="guar rv">
+      <div class="seal">7 DIAS<br>DE<br>GARANTIA</div>
+      <div>
+        <h2>Risco zero para você</h2>
+        <p style="color:var(--muted)">Acesse tudo, baixe, imprima e teste com a sua turma. Se em até 7 dias achar que o material não serve para você, é só pedir o reembolso por e-mail. Devolvemos 100% do valor, sem perguntas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt">
+  <div class="wrap" style="max-width:760px">
+    <h2 class="rv">Perguntas frequentes</h2>
+    <div class="rv" style="margin-top:20px">
+      <details><summary>Como recebo o material?</summary><p>Logo após a confirmação do pagamento, você recebe no e-mail o link da área de acesso. No PIX, a liberação é imediata.</p></details>
+      <details><summary>Serve para qual etapa de ensino?</summary><p>Da Educação Infantil ao Ensino Médio. Os mapas são separados por etapa, com linguagem e profundidade adequadas.</p></details>
+      <details><summary>Posso imprimir quantas vezes quiser?</summary><p>Sim. Os arquivos são em PDF de alta resolução, para A4 e A3, colorido ou P&amp;B, para uso com as suas turmas.</p></details>
+      <details><summary>Funciona no celular?</summary><p>Sim. Você acessa e baixa tudo pelo celular e pode imprimir direto dele ou enviar para o computador da escola.</p></details>
+      <details><summary>O material está alinhado à BNCC?</summary><p>Sim. Cada mapa indica as habilidades relacionadas, o que facilita o preenchimento do plano de aula.</p></details>
+      <details><summary>O acesso é vitalício?</summary><p>Sim. Você paga uma única vez e recebe também as atualizações futuras do kit.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. É só enviar um e-mail e devolvemos o valor integral.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section>
+  <div class="wrap rv" style="text-align:center">
+    <h2>Seu novembro (e o ano todo) planejado hoje</h2>
+    <p class="sub">+300 mapas, projeto pronto, atividades e jogos por menos que um lanche.</p>
+    <a class="btn pulse" href="#oferta">QUERO O KIT POR R$ 17 →</a>
+  </div>
+</section>
+
+<div class="pattern"></div>
+<footer>
+  © <span id="ano">2026</span> Raízes em Mapas. Todos os direitos reservados.<br>
+  Este site não é afiliado ao Facebook nem ao Google.
+</footer>
+
+<div class="sticky" id="sticky">
+  <span class="p"><small>R$ 262</small><b>R$ 17</b></span>
+  <a class="btn" href="#oferta">QUERO MEU KIT →</a>
+</div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // imagens: troca o placeholder pela imagem quando ela existir
+  $$('.ph img').forEach(img => {
+    const ok = () => img.closest('.ph').classList.add('ok');
+    const fail = () => img.style.visibility = 'hidden';
+    if (img.complete) (img.naturalWidth ? ok() : fail());
+    img.addEventListener('load', ok); img.addEventListener('error', fail);
+  });
+
+  // revelar ao rolar
+  const els = $$('.rv, .offer, .guar, .card');
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+    els.forEach(el => io.observe(el));
+    requestAnimationFrame(() => $('#hero').classList.add('in'));
+  } else {
+    els.forEach(el => el.classList.add('in')); $('#hero').classList.add('in');
+  }
+
+  // contagem até 20/11 (Dia da Consciência Negra)
+  const now = new Date();
+  let alvo = new Date(now.getFullYear(), 10, 20);
+  if (alvo < now) alvo = new Date(now.getFullYear() + 1, 10, 20);
+  const cd = ['d', 'h', 'm', 's'].map(k => $('#cd-' + k));
+  function tick() {
+    const ms = Math.max(0, alvo - Date.now());
+    const v = [Math.floor(ms / 864e5), Math.floor(ms / 36e5) % 24, Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60];
+    v.forEach((n, i) => {
+      const t = String(n).padStart(i ? 2 : 1, '0');
+      if (cd[i].textContent !== t) {
+        cd[i].textContent = t;
+        cd[i].classList.remove('flip'); void cd[i].offsetWidth; cd[i].classList.add('flip');
+      }
+    });
+    $('#diasBar').textContent = v[0];
+  }
+  tick(); setInterval(tick, 1000);
+  $('#ano').textContent = now.getFullYear();
+
+  // seletor de etapa com transição
+  const etapas = {
+    ei: ['Educação Infantil', 'Mais ilustração e pouco texto, ideal para roda de conversa.', ['Histórias e contos de origem africana', 'Brincadeiras, cantigas e instrumentos', 'Identidade, cabelo e autoestima', 'Versões para colorir em todos os temas']],
+    f1: ['Fundamental I', 'Linguagem simples e atividades de fixação para cada mapa.', ['África: continente de muitos países e povos', 'Quilombos, Zumbi e Dandara', 'Culinária, palavras e festas de origem africana', '“Complete o mapa” com gabarito']],
+    f2: ['Fundamental II', 'Mais contexto histórico, conexão com Geografia e Arte.', ['Reinos africanos: Mali, Gana, Kush e Congo', 'Diáspora, escravização e resistência', 'Personalidades negras na ciência e na literatura', 'Júri simulado e debates guiados']],
+    em: ['Ensino Médio', 'Profundidade para análise crítica, ENEM e vestibulares.', ['Abolição, pós-abolição e racismo estrutural', 'Movimentos negros e ações afirmativas', 'Questões de ENEM comentadas por tema', 'Propostas de redação sobre o tema']]
+  };
+  const panel = $('#panel');
+  panel.classList.add('panel-in');
+  const render = k => {
+    const [t, d, items] = etapas[k];
+    panel.innerHTML = `<h3>${t}</h3><p style="color:var(--muted);margin-bottom:12px;font-size:.95rem">${d}</p><ul>${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+  };
+  render('ei');
+  $$('.tab').forEach(b => b.addEventListener('click', () => {
+    if (b.getAttribute('aria-selected') === 'true') return;
+    $$('.tab').forEach(x => x.setAttribute('aria-selected', x === b));
+    b.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+    panel.classList.add('out');
+    setTimeout(() => { render(b.dataset.k); panel.classList.remove('out'); }, reduce ? 0 : 200);
+  }));
+
+  // carrosséis: largura dos itens + bolinhas
+  $$('.carousel').forEach(c => {
+    if (c.style.getPropertyValue('--w')) [...c.children].forEach(ch => ch.style.flexBasis = c.style.getPropertyValue('--w'));
+    const dots = document.getElementById(c.dataset.dots);
+    if (!dots) return;
+    const items = [...c.children];
+    dots.innerHTML = items.map(() => '<i></i>').join('');
+    const ds = [...dots.children];
+    let raf = 0;
+    const upd = () => {
+      raf = 0;
+      const mid = c.scrollLeft + c.clientWidth / 2;
+      let best = 0, dist = Infinity;
+      items.forEach((it, i) => { const d = Math.abs(it.offsetLeft + it.offsetWidth / 2 - mid); if (d < dist) { dist = d; best = i; } });
+      ds.forEach((d, i) => d.classList.toggle('on', i === best));
+    };
+    c.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+    upd();
+  });
+
+  // calculadora com número animado
+  const r = $('#aulas'), horasEl = $('#horas');
+  let atual = 108, anim = 0;
+  const fill = () => { const p = (r.value - r.min) / (r.max - r.min) * 100; r.style.background = `linear-gradient(90deg,var(--terra) ${p}%,var(--line) ${p}%)`; };
+  fill();
+  r.addEventListener('input', () => {
+    $('#aulasTxt').textContent = r.value; fill();
+    const de = atual, para = Math.round(r.value * 1.5 * 12), t0 = performance.now();
+    cancelAnimationFrame(anim);
+    const step = t => {
+      const p = Math.min(1, (t - t0) / 350), e = 1 - Math.pow(1 - p, 3);
+      atual = Math.round(de + (para - de) * e); horasEl.textContent = atual;
+      if (p < 1) anim = requestAnimationFrame(step);
+    };
+    anim = requestAnimationFrame(step);
+  });
+
+  // order bumps
+  const base = 17, fmt = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const totalEl = $('#total');
+  $$('.bump input').forEach(cb => cb.addEventListener('change', () => {
+    const t = $$('.bump input:checked').reduce((s, c) => s + +c.dataset.v, base);
+    totalEl.textContent = fmt(t);
+    totalEl.classList.remove('pop'); void totalEl.offsetWidth; totalEl.classList.add('pop');
+    if (navigator.vibrate) navigator.vibrate(12);
+  }));
+
+  // barra de progresso + CTA fixo (aparece após o hero, some na oferta)
+  const sticky = $('#sticky'), prog = $('#progress');
+  let heroOut = false, offerIn = false;
+  const sync = () => sticky.classList.toggle('show', heroOut && !offerIn);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; sync(); }).observe($('#hero'));
+    new IntersectionObserver(([e]) => { offerIn = e.isIntersecting; sync(); }, { threshold: .15 }).observe($('#offer'));
+  }
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      const h = document.documentElement.scrollHeight - innerHeight;
+      prog.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+      ticking = false;
+    });
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
