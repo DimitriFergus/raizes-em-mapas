@@ -91,7 +91,8 @@
   .hero h1 em{font-style:normal;color:var(--terra);position:relative;white-space:nowrap}
   .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.18em;background:var(--ocre);opacity:.45;z-index:-1;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--ease) .5s}
   .hero.in h1 em::after{transform:scaleX(1)}
-  .hero-media{order:3;width:min(100%,420px);align-self:center;margin-bottom:22px}
+  .hero-media{order:3;width:calc(100% + 16px);max-width:640px;align-self:center;margin:4px -8px 24px}
+  .hero-media .ph{border-radius:20px}
   .hero-media .ph{animation:floaty 6s ease-in-out infinite;will-change:transform}
   .hero p.lead{order:4;font-size:1.02rem;color:var(--muted);margin-bottom:18px;text-align:center}
   .checks{order:5;list-style:none;display:grid;gap:10px;margin-bottom:24px}
@@ -100,12 +101,13 @@
   .hero .cta-box{order:6;text-align:center}
   @media(min-width:860px){
     .hero{padding:56px 0 64px}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .hero .wrap{max-width:1240px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
     .hero-text{display:block}
     .eyebrow{align-self:auto}
     .hero h1,.hero p.lead{text-align:left}
     .hero .cta-box{text-align:left}
-    .hero-media{width:auto;margin:0}
+    .hero-media{width:auto;max-width:none;margin:0}
   }
 
   /* botão */
@@ -254,6 +256,24 @@
   .foot-logo{display:inline-block;background:#fbf6ee;border-radius:14px;padding:10px 16px;margin-bottom:14px}
   .foot-logo img{height:56px;width:auto}
 
+  /* esteira infinita (só transform → 60fps) */
+  @keyframes esteira{to{transform:translate3d(-50%,0,0)}}
+  .esteira{overflow:hidden;padding:8px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .esteira + .esteira{margin-top:4px}
+  .trilho{display:flex;width:max-content;animation:esteira var(--dur,60s) linear infinite;will-change:transform}
+  .esteira.rev .trilho{animation-direction:reverse}
+  .esteira:hover .trilho,.esteira.pausa .trilho{animation-play-state:paused}
+  .perfil{width:280px;flex-shrink:0;margin-right:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:0 6px 18px -12px rgba(60,30,10,.3)}
+  .perfil header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:1.6rem;flex-shrink:0;background:var(--av,var(--soft))}
+  .perfil h3{font-size:.95rem;line-height:1.25;margin:0}
+  .perfil h3 small{display:block;font-weight:500;color:var(--muted);font-size:.75rem;margin-top:2px}
+  .perfil p{font-size:.86rem;color:var(--muted);line-height:1.5}
+  .perfil p + p{margin-top:6px}
+  .perfil p b{color:var(--ink)}
+  @media(min-width:760px){.perfil{width:320px}}
+  @media (prefers-reduced-motion: reduce){.esteira{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.esteira .trilho{padding:0 16px}}
+
   /* zoom das imagens (lightbox) */
   .lb{position:fixed;inset:0;z-index:100;background:rgba(15,10,6,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
   .lb.open{opacity:1;pointer-events:auto}
@@ -285,7 +305,7 @@
 <body>
 <div class="progress" id="progress"></div>
 
-<div class="bar"><span class="dot"></span>Faltam <b id="diasBar">--</b> dias para o 20 de Novembro</div>
+<div class="bar" id="bar"><span class="dot"></span><span id="barTxt">Oferta especial expira em <b id="barTime">15:00</b></span></div>
 <div class="pattern"></div>
 <div class="brand"><img src="img/logo.png" alt="Raízes em Mapas — História, cultura e resistência para sala de aula" width="520" height="247"></div>
 
@@ -308,7 +328,7 @@
     </div>
     <div class="hero-media rv zoom" style="--d:.16s">
       <div class="ph" style="--ar:1/1" data-label="Kit Raízes em Mapas">
-        <img src="img/kit-hero.jpg" alt="Kit Raízes em Mapas: livro, mapas mentais de Zumbi dos Palmares, Cultura Afro-Brasileira e Diáspora Africana" width="1000" height="1000" fetchpriority="high">
+        <img src="img/kit-hero.jpg" alt="Kit Raízes em Mapas: livro, mapas mentais de Zumbi dos Palmares, Cultura Afro-Brasileira e Diáspora Africana" width="1254" height="1254" fetchpriority="high">
       </div>
     </div>
   </div>
@@ -434,19 +454,17 @@
 <!-- OFERTA -->
 <section class="alt" id="oferta">
   <div class="wrap">
-    <h2 class="rv">Garanta seu kit antes do 20 de Novembro</h2>
-    <div class="count rv" aria-label="Contagem regressiva">
-      <div><b id="cd-d">0</b><span>dias</span></div>
-      <div><b id="cd-h">0</b><span>horas</span></div>
-      <div><b id="cd-m">0</b><span>min</span></div>
-      <div><b id="cd-s">0</b><span>seg</span></div>
+    <h2 class="rv" id="offerTitle">Sua oferta especial expira em</h2>
+    <div class="count rv" id="count" aria-label="Contagem regressiva">
+      <div><b id="cd-m">15</b><span>min</span></div>
+      <div><b id="cd-s">00</b><span>seg</span></div>
     </div>
-    <p class="sub rv" style="margin-bottom:28px">Preço promocional de lançamento até a data.</p>
+    <p class="sub rv" id="offerSub" style="margin-bottom:28px">Garanta o preço promocional antes que o tempo acabe.</p>
 
     <div class="offer rv zoom" id="offer">
       <span class="ribbon">🔥 Oferta de lançamento</span>
       <h3 style="font-size:1.35rem;margin-top:6px">Kit Raízes em Mapas</h3>
-      <div class="offer-img"><img src="img/kit-oferta.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1000" height="1000" loading="lazy"></div>
+      <div class="offer-img"><img src="img/kit-oferta.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1254" height="1254" loading="lazy"></div>
       <ul>
         <li><span>+300 mapas mentais (3 versões)</span><span>R$ 97</span></li>
         <li><span>Guia de abordagem + calendário</span><span>R$ 27</span></li>
@@ -456,8 +474,8 @@
         <li><span>+50 dinâmicas e jogos</span><span>R$ 27</span></li>
       </ul>
       <p class="from">Valor total: R$ 262</p>
-      <p class="micro" style="margin:0">hoje por apenas</p>
-      <p class="price-big">R$ 17</p>
+      <p class="micro" style="margin:0" id="priceLabel">por apenas</p>
+      <p class="price-big" id="priceBig">R$ 17</p>
       <p class="micro" style="margin-top:0">pagamento único · acesso vitalício</p>
 
       <div class="bumps">
@@ -478,27 +496,24 @@
     <h2 class="rv">Como professores estão usando</h2>
     <p class="sub rv">Na lousa digital, impresso em A3 no mural ou em folha para o aluno completar.</p>
     <div class="carousel c2 rv" data-dots="d2">
-      <figure class="shot"><div class="ph" style="--ar:1000/660"><img src="img/uso-2.jpg" alt="Professora planejando a aula com o mapa Personalidades Negras" width="1000" height="660" loading="lazy"></div><figcaption>Planejamento em minutos<small>Mapa em mãos, plano de aula pronto</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:1000/660"><img src="img/uso-3.jpg" alt="Mapas mentais impressos no mural da sala de aula" width="1000" height="660" loading="lazy"></div><figcaption>Mural da sala<small>Impresso em A3 para a turma consultar</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:1000/660"><img src="img/uso-4.jpg" alt="Aluno estudando o mapa Reinos e Civilizações Africanas" width="1000" height="660" loading="lazy"></div><figcaption>Aluno em atividade<small>O mapa vira material de estudo e revisão</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:1000/660"><img src="img/uso-1.jpg" alt="Mapas mentais impressos sobre a mesa" width="1000" height="660" loading="lazy"></div><figcaption>Trabalho em grupo<small>Vários temas na mesa para comparar e debater</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-2.jpg" alt="Professora planejando a aula com o mapa Personalidades Negras" width="1136" height="750" loading="lazy"></div><figcaption>Planejamento em minutos<small>Mapa em mãos, plano de aula pronto</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-3.jpg" alt="Mapas mentais impressos no mural da sala de aula" width="1136" height="750" loading="lazy"></div><figcaption>Mural da sala<small>Impresso em A3 para a turma consultar</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-4.jpg" alt="Aluno estudando o mapa Reinos e Civilizações Africanas" width="1136" height="750" loading="lazy"></div><figcaption>Aluno em atividade<small>O mapa vira material de estudo e revisão</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-1.jpg" alt="Mapas mentais impressos sobre a mesa" width="1136" height="750" loading="lazy"></div><figcaption>Trabalho em grupo<small>Vários temas na mesa para comparar e debater</small></figcaption></figure>
     </div>
     <div class="dots" id="d2"></div>
   </div>
 </section>
 
-<!-- DEPOIMENTOS (substituir por depoimentos reais, com autorização) -->
-<section class="alt">
+<!-- ESTEIRA: perfis atendidos pelo kit (os cartões são montados pelo JS a partir da lista PERFIS).
+     Quando tiver depoimentos REAIS, com autorização, troque a lista por eles. -->
+<section class="alt" style="overflow:hidden">
   <div class="wrap">
-    <h2 class="rv">O que dizem os professores</h2>
-    <p class="sub rv">Depoimentos de quem já usa o material.</p>
-    <div class="carousel rv" data-dots="d3" style="--w:86%">
-      <div class="card"><p class="quote">[Depoimento real 1: cole aqui o texto enviado pela professora]</p><p class="who">— Nome, cidade/UF, etapa</p></div>
-      <div class="card"><p class="quote">[Depoimento real 2]</p><p class="who">— Nome, cidade/UF, etapa</p></div>
-      <div class="card"><p class="quote">[Depoimento real 3]</p><p class="who">— Nome, cidade/UF, etapa</p></div>
-    </div>
-    <div class="dots" id="d3"></div>
+    <h2 class="rv">Feito para professores como você</h2>
+    <p class="sub rv">Cada realidade de sala de aula, um jeito de usar o kit.</p>
   </div>
+  <div class="esteira rv" id="esteira1"></div>
+  <div class="esteira rev rv" id="esteira2"></div>
 </section>
 
 <!-- GARANTIA -->
@@ -535,7 +550,7 @@
   <div class="wrap rv" style="text-align:center">
     <h2>Seu novembro (e o ano todo) planejado hoje</h2>
     <p class="sub">+300 mapas, projeto pronto, atividades e jogos por menos que um lanche.</p>
-    <a class="btn pulse" href="#oferta">QUERO O KIT POR R$ 17 →</a>
+    <a class="btn pulse" href="#oferta">QUERO O KIT POR <span data-preco>R$ 17</span> →</a>
   </div>
 </section>
 
@@ -547,7 +562,7 @@
 </footer>
 
 <div class="sticky" id="sticky">
-  <span class="p"><small>R$ 262</small><b>R$ 17</b></span>
+  <span class="p"><small>R$ 262</small><b id="stickyPrice">R$ 17</b></span>
   <a class="btn" href="#oferta">QUERO MEU KIT →</a>
 </div>
 
@@ -598,25 +613,56 @@
     els.forEach(el => el.classList.add('in')); $('#hero').classList.add('in');
   }
 
-  // contagem até 20/11 (Dia da Consciência Negra)
-  const now = new Date();
-  let alvo = new Date(now.getFullYear(), 10, 20);
-  if (alvo < now) alvo = new Date(now.getFullYear() + 1, 10, 20);
-  const cd = ['d', 'h', 'm', 's'].map(k => $('#cd-' + k));
+  // ===== oferta de 15 minutos por visitante =====
+  // Quando o tempo acaba, o preço passa de fato para PRECO_CHEIO (a urgência é verdadeira).
+  // Use um link de checkout diferente para cada preço.
+  const OFERTA = {
+    minutos: 15,
+    PRECO_PROMO: 17,
+    PRECO_CHEIO: 27,
+    CHECKOUT_PROMO: '#checkout',
+    CHECKOUT_CHEIO: '#checkout'
+  };
+  const KEY = 'raizes_oferta_inicio';
+  let inicio = Date.now();
+  try {
+    const salvo = +localStorage.getItem(KEY);
+    if (salvo && salvo <= Date.now()) inicio = salvo; else localStorage.setItem(KEY, inicio);
+  } catch (e) {}
+  const fim = inicio + OFERTA.minutos * 6e4;
+  const cd = [$('#cd-m'), $('#cd-s')];
+  const fmtBRL = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: v % 1 ? 2 : 0 });
+  let precoAtual = OFERTA.PRECO_PROMO, expirou = false, timer = 0;
+  function aplicarPreco() {
+    $('#priceBig').textContent = fmtBRL(precoAtual);
+    $('#stickyPrice').textContent = fmtBRL(precoAtual);
+    $$('[data-preco]').forEach(el => el.textContent = fmtBRL(precoAtual));
+    $('#buy').href = expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO;
+    atualizarTotal && atualizarTotal(false);
+  }
+  function expirar() {
+    expirou = true; precoAtual = OFERTA.PRECO_CHEIO; clearInterval(timer);
+    $('#barTxt').innerHTML = 'A oferta promocional terminou · preço atual <b>' + fmtBRL(precoAtual) + '</b>';
+    $('#offerTitle').textContent = 'O tempo da oferta acabou';
+    $('#offerSub').textContent = 'O kit continua disponível pelo preço normal.';
+    $('#count').style.display = 'none';
+    $('#priceLabel').textContent = 'preço atual';
+    aplicarPreco();
+  }
   function tick() {
-    const ms = Math.max(0, alvo - Date.now());
-    const v = [Math.floor(ms / 864e5), Math.floor(ms / 36e5) % 24, Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60];
-    v.forEach((n, i) => {
-      const t = String(n).padStart(i ? 2 : 1, '0');
+    const ms = fim - Date.now();
+    if (ms <= 0) return expirar();
+    const v = [Math.floor(ms / 6e4), Math.floor(ms / 1e3) % 60].map(n => String(n).padStart(2, '0'));
+    v.forEach((t, i) => {
       if (cd[i].textContent !== t) {
         cd[i].textContent = t;
         cd[i].classList.remove('flip'); void cd[i].offsetWidth; cd[i].classList.add('flip');
       }
     });
-    $('#diasBar').textContent = v[0];
+    $('#barTime').textContent = v[0] + ':' + v[1];
   }
-  tick(); setInterval(tick, 1000);
-  $('#ano').textContent = now.getFullYear();
+  var atualizarTotal;
+  $('#ano').textContent = new Date().getFullYear();
 
   // seletor de etapa com transição
   const etapas = {
@@ -647,6 +693,31 @@
     panel.classList.add('out');
     setTimeout(() => { render(b.dataset.k); panel.classList.remove('out'); }, reduce ? 0 : 200);
   }));
+
+  // esteira de perfis (12 cartões em 2 faixas, loop infinito)
+  const PERFIS = [
+    ['👩🏾‍🏫', '#f6dcc8', 'Professora de Educação Infantil', 'Roda de conversa', 'Precisa de material visual e lúdico para crianças pequenas.', 'Versões para colorir e mapas com mais ilustração.'],
+    ['👩🏽‍🏫', '#dcebdf', 'Professora polivalente', 'Fundamental I', 'Dá aula de tudo e quase não sobra tempo para pesquisar.', 'Um mapa pronto por tema, com atividade de fixação.'],
+    ['👨🏿‍🏫', '#f3e3bf', 'Professor de História', 'Fundamental II', 'Quer mostrar a África além da escravidão.', 'Mapas de Reinos e Civilizações: Mali, Gana, Songhai.'],
+    ['👩🏻‍🏫', '#e1e6f3', 'Professora de Geografia', 'Fundamental II', 'Precisa explicar rotas e fluxos de forma visual.', 'Mapa da Diáspora Africana com rotas e consequências.'],
+    ['👨🏾‍🏫', '#f6d6cf', 'Professor de Arte', 'Todas as etapas', 'Busca referências de música, dança e artes visuais.', 'Mapa de Arte, Música e Literatura afro-brasileira.'],
+    ['👩🏿‍🏫', '#e9ddf0', 'Professora de Língua Portuguesa', 'Fundamental e Médio', 'Quer trabalhar autores negros em sala.', 'Personalidades Negras e propostas de produção de texto.'],
+    ['👨🏽‍🏫', '#dcebdf', 'Professor do Ensino Médio', 'ENEM e vestibulares', 'Precisa de profundidade para análise crítica.', 'Abolição, pós-abolição e propostas de redação.'],
+    ['👩🏾‍💼', '#f3e3bf', 'Coordenadora pedagógica', 'Projeto da escola', 'Organiza o 20 de Novembro com toda a equipe.', 'Projeto pronto em 5 etapas, da sensibilização à culminância.'],
+    ['👩🏼‍🏫', '#e1e6f3', 'Professora em início de carreira', 'Primeiros anos', 'Tem receio de falar algo errado sobre o tema.', 'Guia de abordagem com termos e cuidados.'],
+    ['👩🏾‍🎨', '#f6dcc8', 'Professora que cuida do mural', 'Ambiente da sala', 'Quer um mural bonito e que ensine.', 'Linha do tempo gigante da África ao Brasil.'],
+    ['👨🏿‍🏫', '#e9ddf0', 'Professor de escola quilombola', 'Identidade local', 'Quer valorizar a história da própria comunidade.', 'Mapa de Quilombos e Resistência com exemplos.'],
+    ['🧑🏽‍🏫', '#f6d6cf', 'Professor de Educação Física', 'Jogos e brincadeiras', 'Procura atividades práticas e em grupo.', '+50 dinâmicas, bingo, trilha e jogo da memória.']
+  ];
+  const cardPerfil = ([ico, cor, papel, etapa, desafio, kit]) =>
+    `<article class="perfil"><header><span class="avatar" style="--av:${cor}" aria-hidden="true">${ico}</span><h3>${papel}<small>${etapa}</small></h3></header><p><b>Desafio:</b> ${desafio}</p><p><b>Com o kit:</b> ${kit}</p></article>`;
+  [[$('#esteira1'), PERFIS.slice(0, 6), '52s'], [$('#esteira2'), PERFIS.slice(6), '58s']].forEach(([box, lista, dur]) => {
+    const html = lista.map(cardPerfil).join('');
+    // conteúdo duplicado: ao chegar em -50% o loop recomeça sem emenda
+    box.innerHTML = `<div class="trilho" style="--dur:${dur}">${html}${reduce ? '' : html}</div>`;
+    box.addEventListener('touchstart', () => box.classList.add('pausa'), { passive: true });
+    box.addEventListener('touchend', () => box.classList.remove('pausa'), { passive: true });
+  });
 
   // carrosséis: largura dos itens + bolinhas
   $$('.carousel').forEach(c => {
@@ -685,15 +756,22 @@
     anim = requestAnimationFrame(step);
   });
 
-  // order bumps
-  const base = 17, fmt = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  // order bumps (somam sobre o preço atual da oferta)
+  const fmt = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   const totalEl = $('#total');
-  $$('.bump input').forEach(cb => cb.addEventListener('change', () => {
-    const t = $$('.bump input:checked').reduce((s, c) => s + +c.dataset.v, base);
+  atualizarTotal = animar => {
+    const t = $$('.bump input:checked').reduce((s, c) => s + +c.dataset.v, precoAtual);
     totalEl.textContent = fmt(t);
-    totalEl.classList.remove('pop'); void totalEl.offsetWidth; totalEl.classList.add('pop');
+    if (animar) { totalEl.classList.remove('pop'); void totalEl.offsetWidth; totalEl.classList.add('pop'); }
+  };
+  $$('.bump input').forEach(cb => cb.addEventListener('change', () => {
+    atualizarTotal(true);
     if (navigator.vibrate) navigator.vibrate(12);
   }));
+
+  // inicia o cronômetro da oferta
+  aplicarPreco();
+  tick(); if (!expirou) timer = setInterval(tick, 1000);
 
   // barra de progresso + CTA fixo (aparece após o hero, some na oferta)
   const sticky = $('#sticky'), prog = $('#progress');
