@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#b8452a">
 <title>Raízes em Mapas — Cultura Africana e Afro-Brasileira para Professores</title>
-<meta name="description" content="Mapas mentais ilustrados, sequências didáticas e projeto pronto para o 20 de Novembro. Alinhado à BNCC e à Lei 10.639/03.">
+<meta name="description" content="+100 materiais prontos, +50 brincadeiras imprimíveis e a linha do tempo gigante para o 20 de Novembro. Alinhado à BNCC e à Lei 10.639/03.">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/favicon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Raízes em Mapas — +300 mapas mentais de Cultura Africana e Afro-Brasileira">
-<meta property="og:description" content="Mapas mentais por etapa, alinhados à BNCC, com o Projeto 20 de Novembro pronto, atividades e jogos.">
+<meta property="og:title" content="Raízes em Mapas — +100 materiais e +50 brincadeiras de Cultura Africana e Afro-Brasileira">
+<meta property="og:description" content="Materiais por etapa, alinhados à BNCC, com brincadeiras imprimíveis e a linha do tempo gigante da África ao Brasil.">
 <meta property="og:image" content="https://dimitrifergus.github.io/raizes-em-mapas/img/kit-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="image" href="img/kit-hero.jpg">
@@ -133,23 +133,92 @@
   .count b.flip{animation:flip .45s var(--ease)}
   .count span{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 
-  /* seletor de etapa: chips com rolagem horizontal no mobile */
-  .tabs{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px 18px;padding:4px 16px;scrollbar-width:none}
-  .tabs::-webkit-scrollbar{display:none}
-  @media(min-width:760px){.tabs{justify-content:center;overflow:visible;margin:0 0 24px}}
-  .tab{flex-shrink:0;scroll-snap-align:start;min-height:44px;border:2px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 16px;border-radius:999px;font:600 .9rem var(--font);cursor:pointer;transition:background-color .25s,color .25s,border-color .25s,transform .15s;touch-action:manipulation}
-  .tab:active{transform:scale(.95)}
-  .tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;max-width:760px;margin:0 auto;box-shadow:var(--shadow)}
-  .panel-in{transition:opacity .35s var(--ease),transform .35s var(--ease)}
-  .panel-in.out{opacity:0;transform:translate3d(14px,0,0)}
-  .panel h3{font-size:1.15rem;margin-bottom:6px}
-  .panel ul{list-style:none;display:grid;gap:8px}
-  .panel li{padding-left:22px;position:relative;font-size:.95rem}
-  .panel li::before{content:"◆";position:absolute;left:0;color:var(--terra);font-size:.8rem;top:2px}
-  .panel-img{border-radius:12px;overflow:hidden;margin-bottom:14px;aspect-ratio:540/357;background:var(--soft);cursor:zoom-in}
-  .panel-img img{width:100%;height:100%;object-fit:cover}
-  @media(min-width:760px){.panel-in{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}.panel-img{margin:0}}
+  .kicker{text-align:center;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+
+  /* prévia: cartões de mapa clicáveis */
+  .mcard{display:flex;flex-direction:column;justify-content:flex-start;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:0;overflow:hidden;cursor:pointer;font:inherit;color:inherit;box-shadow:0 8px 22px -14px rgba(60,30,10,.45);transition:transform .25s var(--ease),box-shadow .25s var(--ease);touch-action:manipulation}
+  .mcard:active{transform:scale(.97)}
+  @media(hover:hover){.mcard:hover{transform:translateY(-4px);box-shadow:0 16px 30px -14px rgba(60,30,10,.5)}.mcard:hover img{transform:scale(1.05)}}
+  .mthumb{position:relative;display:block;flex:none;width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--soft)}
+  .mthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+  .mtxt{display:block;padding:10px 12px 12px}
+  .mtxt b{display:block;font-size:.9rem;line-height:1.3}
+  .mtxt small{display:block;color:var(--muted);font-size:.75rem;margin-top:2px}
+  /* aviso de "toque aqui" no primeiro cartão */
+  @keyframes tap{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-4px,-6px,0) scale(.9)}}
+  @keyframes ring{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+  .mcard.first .mthumb::before{content:"";position:absolute;right:28px;bottom:44px;z-index:2;width:34px;height:34px;border-radius:50%;border:3px solid #fff;animation:ring 1.6s var(--ease) infinite}
+  .mtap{position:absolute;right:14px;bottom:20px;z-index:3;font-size:1.7rem;animation:tap 1.6s ease-in-out infinite;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+  .carousel.mapas > *{flex-basis:72%}
+  @media(min-width:760px){.carousel.mapas{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:1000px){.carousel.mapas{grid-template-columns:repeat(5,1fr)}}
+
+  /* pop-up do mapa */
+  .mm{position:fixed;inset:0;z-index:90;background:rgba(15,10,6,.82);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+  .mm.open{opacity:1;pointer-events:auto}
+  .mm-box{position:relative;background:var(--surface);width:100%;max-width:980px;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;transform:translate3d(0,40px,0);transition:transform .4s var(--ease);overscroll-behavior:contain}
+  .mm.open .mm-box{transform:none}
+  .mm-x{position:absolute;top:10px;right:10px;z-index:2;width:42px;height:42px;border-radius:50%;border:0;background:rgba(29,20,16,.75);color:#fff;font-size:1.5rem;cursor:pointer}
+  .mm-img{position:relative;background:#fbf6ee;cursor:zoom-in}
+  .mm-img img{width:100%;aspect-ratio:4/3;object-fit:contain}
+  .mm-zoom{position:absolute;left:10px;bottom:10px;background:rgba(29,20,16,.75);color:#fff;font-size:.74rem;font-weight:600;padding:5px 10px;border-radius:999px}
+  .mm-body{padding:16px 16px calc(18px + var(--safe-b))}
+  .mm-count{font-size:.74rem;font-weight:700;color:var(--terra);text-transform:uppercase;letter-spacing:.06em}
+  .mm-body h3{font-size:1.2rem;margin:2px 0 8px;padding-right:44px}
+  .mm-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .mm-chips span{font-size:.72rem;font-weight:700;background:var(--soft);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+  .mm-info{display:grid;gap:8px;margin-bottom:14px}
+  .mm-info > div{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:.88rem;line-height:1.45}
+  .mm-info i{font-style:normal;font-size:1.15rem;line-height:1.2}
+  .mm-info b{display:block;font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--terra)}
+  .mm-nav{display:flex;gap:8px;margin-bottom:12px}
+  .mm-nav button{flex:1;min-height:44px;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;font:600 .88rem var(--font);cursor:pointer;touch-action:manipulation}
+  .mm-body .btn{max-width:none}
+  @media(min-width:860px){
+    .mm{align-items:center;padding:24px}
+    .mm-box{display:grid;grid-template-columns:1.25fr 1fr;border-radius:22px;max-height:88vh}
+    .mm-img{display:flex;align-items:center}
+    .mm-body{padding:22px 22px 20px;overflow:auto}
+  }
+
+  /* aula por etapa */
+  .etapas{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:860px;margin:0 auto 16px}
+  @media(min-width:760px){.etapas{grid-template-columns:repeat(4,1fr);gap:12px}}
+  .etapa{display:flex;flex-direction:column;align-items:center;gap:2px;min-height:44px;padding:12px 8px;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;font:inherit;cursor:pointer;transition:background-color .25s,border-color .25s,transform .15s,box-shadow .25s;touch-action:manipulation}
+  .etapa span{font-size:1.5rem;line-height:1.2}
+  .etapa b{font-size:.86rem;line-height:1.2}
+  .etapa small{font-size:.72rem;color:var(--muted)}
+  .etapa:active{transform:scale(.96)}
+  .etapa[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg);box-shadow:0 10px 22px -12px rgba(29,20,16,.7)}
+  .etapa[aria-selected="true"] small{color:var(--ocre)}
+  .aula{max-width:980px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 16px;box-shadow:var(--shadow);transition:opacity .3s var(--ease),transform .3s var(--ease)}
+  .aula.out{opacity:0;transform:translate3d(0,10px,0)}
+  .aula-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 20px;align-items:flex-end;margin-bottom:16px}
+  .aula-tag{display:inline-block;background:var(--verde);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:6px}
+  .aula-head h3{font-size:1.2rem}
+  .aula-head p{color:var(--muted);font-size:.9rem}
+  .nivel{font-size:.72rem;color:var(--muted);font-weight:600}
+  .nivel i{display:flex;gap:4px;margin-top:4px}
+  .nivel i b{width:26px;height:8px;border-radius:99px;background:var(--line)}
+  .nivel i b.on{background:var(--terra)}
+  .passos{list-style:none;display:grid;gap:14px;position:relative}
+  .passos li{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;position:relative}
+  .passos li + li::before{content:"";position:absolute;left:47px;top:-14px;height:14px;border-left:3px dotted var(--ocre)}
+  .pimg{display:block;position:relative;width:96px;height:96px;border-radius:14px;overflow:hidden;background:var(--soft);border:0;padding:0}
+  .pimg img{width:100%;height:100%;object-fit:cover}
+  button.pimg{cursor:pointer;box-shadow:0 0 0 3px var(--ocre)}
+  button.pimg span{position:absolute;left:0;right:0;bottom:0;background:rgba(29,20,16,.8);color:#fff;font:700 .66rem var(--font);padding:4px 0}
+  .pmin{display:inline-block;font-size:.7rem;font-weight:800;color:var(--terra);background:color-mix(in srgb,var(--terra) 12%,var(--surface));padding:2px 8px;border-radius:999px;margin-bottom:3px}
+  .passos b{display:block;font-size:.95rem;line-height:1.3}
+  .passos p{color:var(--muted);font-size:.88rem;line-height:1.45}
+  .aula-foot{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:.84rem;font-weight:600;color:var(--verde)}
+  @media(min-width:760px){
+    .aula{padding:24px}
+    .passos{grid-template-columns:repeat(3,1fr);gap:18px}
+    .passos li{grid-template-columns:1fr;align-items:start;align-content:start}
+    .passos li + li::before{left:-14px;top:70px;height:0;width:10px;border-left:0;border-top:3px dotted var(--ocre)}
+    .pimg{width:100%;height:auto;aspect-ratio:4/3}
+  }
 
   /* carrossel (mobile) → grade (desktop) */
   .carousel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:4px 16px 8px;scrollbar-width:none;overscroll-behavior-x:contain}
@@ -184,13 +253,38 @@
   .tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:999px;background:var(--verde);color:#fff;margin-bottom:6px}
   .tag.new{background:var(--terra)}
 
-  /* antes/depois */
-  .vs{display:grid;gap:12px}
-  @media(min-width:760px){.vs{grid-template-columns:1fr 1fr;gap:16px}}
-  .vs .card{border-width:2px}
-  .vs .before{border-color:#d9a596}
-  .vs .after{border-color:#8fc0a6}
-  .vs ul{list-style:none;display:grid;gap:8px;margin-top:10px;font-size:.95rem}
+  /* prós e contras */
+  .cmp{max-width:900px;margin:0 auto;display:grid;gap:10px}
+  .cmp-head{display:none}
+  .cmp-row{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:6px}
+  .cmp-row > b{font-size:.9rem}
+  .cmp-row p{font-size:.88rem;line-height:1.4;padding-left:24px;position:relative}
+  .cmp-row p::before{position:absolute;left:0;top:0;font-weight:800}
+  .cmp-row p.sem{color:var(--muted)}
+  .cmp-row p.sem::before{content:"✖";color:var(--terra)}
+  .cmp-row p.com{font-weight:600}
+  .cmp-row p.com::before{content:"✔";color:var(--verde)}
+  @media(min-width:760px){
+    .cmp{gap:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+    .cmp-head,.cmp-row{display:grid;grid-template-columns:170px 1fr 1fr;gap:0;align-items:stretch}
+    .cmp-head span{padding:14px 16px;font-weight:800;font-size:.95rem}
+    .cmp-head .sem{background:color-mix(in srgb,var(--terra) 10%,var(--surface))}
+    .cmp-head .com{background:color-mix(in srgb,var(--verde) 14%,var(--surface))}
+    .cmp-row{border:0;border-top:1px solid var(--line);border-radius:0;padding:0}
+    .cmp-row > *{padding:13px 16px}
+    .cmp-row p{padding-left:40px}
+    .cmp-row p::before{left:16px;top:13px}
+    .cmp-row p.com{background:color-mix(in srgb,var(--verde) 6%,var(--surface))}
+  }
+  .fit{display:grid;gap:12px;max-width:900px;margin:18px auto 0}
+  @media(min-width:760px){.fit{grid-template-columns:1.3fr 1fr}}
+  .fit ul{list-style:none;display:grid;gap:6px;margin-top:8px;font-size:.9rem}
+  .fit li{padding-left:16px;position:relative}
+  .fit li::before{content:"•";position:absolute;left:2px;color:var(--terra);font-weight:800}
+  .fit-yes{border:2px solid #8fc0a6}
+  .fit-yes h3{color:var(--verde)}
+  .fit-no{border:2px dashed var(--line)}
+  .fit-no h3,.fit-no li{color:var(--muted)}
 
   /* bônus: imagem à esquerda no mobile */
   .bonus{display:flex;flex-direction:column;gap:14px;padding:12px 12px 18px}
@@ -199,7 +293,15 @@
   .bonus .price{font-size:.85rem;color:var(--muted);margin-top:6px}
   .bonus .price s{margin-right:6px}
   .bonus .price b{color:var(--verde)}
-  @media(min-width:760px){.grid.bonus-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:760px){.grid.bonus-grid{grid-template-columns:repeat(3,1fr)}}
+  /* cartela de figurinhas montada com recortes das ilustrações */
+  .stickers{position:relative;aspect-ratio:766/510;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);place-items:center;padding:4% 8%;gap:2% 4%;
+    background:radial-gradient(circle,rgba(184,69,42,.16) 1.5px,transparent 1.6px) 0 0/14px 14px,linear-gradient(135deg,#f6e7cf,#ecd3ad)}
+  .stickers img{width:88%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;border:5px solid #fff;box-shadow:0 6px 12px -4px rgba(60,30,10,.5);transform:rotate(var(--r,0deg));transition:transform .4s var(--ease)}
+  .stickers img:nth-child(1){--r:-8deg}.stickers img:nth-child(2){--r:6deg;border-radius:22%}.stickers img:nth-child(3){--r:-4deg}
+  .stickers img:nth-child(4){--r:5deg;border-radius:22%}.stickers img:nth-child(5){--r:-6deg}.stickers img:nth-child(6){--r:9deg;border-radius:22%}
+  .card.in .stickers img{transform:rotate(var(--r)) scale(1.04)}
+  .st-badge{position:absolute;right:4%;top:4%;width:23%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--terra);color:#fff;font-weight:900;font-size:clamp(1rem,4.5vw,1.5rem);border:4px dashed #fff;transform:rotate(12deg);box-shadow:0 6px 14px -6px rgba(0,0,0,.5)}
 
   /* calculadora */
   .calc{max-width:640px;margin:0 auto;text-align:center}
@@ -228,6 +330,45 @@
   .total{font-weight:700;margin:6px 0 16px;font-size:1.05rem}
   .total span{display:inline-block}
   .total span.pop{animation:pop .45s var(--ease)}
+
+  /* dois planos: Completo em destaque, Básico como comparação (no celular o Completo vem primeiro) */
+  .plans{display:flex;flex-direction:column;gap:34px;max-width:980px;margin:0 auto}
+  .plans .main{order:-1}
+  .offer.main{border-width:4px;box-shadow:0 18px 44px -14px rgba(184,69,42,.45)}
+  .offer.basic{border:2px solid var(--line);box-shadow:none;width:100%;max-width:560px;padding:26px 16px 20px}
+  .offer.basic .ribbon{background:var(--muted)}
+  .offer.basic h3{color:var(--muted)}
+  .offer ul.inc li{display:flex;justify-content:flex-start;gap:8px;color:var(--ink);font-weight:600}
+  .offer ul.inc li.no{color:var(--muted);font-weight:400}
+  .offer ul.inc li.no span{text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--terra) 60%,transparent)}
+  .offer ul.inc li span:last-child{white-space:normal;color:inherit}
+  .offer ul.inc li i{font-style:normal;color:var(--verde)}
+  .offer ul.inc li.no i{color:var(--terra)}
+  .price-mid{font-weight:800;letter-spacing:-.02em;font-size:2.1rem;color:var(--muted);line-height:1;margin:4px 0}
+  .diff{margin:14px auto 0;max-width:360px;background:color-mix(in srgb,var(--verde) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--verde) 40%,transparent);color:var(--ink);border-radius:10px;padding:8px 12px;font-size:.88rem}
+  .diff b{color:var(--verde)}
+  .btn.ghost{background:transparent;color:var(--muted);border:2px solid var(--line);box-shadow:none;min-height:50px;font-size:.88rem}
+  .btn.ghost::after{display:none}
+  @media(min-width:860px){
+    .plans{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:start}
+    .offer.basic{position:sticky;top:24px;margin-top:40px}
+    .plans .main{order:0}
+    .plans .offer.basic{max-width:none}
+  }
+
+  /* pop-up "espera!" */
+  .up{position:fixed;inset:0;z-index:100;background:rgba(15,10,6,.82);display:grid;place-items:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+  .up.open{opacity:1;pointer-events:auto}
+  .up-box{background:var(--surface);border:3px solid var(--terra);border-radius:20px;max-width:440px;width:100%;padding:24px 18px 18px;text-align:center;transform:scale(.9);transition:transform .35s var(--ease);max-height:calc(100vh - 32px);overflow:auto}
+  .up.open .up-box{transform:none}
+  .up-eyebrow{color:var(--terra);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;margin-bottom:6px}
+  .up-box h3{font-size:1.25rem;margin-bottom:12px}
+  .up-box h3 span{color:var(--verde)}
+  .up-box ul{list-style:none;text-align:left;display:grid;gap:8px;margin:0 0 18px}
+  .up-box li{padding-left:28px;position:relative;font-size:.92rem}
+  .up-box li::before{content:"✔";position:absolute;left:4px;color:var(--verde);font-weight:800}
+  .up-box li small{color:var(--muted)}
+  .up .skip{display:inline-block;margin-top:14px;color:var(--muted);font-size:.84rem;text-decoration:underline;padding:6px}
 
   /* garantia */
   .guar{display:grid;gap:18px;align-items:center;max-width:760px;margin:0 auto;text-align:center}
@@ -315,14 +456,14 @@
     <div class="hero-text">
       <span class="eyebrow rv">Lei 10.639/03 • Alinhado à BNCC</span>
       <h1 class="rv" style="--d:.08s">Ensine Cultura Africana e Afro-Brasileira com <em>segurança</em> e aulas que os alunos lembram</h1>
-      <p class="lead rv" style="--d:.24s">Mapas mentais ilustrados, sequências didáticas e um projeto completo para o 20 de Novembro, organizados por etapa de ensino.</p>
+      <p class="lead rv" style="--d:.24s">Mapas mentais ilustrados, atividades e brincadeiras prontas para imprimir, organizados por etapa de ensino.</p>
       <ul class="checks">
-        <li class="rv" style="--d:.3s">+300 mapas mentais por tema e etapa</li>
-        <li class="rv" style="--d:.38s">3 versões: colorida, para colorir e “complete o mapa”</li>
-        <li class="rv" style="--d:.46s">Projeto 20 de Novembro pronto, passo a passo</li>
+        <li class="rv" style="--d:.3s"><b>+100 materiais</b> prontos por tema e etapa</li>
+        <li class="rv" style="--d:.38s"><b>+50 brincadeiras e jogos imprimíveis</b> para fazer com os alunos</li>
+        <li class="rv" style="--d:.46s"><b>Linha do tempo gigante</b> da África ao Brasil para o mural</li>
       </ul>
       <div class="cta-box rv" style="--d:.54s">
-        <a class="btn pulse" href="#oferta">QUERO MEU KIT RAÍZES →</a>
+        <a class="btn pulse" href="#oferta">QUERO O KIT COMPLETO →</a>
         <p class="micro">✔ Acesso imediato · 🔒 Pagamento seguro · 🛡 7 dias de garantia</p>
       </div>
     </div>
@@ -334,65 +475,52 @@
   </div>
 </header>
 
-<!-- SELETOR DE ETAPA -->
-<section class="alt">
+<!-- PRÉVIA: os cartões e o pop-up são montados pelo JS a partir da lista MAPAS -->
+<section class="alt" id="previa">
   <div class="wrap">
-    <h2 class="rv">Para qual turma você dá aula?</h2>
-    <p class="sub rv">Toque na etapa e veja o que o kit entrega para você.</p>
-    <div class="tabs rv" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-k="ei">Educação Infantil</button>
-      <button class="tab" role="tab" aria-selected="false" data-k="f1">Fundamental I</button>
-      <button class="tab" role="tab" aria-selected="false" data-k="f2">Fundamental II</button>
-      <button class="tab" role="tab" aria-selected="false" data-k="em">Ensino Médio</button>
-    </div>
-    <div class="panel rv"><div class="panel-in" id="panel"></div></div>
-  </div>
-</section>
-
-<!-- PRÉVIA -->
-<section>
-  <div class="wrap">
-    <h2 class="rv">Veja uma prévia dos mapas</h2>
-    <p class="sub rv">Da África ao Brasil, em ordem para você seguir em aula. Toque no mapa para ampliar.</p>
-    <div class="carousel rv" data-dots="d1">
-      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-04.jpg" alt="Mapa mental Reinos e Civilizações Africanas" width="540" height="357" loading="lazy"></div><figcaption>1. Reinos e Civilizações Africanas<small>Gana, Mali, Songhai, Benin, Kongo e Axum</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-03.jpg" alt="Mapa mental Diáspora Africana" width="540" height="357" loading="lazy"></div><figcaption>2. Diáspora Africana<small>Causas, rotas, consequências e legado</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-01.jpg" alt="Mapa mental Zumbi dos Palmares" width="540" height="357" loading="lazy"></div><figcaption>3. Zumbi dos Palmares<small>Quem foi, contexto, resistência e importância</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-02.jpg" alt="Mapa mental Quilombos e Resistência" width="540" height="357" loading="lazy"></div><figcaption>4. Quilombos e Resistência<small>O que são, organização e exemplos</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-08.jpg" alt="Mapa mental Abolição e Pós-Abolição" width="540" height="357" loading="lazy"></div><figcaption>5. Abolição e Pós-Abolição<small>Caminho até 1888, conquistas e desafios atuais</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-05.jpg" alt="Mapa mental Personalidades Negras" width="540" height="357" loading="lazy"></div><figcaption>6. Personalidades Negras<small>Dandara, Luiz Gama, Carolina Maria de Jesus e mais</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-06.jpg" alt="Mapa mental Cultura Afro-Brasileira" width="540" height="357" loading="lazy"></div><figcaption>7. Cultura Afro-Brasileira<small>Música, dança, culinária, arte e religiosidade</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-07.jpg" alt="Mapa mental Arte, Música e Literatura" width="540" height="357" loading="lazy"></div><figcaption>8. Arte, Música e Literatura<small>Artes visuais, literatura e expressões culturais</small></figcaption></figure>
-    </div>
+    <p class="kicker rv">👀 Por dentro do kit</p>
+    <h2 class="rv">Toque em um mapa e veja o que ele entrega</h2>
+    <p class="sub rv">10 dos mapas mentais do kit, cada um com 10 tópicos ilustrados. Toque para ver o resumo e como usar em aula.</p>
+    <div class="carousel mapas rv" id="mapGrid" data-dots="d1"></div>
     <div class="dots" id="d1"></div>
-    <p class="hint">← deslize para ver mais →</p>
+    <p class="hint">← deslize e toque para abrir →</p>
   </div>
 </section>
 
-<!-- ANTES / DEPOIS -->
+<!-- AULA POR ETAPA -->
+<section id="turma">
+  <div class="wrap">
+    <p class="kicker rv">🧑🏽‍🏫 Para qual turma você dá aula?</p>
+    <h2 class="rv">Veja como fica a aula da sua turma</h2>
+    <p class="sub rv">Escolha a etapa: montamos uma aula de 50 minutos só com o que vem no kit.</p>
+    <div class="etapas rv" role="tablist">
+      <button class="etapa" role="tab" aria-selected="true" data-k="ei"><span>🧸</span><b>Educação Infantil</b><small>4 a 5 anos</small></button>
+      <button class="etapa" role="tab" aria-selected="false" data-k="f1"><span>✏️</span><b>Fundamental I</b><small>6 a 10 anos</small></button>
+      <button class="etapa" role="tab" aria-selected="false" data-k="f2"><span>🌍</span><b>Fundamental II</b><small>11 a 14 anos</small></button>
+      <button class="etapa" role="tab" aria-selected="false" data-k="em"><span>🎓</span><b>Ensino Médio</b><small>15 a 17 anos</small></button>
+    </div>
+    <div class="aula rv" id="aula"></div>
+  </div>
+</section>
+
+<!-- PRÓS E CONTRAS -->
 <section class="alt">
   <div class="wrap">
-    <h2 class="rv">Chega de montar aula do zero</h2>
-    <p class="sub rv">A lei exige o tema o ano inteiro, mas o material costuma chegar tarde, espalhado ou superficial.</p>
-    <div class="vs">
-      <div class="card before rv">
-        <h3>😩 Sem o kit</h3>
-        <ul>
-          <li>✖ Horas pesquisando em sites soltos</li>
-          <li>✖ Medo de reproduzir estereótipos</li>
-          <li>✖ Conteúdo que só aparece em novembro</li>
-          <li>✖ Atividades que não conversam com a BNCC</li>
-        </ul>
-      </div>
-      <div class="card after rv" style="--d:.12s">
-        <h3>😊 Com o Kit Raízes</h3>
-        <ul>
-          <li>✔ Tudo organizado por tema e etapa</li>
-          <li>✔ Guia de linguagem e abordagem respeitosa</li>
-          <li>✔ Calendário para trabalhar o ano todo</li>
-          <li>✔ Habilidades da BNCC em cada mapa</li>
-        </ul>
-      </div>
+    <p class="kicker rv">⚖️ Prós e contras</p>
+    <h2 class="rv">Você precisa mesmo disso? Compare.</h2>
+    <p class="sub rv">O mesmo tema, duas aulas bem diferentes.</p>
+    <div class="cmp rv">
+      <div class="cmp-head" aria-hidden="true"><span></span><span class="sem">😩 Aula sem o kit</span><span class="com">😊 Aula com o kit</span></div>
+      <div class="cmp-row"><b>⏱️ Preparo</b><p class="sem">1h30 garimpando sites e montando slide por aula</p><p class="com">Mapa, atividade e brincadeira prontos em 5 minutos</p></div>
+      <div class="cmp-row"><b>👀 Atenção da turma</b><p class="sem">Texto no quadro e turma dispersa</p><p class="com">Imagem forte e jogo: a turma participa</p></div>
+      <div class="cmp-row"><b>🛡️ Segurança no tema</b><p class="sem">Medo de errar termos ou reforçar estereótipos</p><p class="com">Guia de abordagem e tópicos de “erro comum” nos mapas</p></div>
+      <div class="cmp-row"><b>📚 Profundidade</b><p class="sem">Só escravidão e 20 de novembro</p><p class="com">Reinos, ciência, língua, mulheres negras: a história completa</p></div>
+      <div class="cmp-row"><b>📆 Duração</b><p class="sem">O tema some depois de novembro</p><p class="com">Calendário com temas para os 12 meses</p></div>
+      <div class="cmp-row"><b>📝 Registro</b><p class="sem">Nada para mostrar à coordenação</p><p class="com">Atividades com gabarito e BNCC no plano de aula</p></div>
+    </div>
+    <div class="fit">
+      <div class="card fit-yes rv"><h3>✔ É para você se…</h3><ul><li>quer cumprir a Lei 10.639 sem passar o fim de semana pesquisando</li><li>precisa de algo que funcione com a turma inteira, não só com quem lê bem</li><li>quer trabalhar o tema o ano todo, não só em novembro</li></ul></div>
+      <div class="card fit-no rv" style="--d:.08s"><h3>✖ Não é para você se…</h3><ul><li>procura videoaulas: o kit é material para imprimir e projetar</li><li>quer só um cartaz para o dia 20 e nada mais</li></ul></div>
     </div>
   </div>
 </section>
@@ -403,12 +531,12 @@
     <h2 class="rv">O que você recebe</h2>
     <p class="sub rv">Um sistema para planejar, aplicar e avaliar.</p>
     <div class="grid g3">
-      <div class="card feat rv"><div class="ico">🗺️</div><div><h3>+300 mapas mentais</h3><p>Reinos africanos, diáspora, quilombos, personalidades, arte, música, culinária e língua.</p></div></div>
-      <div class="card feat rv" style="--d:.06s"><div class="ico">🖍️</div><div><h3>3 versões de cada mapa</h3><p>Colorida para projetar, P&amp;B para colorir e “complete o mapa” para o aluno.</p></div></div>
-      <div class="card feat rv" style="--d:.12s"><div class="ico">🎯</div><div><h3>Códigos da BNCC</h3><p>Habilidades indicadas em cada mapa, prontas para o plano de aula.</p></div></div>
-      <div class="card feat rv"><div class="ico">📆</div><div><h3>Calendário afro-brasileiro</h3><p>Datas e temas para os 12 meses, não só para novembro.</p></div></div>
-      <div class="card feat rv" style="--d:.06s"><div class="ico">🧭</div><div><h3>Guia de abordagem</h3><p>Termos recomendados, erros comuns e como conduzir conversas sobre racismo.</p></div></div>
-      <div class="card feat rv" style="--d:.12s"><div class="ico">📱</div><div><h3>Acesso no celular</h3><p>Área organizada por pastas: baixe só o que vai usar na semana.</p></div></div>
+      <div class="card feat rv"><div class="ico">🗺️</div><div><h3>+100 materiais prontos</h3><p>Mapas mentais ilustrados e atividades com gabarito: reinos africanos, diáspora, quilombos, personalidades, arte e culinária.</p></div></div>
+      <div class="card feat rv" style="--d:.06s"><div class="ico">🎲</div><div><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo, jogo da memória, trilha da história e rodas de conversa. É só imprimir e jogar com a turma.</p></div></div>
+      <div class="card feat rv" style="--d:.12s"><div class="ico">📜</div><div><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição, em painéis A4 para emendar e montar no mural.</p></div></div>
+      <div class="card feat rv"><div class="ico">🎯</div><div><h3>Códigos da BNCC</h3><p>Habilidades indicadas em cada material, prontas para o plano de aula.</p></div></div>
+      <div class="card feat rv" style="--d:.06s"><div class="ico">📆</div><div><h3>Calendário afro-brasileiro</h3><p>Datas e temas para os 12 meses, não só para novembro.</p></div></div>
+      <div class="card feat rv" style="--d:.12s"><div class="ico">🧭</div><div><h3>Guia de abordagem</h3><p>Termos recomendados, erros comuns e como conduzir conversas sobre racismo.</p></div></div>
     </div>
   </div>
 </section>
@@ -416,25 +544,20 @@
 <!-- BÔNUS -->
 <section class="alt">
   <div class="wrap">
-    <h2 class="rv">Bônus inclusos hoje</h2>
-    <p class="sub rv">Comprando agora, você leva também:</p>
+    <h2 class="rv">Bônus exclusivos do Kit Completo</h2>
+    <p class="sub rv">Estes três <b>não vêm no Kit Básico</b>. Só quem escolhe o Completo leva:</p>
     <div class="grid bonus-grid">
       <div class="card bonus rv">
-        <div class="ph" data-label="Bônus 1"><img src="img/bonus-1.jpg" alt="Bônus 1: Projeto 20 de Novembro, sequência didática completa" width="766" height="510" loading="lazy"></div>
-        <div><span class="tag new">Bônus 1</span><h3>Projeto 20 de Novembro</h3><p>Sequência didática completa em 5 etapas: sensibilização, pesquisa, atividades, socialização e culminância.</p><div class="price"><s>R$ 47</s><b>GRÁTIS</b></div></div>
+        <div class="ph" data-label="Bônus 1"><img src="img/bonus-linha-do-tempo.jpg" alt="Bônus 1: Linha do tempo gigante da África ao Brasil" width="766" height="510" loading="lazy"></div>
+        <div><span class="tag new">Bônus 1 · Para o 20 de Novembro</span><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição em painéis A4 que se emendam e formam mais de 4 metros de mural. Vem colorida, para colorir e com cartões de fatos para a turma montar junto. Você monta no 20 de Novembro e ela fica na parede o ano inteiro.</p><div class="price"><s>R$ 37</s><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv" style="--d:.06s">
-        <div class="ph" data-label="Bônus 2"><img src="img/bonus-2.jpg" alt="Bônus 2: +100 atividades com gabarito" width="766" height="510" loading="lazy"></div>
-        <div><span class="tag">Bônus 2</span><h3>+100 atividades com gabarito</h3><p>Múltipla escolha, verdadeiro ou falso, produção de texto, caça-palavras e “complete o mapa”.</p><div class="price"><s>R$ 37</s><b>GRÁTIS</b></div></div>
+        <div class="ph" data-label="Bônus 2"><img src="img/bonus-brincadeiras.jpg" alt="Bônus 2: +50 brincadeiras e jogos imprimíveis" width="766" height="510" loading="lazy"></div>
+        <div><span class="tag">Bônus 2</span><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história, rodas de conversa e dinâmicas em grupo. É só imprimir e brincar com os alunos.</p><div class="price"><s>R$ 47</s><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv">
-        <div class="ph" data-label="Bônus 3"><img src="img/bonus-3.jpg" alt="Bônus 3: Linha do tempo gigante da África ao Brasil" width="766" height="510" loading="lazy"></div>
-        <div><span class="tag">Bônus 3</span><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição, pronta para imprimir e montar no mural da sala.</p><div class="price"><s>R$ 27</s><b>GRÁTIS</b></div></div>
-      </div>
-      <div class="card bonus rv" style="--d:.06s">
-        <div class="ph" data-label="Bônus 4"><img src="img/bonus-4.jpg" alt="Bônus 4: +50 dinâmicas e jogos" width="766" height="510" loading="lazy"></div>
-        <div><span class="tag">Bônus 4</span><h3>+50 dinâmicas e jogos</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história e rodas de conversa.</p><div class="price"><s>R$ 27</s><b>GRÁTIS</b></div></div>
-      </div>
+        <div class="stickers" role="img" aria-label="Exemplos das figurinhas: personalidades negras, Zumbi e Dandara, astronomia africana e batuque"><img src="img/figurinhas/f1.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f2.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f3.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f4.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f5.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f6.jpg" alt="" width="240" height="240" loading="lazy"><span class="st-badge">+200</span></div>
+        <div><span class="tag new">Bônus 3 · Novo</span><h3>+200 figurinhas para imprimir e decorar</h3><p>Deixe a sala com cara de 20 de Novembro em uma tarde: personalidades negras, Zumbi e Dandara, símbolos africanos e frases de autoestima para o mural, o caderno e os cartazes. E ainda viram prêmio nas brincadeiras, porque criança faz tudo por uma figurinha. É só imprimir em papel adesivo ou comum e recortar.</p><div class="price"><s>R$ 27</s><b>GRÁTIS no Completo</b></div></div></div>
     </div>
   </div>
 </section>
@@ -459,33 +582,54 @@
       <div><b id="cd-m">15</b><span>min</span></div>
       <div><b id="cd-s">00</b><span>seg</span></div>
     </div>
-    <p class="sub rv" id="offerSub" style="margin-bottom:28px">Garanta o preço promocional antes que o tempo acabe.</p>
+    <p class="sub rv" id="offerSub" style="margin-bottom:28px">Garanta o Kit Completo por <b data-preco>R$ 27,99</b> antes que o preço suba.</p>
 
-    <div class="offer rv zoom" id="offer">
-      <span class="ribbon">🔥 Oferta de lançamento</span>
-      <h3 style="font-size:1.35rem;margin-top:6px">Kit Raízes em Mapas</h3>
+    <div class="plans">
+    <div class="offer basic rv" id="basic">
+      <span class="ribbon">Kit Básico</span>
+      <h3 style="font-size:1.15rem;margin-top:6px">Só o essencial</h3>
+      <ul class="inc">
+        <li><i>✔</i> <span>10 mapas mentais (só versão colorida)</span></li>
+        <li class="no"><i>✖</i> <span>+100 materiais e atividades com gabarito</span></li>
+        <li class="no"><i>✖</i> <span>+50 brincadeiras e jogos imprimíveis</span></li>
+        <li class="no"><i>✖</i> <span>Linha do tempo gigante</span></li>
+        <li class="no"><i>✖</i> <span>+200 figurinhas para decorar</span></li>
+        <li class="no"><i>✖</i> <span>Códigos da BNCC</span></li>
+        <li class="no"><i>✖</i> <span>Guia de abordagem + calendário</span></li>
+        <li class="no"><i>✖</i> <span>Atualizações futuras</span></li>
+      </ul>
+      <p class="price-mid" id="basicPrice">R$ 14,90</p>
+      <p class="micro" style="margin:0 0 14px">pagamento único</p>
+      <a class="btn ghost" id="buyBasic" href="#checkout-basico">QUERO SÓ O BÁSICO</a>
+    </div>
+
+    <div class="offer main rv zoom" id="offer">
+      <span class="ribbon">⭐ Mais escolhido · Kit Completo</span>
+      <h3 style="font-size:1.35rem;margin-top:6px">Kit Raízes em Mapas Completo</h3>
       <div class="offer-img"><img src="img/kit-oferta.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1254" height="1254" loading="lazy"></div>
       <ul>
-        <li><span>+300 mapas mentais (3 versões)</span><span>R$ 97</span></li>
-        <li><span>Guia de abordagem + calendário</span><span>R$ 27</span></li>
-        <li><span>Projeto 20 de Novembro</span><span>R$ 47</span></li>
-        <li><span>+100 atividades com gabarito</span><span>R$ 37</span></li>
-        <li><span>Linha do tempo gigante</span><span>R$ 27</span></li>
-        <li><span>+50 dinâmicas e jogos</span><span>R$ 27</span></li>
+        <li><span>✔ +100 materiais prontos (com BNCC)</span><span>R$ 97</span></li>
+        <li><span>✔ +50 brincadeiras e jogos imprimíveis</span><span>R$ 47</span></li>
+        <li><span>✔ Linha do tempo gigante</span><span>R$ 37</span></li>
+        <li><span>✔ +200 figurinhas para imprimir</span><span>R$ 27</span></li>
+        <li><span>✔ Guia de abordagem + calendário</span><span>R$ 27</span></li>
+        <li><span>✔ Atualizações futuras</span><span>incluso</span></li>
       </ul>
-      <p class="from">Valor total: R$ 262</p>
+      <p class="from">Valor total: R$ 235</p>
       <p class="micro" style="margin:0" id="priceLabel">por apenas</p>
-      <p class="price-big" id="priceBig">R$ 17</p>
+      <p class="price-big" id="priceBig">R$ 27,99</p>
       <p class="micro" style="margin-top:0">pagamento único · acesso vitalício</p>
+      <p class="diff">Só <b data-diff>R$ 13,09</b> a mais que o Básico para levar tudo isso</p>
 
       <div class="bumps">
         <label class="bump"><input type="checkbox" data-v="9.9"><span><b>Sim! Quero a versão editável no Canva por + R$ 9,90</b><small>Mude cores, fontes e coloque o nome da sua escola.</small></span></label>
         <label class="bump"><input type="checkbox" data-v="12.9"><span><b>Sim! Quero os slides prontos por + R$ 12,90</b><small>40 apresentações de 10 a 15 slides, uma por tema.</small></span></label>
       </div>
-      <p class="total">Total: <span id="total">R$ 17,00</span></p>
+      <p class="total">Total: <span id="total">R$ 27,99</span></p>
 
-      <a class="btn pulse" id="buy" href="#checkout">QUERO MEU KIT AGORA →</a>
+      <a class="btn pulse" id="buy" href="#checkout">QUERO O KIT COMPLETO →</a>
       <p class="micro">🔒 Compra segura · PIX, cartão e boleto · Acesso no e-mail</p>
+    </div>
     </div>
   </div>
 </section>
@@ -534,12 +678,13 @@
   <div class="wrap" style="max-width:760px">
     <h2 class="rv">Perguntas frequentes</h2>
     <div class="rv" style="margin-top:20px">
+      <details><summary>Qual a diferença entre o Básico e o Completo?</summary><p>O Básico tem só 10 mapas mentais na versão colorida. O Completo traz +100 materiais com BNCC, +50 brincadeiras e jogos imprimíveis, a linha do tempo gigante, +200 figurinhas, o guia de abordagem, o calendário e as atualizações futuras, por poucos reais a mais.</p></details>
       <details><summary>Como recebo o material?</summary><p>Logo após a confirmação do pagamento, você recebe no e-mail o link da área de acesso. No PIX, a liberação é imediata.</p></details>
       <details><summary>Serve para qual etapa de ensino?</summary><p>Da Educação Infantil ao Ensino Médio. Os mapas são separados por etapa, com linguagem e profundidade adequadas.</p></details>
       <details><summary>Posso imprimir quantas vezes quiser?</summary><p>Sim. Os arquivos são em PDF de alta resolução, para A4 e A3, colorido ou P&amp;B, para uso com as suas turmas.</p></details>
       <details><summary>Funciona no celular?</summary><p>Sim. Você acessa e baixa tudo pelo celular e pode imprimir direto dele ou enviar para o computador da escola.</p></details>
-      <details><summary>O material está alinhado à BNCC?</summary><p>Sim. Cada mapa indica as habilidades relacionadas, o que facilita o preenchimento do plano de aula.</p></details>
-      <details><summary>O acesso é vitalício?</summary><p>Sim. Você paga uma única vez e recebe também as atualizações futuras do kit.</p></details>
+      <details><summary>O material está alinhado à BNCC?</summary><p>Sim, no Kit Completo. Cada material indica as habilidades relacionadas, o que facilita o preenchimento do plano de aula.</p></details>
+      <details><summary>O acesso é vitalício?</summary><p>Sim. Você paga uma única vez. No Kit Completo, recebe também as atualizações futuras.</p></details>
       <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. É só enviar um e-mail e devolvemos o valor integral.</p></details>
     </div>
   </div>
@@ -549,8 +694,8 @@
 <section>
   <div class="wrap rv" style="text-align:center">
     <h2>Seu novembro (e o ano todo) planejado hoje</h2>
-    <p class="sub">+300 mapas, projeto pronto, atividades e jogos por menos que um lanche.</p>
-    <a class="btn pulse" href="#oferta">QUERO O KIT POR <span data-preco>R$ 17</span> →</a>
+    <p class="sub">+100 materiais, +50 brincadeiras imprimíveis e a linha do tempo gigante por menos que um lanche.</p>
+    <a class="btn pulse" href="#offer">QUERO O COMPLETO POR <span data-preco>R$ 27,99</span> →</a>
   </div>
 </section>
 
@@ -562,8 +707,46 @@
 </footer>
 
 <div class="sticky" id="sticky">
-  <span class="p"><small>R$ 262</small><b id="stickyPrice">R$ 17</b></span>
-  <a class="btn" href="#oferta">QUERO MEU KIT →</a>
+  <span class="p"><small>R$ 235</small><b id="stickyPrice">R$ 27,99</b></span>
+  <a class="btn" href="#offer">QUERO O COMPLETO →</a>
+</div>
+
+<!-- pop-up da prévia de cada mapa (conteúdo vem da lista MAPAS) -->
+<div class="mm" id="mm" role="dialog" aria-modal="true" aria-labelledby="mmT">
+  <div class="mm-box">
+    <button type="button" class="mm-x" aria-label="Fechar">×</button>
+    <div class="mm-img"><img alt=""><span class="mm-zoom">⤢ Ampliar</span></div>
+    <div class="mm-body">
+      <p class="mm-count" id="mmCount"></p>
+      <h3 id="mmT"></h3>
+      <p class="mm-chips" id="mmChips"></p>
+      <div class="mm-info">
+        <div><i>📦</i><span><b>O que entrega</b><span id="mmEntrega"></span></span></div>
+        <div><i>💡</i><span><b>Como ajuda na aula</b><span id="mmAjuda"></span></span></div>
+        <div><i>⏱️</i><span><b>Tempo que você poupa</b><span id="mmTempo"></span></span></div>
+        <div><i>🎲</i><span><b>Combina com a brincadeira</b><span id="mmJogo"></span></span></div>
+      </div>
+      <div class="mm-nav"><button type="button" data-go="-1">← Anterior</button><button type="button" data-go="1">Próximo →</button></div>
+      <a class="btn" id="mmBuy" href="#offer">QUERO ESTE E TODOS OS OUTROS →</a>
+    </div>
+  </div>
+</div>
+
+<!-- pop-up ao escolher o Básico: última chance de levar o Completo -->
+<div class="up" id="up" role="dialog" aria-modal="true" aria-labelledby="upT">
+  <div class="up-box">
+    <p class="up-eyebrow">Espera! Antes de fechar…</p>
+    <h3 id="upT">Por só <span data-diff>R$ 13,09</span> a mais você leva o Kit Completo</h3>
+    <ul>
+      <li>+100 materiais prontos com BNCC <small>(no Básico: 10 mapas)</small></li>
+      <li>+50 brincadeiras e jogos imprimíveis</li>
+      <li>Linha do tempo gigante para o 20 de Novembro</li>
+      <li>+200 figurinhas para decorar a sala</li>
+      <li>Guia de abordagem, calendário e atualizações</li>
+    </ul>
+    <a class="btn pulse" id="upYes" href="#checkout">SIM, QUERO O COMPLETO POR <span data-preco>R$ 27,99</span></a>
+    <a class="skip" id="upNo" href="#checkout-basico">Não, prefiro ficar só com 10 mapas</a>
+  </div>
 </div>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
@@ -580,7 +763,7 @@
   // zoom: toque em mapas, bônus e mockups para ampliar
   const lb = $('#lb'), lbImg = lb.querySelector('img'), lbTxt = lb.querySelector('p');
   document.addEventListener('click', e => {
-    const box = e.target.closest('figure.shot .ph, .bonus .ph, .offer-img, .panel-img');
+    const box = e.target.closest('figure.shot .ph, .bonus .ph, .offer-img, .mm-img');
     if (!box) return;
     const img = box.querySelector('img');
     if (!img || !img.naturalWidth) return;
@@ -589,9 +772,18 @@
     lbTxt.textContent = cap ? cap.firstChild.textContent : img.alt;
     lb.classList.add('open'); document.body.style.overflow = 'hidden';
   });
-  const fechar = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+  const fechar = () => { lb.classList.remove('open'); if (!mm.classList.contains('open')) document.body.style.overflow = ''; };
   lb.addEventListener('click', e => { if (e.target !== lbImg) fechar(); });
-  addEventListener('keydown', e => { if (e.key === 'Escape') fechar(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { if (lb.classList.contains('open')) fechar(); else { fecharMapa(); fecharUp(); } } });
+
+  // Básico: antes de ir ao checkout, mostra a diferença para o Completo
+  const up = $('#up');
+  const fecharUp = () => { up.classList.remove('open'); document.body.style.overflow = ''; };
+  $('#buyBasic').addEventListener('click', e => {
+    e.preventDefault();
+    up.classList.add('open'); document.body.style.overflow = 'hidden';
+  });
+  up.addEventListener('click', e => { if (e.target === up) fecharUp(); });
 
   // imagens: troca o placeholder pela imagem quando ela existir
   $$('.ph img').forEach(img => {
@@ -614,14 +806,16 @@
   }
 
   // ===== oferta de 15 minutos por visitante =====
-  // Quando o tempo acaba, o preço passa de fato para PRECO_CHEIO (a urgência é verdadeira).
-  // Use um link de checkout diferente para cada preço.
+  // Quando o tempo acaba, o Kit Completo passa de fato para PRECO_CHEIO (a urgência é verdadeira).
+  // O Kit Básico tem preço fixo. Use um link de checkout diferente para cada preço.
   const OFERTA = {
     minutos: 15,
-    PRECO_PROMO: 17,
-    PRECO_CHEIO: 27,
+    PRECO_PROMO: 27.99,
+    PRECO_CHEIO: 37.99,
+    PRECO_BASICO: 14.9,
     CHECKOUT_PROMO: '#checkout',
-    CHECKOUT_CHEIO: '#checkout'
+    CHECKOUT_CHEIO: '#checkout',
+    CHECKOUT_BASICO: '#checkout-basico'
   };
   const KEY = 'raizes_oferta_inicio';
   let inicio = Date.now();
@@ -637,14 +831,17 @@
     $('#priceBig').textContent = fmtBRL(precoAtual);
     $('#stickyPrice').textContent = fmtBRL(precoAtual);
     $$('[data-preco]').forEach(el => el.textContent = fmtBRL(precoAtual));
-    $('#buy').href = expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO;
+    $$('[data-diff]').forEach(el => el.textContent = fmtBRL(+(precoAtual - OFERTA.PRECO_BASICO).toFixed(2)));
+    $('#basicPrice').textContent = fmtBRL(OFERTA.PRECO_BASICO);
+    $('#buy').href = $('#upYes').href = expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO;
+    $('#upNo').href = OFERTA.CHECKOUT_BASICO;
     atualizarTotal && atualizarTotal(false);
   }
   function expirar() {
     expirou = true; precoAtual = OFERTA.PRECO_CHEIO; clearInterval(timer);
     $('#barTxt').innerHTML = 'A oferta promocional terminou · preço atual <b>' + fmtBRL(precoAtual) + '</b>';
     $('#offerTitle').textContent = 'O tempo da oferta acabou';
-    $('#offerSub').textContent = 'O kit continua disponível pelo preço normal.';
+    $('#offerSub').textContent = 'O Kit Completo continua disponível pelo preço normal.';
     $('#count').style.display = 'none';
     $('#priceLabel').textContent = 'preço atual';
     aplicarPreco();
@@ -664,50 +861,166 @@
   var atualizarTotal;
   $('#ano').textContent = new Date().getFullYear();
 
-  // seletor de etapa com transição
-  const etapas = {
-    ei: ['Educação Infantil', 'Mais ilustração e pouco texto, ideal para roda de conversa.', ['Histórias e contos de origem africana', 'Brincadeiras, cantigas e instrumentos', 'Identidade, cabelo e autoestima', 'Versões para colorir em todos os temas']],
-    f1: ['Fundamental I', 'Linguagem simples e atividades de fixação para cada mapa.', ['África: continente de muitos países e povos', 'Quilombos, Zumbi e Dandara', 'Culinária, palavras e festas de origem africana', '“Complete o mapa” com gabarito']],
-    f2: ['Fundamental II', 'Mais contexto histórico, conexão com Geografia e Arte.', ['Reinos africanos: Mali, Gana, Kush e Congo', 'Diáspora, escravização e resistência', 'Personalidades negras na ciência e na literatura', 'Júri simulado e debates guiados']],
-    em: ['Ensino Médio', 'Profundidade para análise crítica, ENEM e vestibulares.', ['Abolição, pós-abolição e racismo estrutural', 'Movimentos negros e ações afirmativas', 'Questões de ENEM comentadas por tema', 'Propostas de redação sobre o tema']]
+  // ===== prévia dos mapas: cartões + pop-up com resumo =====
+  // [arquivo, título, etapas, o que entrega, como ajuda, tempo poupado, brincadeira que combina]
+  const MAPAS = [
+    ['africa-berco', 'África: berço da humanidade', ['Ed. Infantil', 'Fund. I', 'Fund. II'],
+      'Origem humana, fósseis, o Nilo, povos e línguas e a África de hoje, em 10 tópicos ilustrados.',
+      'Quebra logo na primeira aula a ideia de uma África só de fome e guerra. Tem até um tópico de “erro comum”.',
+      'Cerca de 2h de pesquisa e montagem de slides.',
+      'Trilha da história: cada casa do tabuleiro é um tópico do mapa.'],
+    ['reinos', 'Reinos, cidades e sociedades africanas', ['Fund. I', 'Fund. II', 'Médio'],
+      'Gana, Mali, Songhai, Congo, Benim, Kush, Axum, Grande Zimbábue e Tombuctu, com fontes históricas.',
+      'Mostra a África de reis, cidades e manuscritos antes da escravização. O aluno descobre outra história.',
+      'Cerca de 2h juntando informação espalhada.',
+      'Expedição em grupos: cada equipe “visita” um reino e apresenta para a turma.'],
+    ['ciencia', 'Ciência, tecnologia e saberes africanos', ['Fund. I', 'Fund. II', 'Médio'],
+      'Metalurgia, agricultura, arquitetura, medicina, matemática, astronomia e inovação atual.',
+      'Liga o tema a Ciências e Matemática: ótimo para projeto interdisciplinar.',
+      'Cerca de 1h30 de pesquisa.',
+      'Bingo dos saberes: você descreve, a turma marca a invenção na cartela.'],
+    ['escravizacao', 'Escravização e tráfico transatlântico', ['Fund. II', 'Médio'],
+      'Tráfico atlântico, travessia, trabalho forçado, famílias, resistência cotidiana e racismo como sistema.',
+      'Trata um tema difícil com cuidado, com foco em pessoas, memória e reparação.',
+      'Cerca de 2h preparando com segurança.',
+      'Roda de conversa guiada com as perguntas do guia de abordagem.'],
+    ['resistencias', 'Resistências negras', ['Fund. I', 'Fund. II', 'Médio'],
+      'Revolta dos Malês, imprensa negra, irmandades, abolicionismo negro e a resistência hoje.',
+      'Troca a imagem de passividade pelo protagonismo negro, do período colonial até hoje.',
+      'Cerca de 1h30 de pesquisa.',
+      'Linha do tempo gigante: os alunos posicionam cada resistência no mural.'],
+    ['quilombos', 'Quilombos e territórios de resistência', ['Fund. I', 'Fund. II', 'Médio'],
+      'Palmares, Zumbi, Dandara, outros quilombos, direitos territoriais e quilombos atuais.',
+      'Explica o porquê do 20 de Novembro e mostra que quilombo não ficou no passado.',
+      'Cerca de 1h30 de pesquisa.',
+      'Jogo da memória: Zumbi, Dandara, Palmares e os quilombos de hoje.'],
+    ['abolicao', 'Abolição e pós-abolição', ['Fund. II', 'Médio'],
+      'Ventre Livre, Sexagenários, Lei Áurea, abolicionistas, pós-abolição e reparação histórica.',
+      'Mostra que a abolição foi conquista e não presente, comparando 13 de maio e 20 de novembro.',
+      'Cerca de 2h de pesquisa.',
+      'Debate guiado: “13 de maio ou 20 de novembro?”.'],
+    ['personalidades', 'Personalidades negras que marcaram a história', ['Fund. I', 'Fund. II', 'Médio'],
+      'Luís Gama, Machado de Assis, Carolina Maria de Jesus, Abdias, Lélia Gonzalez, Milton Santos e mais.',
+      'Dá referências para os alunos se enxergarem nas letras, na ciência e na política.',
+      'Cerca de 2h de pesquisa biográfica.',
+      '“Quem sou eu?”: cartas com pistas para a turma adivinhar a personalidade.'],
+    ['mulheres', 'Mulheres negras na história', ['Fund. I', 'Fund. II', 'Médio'],
+      'Aqualtune, Dandara, Tereza de Benguela, Luísa Mahin, Maria Firmina, Antonieta de Barros e mais.',
+      'Serve para o 20 de novembro e também para o 8 de março e o 25 de julho.',
+      'Cerca de 1h30 de pesquisa.',
+      'Jogo da memória: rosto de um lado, conquista do outro.'],
+    ['lingua', 'Influência africana na língua portuguesa', ['Ed. Infantil', 'Fund. I', 'Fund. II'],
+      'Línguas bantas e iorubá, palavras do dia a dia, nomes de lugares, oralidade e preconceito linguístico.',
+      'Funciona até com os pequenos: cafuné, caçula e quitanda viram porta de entrada.',
+      'Cerca de 1h de pesquisa.',
+      'Caça-palavras e “de onde vem essa palavra?” em duplas.']
+  ];
+  $('#mapGrid').innerHTML = MAPAS.map(([f, t, et], i) =>
+    `<button type="button" class="mcard${i ? '' : ' first'}" data-i="${i}" aria-label="Ver prévia: ${t}"><span class="mthumb"><img src="img/mapas/${f}-p.jpg" alt="Mapa mental ${t}" width="640" height="480" loading="lazy">${i ? '' : '<span class="mtap" aria-hidden="true">👆</span>'}</span><span class="mtxt"><b>${t}</b><small>10 tópicos · ${et.join(' · ')}</small></span></button>`
+  ).join('');
+
+  const mm = $('#mm'), mmImg = mm.querySelector('.mm-img img');
+  let mmI = 0, mmVolta = null;
+  const mostrarMapa = i => {
+    mmI = (i + MAPAS.length) % MAPAS.length;
+    const [f, t, et, entrega, ajuda, tempo, jogo] = MAPAS[mmI];
+    mmImg.src = `img/mapas/${f}.jpg`; mmImg.alt = `Mapa mental ${t}`;
+    $('#mmCount').textContent = `Mapa ${mmI + 1} de ${MAPAS.length}`;
+    $('#mmT').textContent = t;
+    $('#mmChips').innerHTML = et.map(e => `<span>${e}</span>`).join('');
+    $('#mmEntrega').textContent = entrega; $('#mmAjuda').textContent = ajuda;
+    $('#mmTempo').textContent = tempo; $('#mmJogo').textContent = jogo;
+    mm.querySelector('.mm-box').scrollTop = 0;
   };
-  const panel = $('#panel');
-  panel.classList.add('panel-in');
-  // mapa de exemplo de cada etapa (combina com os temas listados)
-  const fotos = {
-    ei: ['mapa-06.jpg', 'Mapa mental Cultura Afro-Brasileira'],
-    f1: ['mapa-01.jpg', 'Mapa mental Zumbi dos Palmares'],
-    f2: ['mapa-04.jpg', 'Mapa mental Reinos e Civilizações Africanas'],
-    em: ['mapa-08.jpg', 'Mapa mental Abolição e Pós-Abolição']
+  const abrirMapa = (i, origem) => {
+    mmVolta = origem; mostrarMapa(i);
+    mm.classList.add('open'); document.body.style.overflow = 'hidden';
+    mm.querySelector('.mm-x').focus({ preventScroll: true });
   };
-  Object.values(fotos).forEach(([f]) => { new Image().src = 'img/' + f; });
-  const render = k => {
-    const [t, d, items] = etapas[k], [f, alt] = fotos[k];
-    panel.innerHTML = `<div class="panel-img" data-zoom><img src="img/${f}" alt="${alt}" width="540" height="357"></div><div><h3>${t}</h3><p style="color:var(--muted);margin-bottom:12px;font-size:.95rem">${d}</p><ul>${items.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
+  const fecharMapa = () => {
+    if (!mm.classList.contains('open')) return;
+    mm.classList.remove('open'); document.body.style.overflow = '';
+    mmVolta && mmVolta.focus({ preventScroll: true });
   };
-  render('ei');
-  $$('.tab').forEach(b => b.addEventListener('click', () => {
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-i]');
+    if (b) abrirMapa(+b.dataset.i, b);
+  });
+  mm.addEventListener('click', e => {
+    const go = e.target.closest('[data-go]');
+    if (go) mostrarMapa(mmI + +go.dataset.go);
+    else if (e.target === mm || e.target.closest('.mm-x')) fecharMapa();
+  });
+  $('#mmBuy').addEventListener('click', fecharMapa);
+  addEventListener('keydown', e => {
+    if (!mm.classList.contains('open') || lb.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') mostrarMapa(mmI + 1);
+    if (e.key === 'ArrowLeft') mostrarMapa(mmI - 1);
+  });
+  // arrastar para o lado na imagem troca de mapa no celular
+  let x0 = null;
+  const mmArea = mm.querySelector('.mm-img');
+  mmArea.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  mmArea.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) mostrarMapa(mmI + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  // ===== aula pronta por etapa =====
+  // [tema, descrição, profundidade 1-4, índice do mapa em MAPAS, [abertura, mapa, brincadeira]]
+  const AULAS = {
+    ei: ['Palavras que vieram da África', 'Muita imagem, pouca leitura e tudo virando brincadeira.', 1, 9,
+      ['Roda de história: conte de onde vêm “cafuné” e “caçula” mostrando a cena.',
+       'Projete o mapa e deixe as crianças acharem as palavras que já usam em casa.',
+       'Cantiga com batuque e jogo da memória das palavras.']],
+    f1: ['Quilombos, Zumbi e Dandara', 'Linguagem simples, leitura coletiva e atividade de fixação.', 2, 5,
+      ['Mostre Palmares e pergunte: por que as pessoas iam para lá?',
+       'Leia o mapa em voz alta e peça para cada fileira explicar um tópico.',
+       'Trilha da história: a turma avança respondendo perguntas sobre Palmares.']],
+    f2: ['Reinos e cidades africanas', 'Contexto histórico e conexão com Geografia e Arte.', 3, 1,
+      ['Abra com o Império do Mali: a África rica que o livro didático costuma pular.',
+       'Cada grupo fica com um reino do mapa e prepara 3 curiosidades.',
+       'Expedição Tombuctu: os grupos apresentam e a turma vota no reino mais surpreendente.']],
+    em: ['Abolição e pós-abolição', 'Análise crítica com olhar para ENEM e redação.', 4, 6,
+      ['Cena do 13 de maio: o que mudou de fato no dia seguinte?',
+       'Use o mapa como roteiro de análise: leis, protagonismo negro e pós-abolição.',
+       'Debate guiado “13 de maio ou 20 de novembro?” com proposta de redação.']]
+  };
+  const aula = $('#aula');
+  Object.keys(AULAS).forEach(k => { new Image().src = `img/cenas/${k}-1.jpg`; });
+  const renderAula = k => {
+    const [tema, desc, nivel, mi, [p1, p2, p3]] = AULAS[k], [f, t] = MAPAS[mi];
+    aula.innerHTML = `<div class="aula-head"><div><span class="aula-tag">Aula pronta · 50 min</span><h3>Tema: ${tema}</h3><p>${desc}</p></div><div class="nivel">Profundidade do conteúdo<i>${[1, 2, 3, 4].map(n => `<b class="${n <= nivel ? 'on' : ''}"></b>`).join('')}</i></div></div>
+      <ol class="passos">
+        <li><span class="pimg"><img src="img/cenas/${k}-1.jpg" alt="" width="420" height="420"></span><div><span class="pmin">10 min</span><b>1. Abertura com a cena</b><p>${p1}</p></div></li>
+        <li><button type="button" class="pimg" data-i="${mi}" aria-label="Ver o mapa ${t}"><img src="img/mapas/${f}-p.jpg" alt="" width="640" height="480"><span>🔍 Ver o mapa</span></button><div><span class="pmin">20 min</span><b>2. Mapa mental</b><p>${p2}</p></div></li>
+        <li><span class="pimg"><img src="img/cenas/${k}-2.jpg" alt="" width="420" height="420"></span><div><span class="pmin">20 min</span><b>3. Brincadeira</b><p>${p3}</p></div></li>
+      </ol>
+      <div class="aula-foot"><span>✔ Atividade de fixação com gabarito</span><span>✔ Habilidades da BNCC indicadas</span><span>✔ Tudo dentro do kit</span></div>`;
+  };
+  renderAula('ei');
+  $$('.etapa').forEach(b => b.addEventListener('click', () => {
     if (b.getAttribute('aria-selected') === 'true') return;
-    $$('.tab').forEach(x => x.setAttribute('aria-selected', x === b));
-    b.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
-    panel.classList.add('out');
-    setTimeout(() => { render(b.dataset.k); panel.classList.remove('out'); }, reduce ? 0 : 200);
+    $$('.etapa').forEach(x => x.setAttribute('aria-selected', x === b));
+    aula.classList.add('out');
+    setTimeout(() => { renderAula(b.dataset.k); aula.classList.remove('out'); }, reduce ? 0 : 220);
   }));
 
   // esteira de perfis (12 cartões em 2 faixas, loop infinito)
   const PERFIS = [
-    ['👩🏾‍🏫', '#f6dcc8', 'Professora de Educação Infantil', 'Roda de conversa', 'Precisa de material visual e lúdico para crianças pequenas.', 'Versões para colorir e mapas com mais ilustração.'],
+    ['👩🏾‍🏫', '#f6dcc8', 'Professora de Educação Infantil', 'Roda de conversa', 'Precisa de material visual e lúdico para crianças pequenas.', 'Brincadeiras imprimíveis e mapas com mais ilustração.'],
     ['👩🏽‍🏫', '#dcebdf', 'Professora polivalente', 'Fundamental I', 'Dá aula de tudo e quase não sobra tempo para pesquisar.', 'Um mapa pronto por tema, com atividade de fixação.'],
     ['👨🏿‍🏫', '#f3e3bf', 'Professor de História', 'Fundamental II', 'Quer mostrar a África além da escravidão.', 'Mapas de Reinos e Civilizações: Mali, Gana, Songhai.'],
     ['👩🏻‍🏫', '#e1e6f3', 'Professora de Geografia', 'Fundamental II', 'Precisa explicar rotas e fluxos de forma visual.', 'Mapa da Diáspora Africana com rotas e consequências.'],
     ['👨🏾‍🏫', '#f6d6cf', 'Professor de Arte', 'Todas as etapas', 'Busca referências de música, dança e artes visuais.', 'Mapa de Arte, Música e Literatura afro-brasileira.'],
     ['👩🏿‍🏫', '#e9ddf0', 'Professora de Língua Portuguesa', 'Fundamental e Médio', 'Quer trabalhar autores negros em sala.', 'Personalidades Negras e propostas de produção de texto.'],
     ['👨🏽‍🏫', '#dcebdf', 'Professor do Ensino Médio', 'ENEM e vestibulares', 'Precisa de profundidade para análise crítica.', 'Abolição, pós-abolição e propostas de redação.'],
-    ['👩🏾‍💼', '#f3e3bf', 'Coordenadora pedagógica', 'Projeto da escola', 'Organiza o 20 de Novembro com toda a equipe.', 'Projeto pronto em 5 etapas, da sensibilização à culminância.'],
+    ['👩🏾‍💼', '#f3e3bf', 'Coordenadora pedagógica', 'Projeto da escola', 'Organiza o 20 de Novembro com toda a equipe.', 'Linha do tempo gigante para a escola montar junto no dia 20.'],
     ['👩🏼‍🏫', '#e1e6f3', 'Professora em início de carreira', 'Primeiros anos', 'Tem receio de falar algo errado sobre o tema.', 'Guia de abordagem com termos e cuidados.'],
     ['👩🏾‍🎨', '#f6dcc8', 'Professora que cuida do mural', 'Ambiente da sala', 'Quer um mural bonito e que ensine.', 'Linha do tempo gigante da África ao Brasil.'],
     ['👨🏿‍🏫', '#e9ddf0', 'Professor de escola quilombola', 'Identidade local', 'Quer valorizar a história da própria comunidade.', 'Mapa de Quilombos e Resistência com exemplos.'],
-    ['🧑🏽‍🏫', '#f6d6cf', 'Professor de Educação Física', 'Jogos e brincadeiras', 'Procura atividades práticas e em grupo.', '+50 dinâmicas, bingo, trilha e jogo da memória.']
+    ['🧑🏽‍🏫', '#f6d6cf', 'Professor de Educação Física', 'Jogos e brincadeiras', 'Procura atividades práticas e em grupo.', '+50 brincadeiras imprimíveis: bingo, trilha e jogo da memória.']
   ];
   const cardPerfil = ([ico, cor, papel, etapa, desafio, kit]) =>
     `<article class="perfil"><header><span class="avatar" style="--av:${cor}" aria-hidden="true">${ico}</span><h3>${papel}<small>${etapa}</small></h3></header><p><b>Desafio:</b> ${desafio}</p><p><b>Com o kit:</b> ${kit}</p></article>`;
