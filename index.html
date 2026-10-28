@@ -6,6 +6,14 @@
 <meta name="theme-color" content="#b8452a">
 <title>Raízes em Mapas — Cultura Africana e Afro-Brasileira para Professores</title>
 <meta name="description" content="Mapas mentais ilustrados, sequências didáticas e projeto pronto para o 20 de Novembro. Alinhado à BNCC e à Lei 10.639/03.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Raízes em Mapas — +300 mapas mentais de Cultura Africana e Afro-Brasileira">
+<meta property="og:description" content="Mapas mentais por etapa, alinhados à BNCC, com o Projeto 20 de Novembro pronto, atividades e jogos.">
+<meta property="og:image" content="https://dimitrifergus.github.io/raizes-em-mapas/img/kit-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="img/kit-hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -69,6 +77,11 @@
     background:repeating-linear-gradient(90deg,var(--terra) 0 24px,var(--ocre) 24px 36px,var(--verde) 36px 60px,var(--ink) 60px 66px);
     animation:slide 2.4s linear infinite;will-change:transform}
 
+  /* logo (fundo claro fixo para a logo marrom ficar legível também no modo escuro) */
+  .brand{background:#fbf6ee;display:flex;justify-content:center;padding:10px 16px;border-bottom:1px solid #ead9c3}
+  .brand img{height:52px;width:auto}
+  @media(min-width:760px){.brand img{height:64px}}
+
   /* ===== hero (mobile-first) ===== */
   .hero{padding:28px 0 40px;overflow:hidden}
   .hero-grid{display:flex;flex-direction:column}
@@ -78,7 +91,7 @@
   .hero h1 em{font-style:normal;color:var(--terra);position:relative;white-space:nowrap}
   .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.18em;background:var(--ocre);opacity:.45;z-index:-1;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--ease) .5s}
   .hero.in h1 em::after{transform:scaleX(1)}
-  .hero-media{order:3;width:min(86%,380px);align-self:center;margin-bottom:22px}
+  .hero-media{order:3;width:min(100%,420px);align-self:center;margin-bottom:22px}
   .hero-media .ph{animation:floaty 6s ease-in-out infinite;will-change:transform}
   .hero p.lead{order:4;font-size:1.02rem;color:var(--muted);margin-bottom:18px;text-align:center}
   .checks{order:5;list-style:none;display:grid;gap:10px;margin-bottom:24px}
@@ -132,17 +145,26 @@
   .panel ul{list-style:none;display:grid;gap:8px}
   .panel li{padding-left:22px;position:relative;font-size:.95rem}
   .panel li::before{content:"◆";position:absolute;left:0;color:var(--terra);font-size:.8rem;top:2px}
+  .panel-img{border-radius:12px;overflow:hidden;margin-bottom:14px;aspect-ratio:540/357;background:var(--soft);cursor:zoom-in}
+  .panel-img img{width:100%;height:100%;object-fit:cover}
+  @media(min-width:760px){.panel-in{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}.panel-img{margin:0}}
 
   /* carrossel (mobile) → grade (desktop) */
   .carousel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:4px 16px 8px;scrollbar-width:none;overscroll-behavior-x:contain}
   .carousel::-webkit-scrollbar{display:none}
-  .carousel > *{flex:0 0 72%;scroll-snap-align:center}
+  .carousel > *{flex:0 0 86%;scroll-snap-align:center}
+  figure.shot{margin:0}
+  figure.shot .ph{cursor:zoom-in}
+  figure.shot figcaption{font-size:.85rem;font-weight:600;text-align:center;margin-top:8px;line-height:1.35}
+  figure.shot figcaption small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
   .dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
   .dots i{width:8px;height:8px;border-radius:99px;background:var(--line);transition:transform .3s var(--ease),background-color .3s}
   .dots i.on{background:var(--terra);transform:scaleX(2.2)}
   .hint{text-align:center;font-size:.78rem;color:var(--muted);margin-top:6px}
   @media(min-width:760px){
-    .carousel{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:0}
+    .carousel{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;overflow:visible;margin:0;padding:0}
+    .carousel.c2{grid-template-columns:repeat(2,1fr)}
+    .carousel.c3{grid-template-columns:repeat(3,1fr)}
     .dots,.hint{display:none}
   }
 
@@ -169,12 +191,13 @@
   .vs ul{list-style:none;display:grid;gap:8px;margin-top:10px;font-size:.95rem}
 
   /* bônus: imagem à esquerda no mobile */
-  .bonus{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:start}
-  .bonus .ph{--ar:1/1}
+  .bonus{display:flex;flex-direction:column;gap:14px;padding:12px 12px 18px}
+  .bonus .ph{--ar:766/510;border-radius:12px;cursor:zoom-in}
+  .bonus > div:last-child{padding:0 6px}
   .bonus .price{font-size:.85rem;color:var(--muted);margin-top:6px}
   .bonus .price s{margin-right:6px}
   .bonus .price b{color:var(--verde)}
-  @media(min-width:760px){.bonus{display:flex;flex-direction:column}}
+  @media(min-width:760px){.grid.bonus-grid{grid-template-columns:1fr 1fr}}
 
   /* calculadora */
   .calc{max-width:640px;margin:0 auto;text-align:center}
@@ -224,7 +247,20 @@
   details p{color:var(--muted);padding:0 16px 16px;font-size:.95rem}
   details[open] p{animation:flip .4s var(--ease)}
 
+  .offer-img{margin:6px -4px 18px;border-radius:14px;overflow:hidden;aspect-ratio:1/1;cursor:zoom-in}
+  .offer-img img{width:100%;height:100%;object-fit:cover}
+
   footer{padding:32px 16px calc(110px + var(--safe-b));text-align:center;color:var(--muted);font-size:.8rem}
+  .foot-logo{display:inline-block;background:#fbf6ee;border-radius:14px;padding:10px 16px;margin-bottom:14px}
+  .foot-logo img{height:56px;width:auto}
+
+  /* zoom das imagens (lightbox) */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(15,10,6,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+  .lb.open{opacity:1;pointer-events:auto}
+  .lb img{max-width:100%;max-height:78vh;border-radius:12px;transform:scale(.92);transition:transform .35s var(--ease);touch-action:pinch-zoom}
+  .lb.open img{transform:none}
+  .lb p{color:#f5ece0;font-weight:600;margin-top:12px;text-align:center;font-size:.95rem}
+  .lb button{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:1.6rem;cursor:pointer}
 
   /* CTA fixo mobile */
   .sticky{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px calc(10px + var(--safe-b));display:flex;align-items:center;gap:12px;z-index:50;transform:translate3d(0,110%,0);transition:transform .4s var(--ease);will-change:transform}
@@ -251,6 +287,7 @@
 
 <div class="bar"><span class="dot"></span>Faltam <b id="diasBar">--</b> dias para o 20 de Novembro</div>
 <div class="pattern"></div>
+<div class="brand"><img src="img/logo.png" alt="Raízes em Mapas — História, cultura e resistência para sala de aula" width="520" height="247"></div>
 
 <!-- HERO -->
 <header class="hero" id="hero">
@@ -270,8 +307,8 @@
       </div>
     </div>
     <div class="hero-media rv zoom" style="--d:.16s">
-      <div class="ph" style="--ar:1/1" data-label="img/hero.png — mockup do produto">
-        <img src="img/hero.png" alt="Mockup do Kit Raízes em Mapas" fetchpriority="high">
+      <div class="ph" style="--ar:1/1" data-label="Kit Raízes em Mapas">
+        <img src="img/kit-hero.jpg" alt="Kit Raízes em Mapas: livro, mapas mentais de Zumbi dos Palmares, Cultura Afro-Brasileira e Diáspora Africana" width="1000" height="1000" fetchpriority="high">
       </div>
     </div>
   </div>
@@ -296,16 +333,16 @@
 <section>
   <div class="wrap">
     <h2 class="rv">Veja uma prévia dos mapas</h2>
-    <p class="sub rv">Layout limpo, ilustrações e linguagem adequada para cada idade.</p>
+    <p class="sub rv">Da África ao Brasil, em ordem para você seguir em aula. Toque no mapa para ampliar.</p>
     <div class="carousel rv" data-dots="d1">
-      <div class="ph" style="--ar:3/4" data-label="img/mapa-01.webp"><img src="img/mapa-01.webp" alt="Prévia de mapa mental" loading="lazy"></div>
-      <div class="ph" style="--ar:3/4" data-label="img/mapa-02.webp"><img src="img/mapa-02.webp" alt="Prévia de mapa mental" loading="lazy"></div>
-      <div class="ph" style="--ar:3/4" data-label="img/mapa-03.webp"><img src="img/mapa-03.webp" alt="Prévia de mapa mental" loading="lazy"></div>
-      <div class="ph" style="--ar:3/4" data-label="img/mapa-04.webp"><img src="img/mapa-04.webp" alt="Prévia de mapa mental" loading="lazy"></div>
-      <div class="ph" style="--ar:3/4" data-label="img/mapa-05.webp"><img src="img/mapa-05.webp" alt="Prévia de mapa mental" loading="lazy"></div>
-      <div class="ph" style="--ar:3/4" data-label="img/mapa-06.webp"><img src="img/mapa-06.webp" alt="Prévia de mapa mental" loading="lazy"></div>
-      <div class="ph" style="--ar:3/4" data-label="img/mapa-07.webp"><img src="img/mapa-07.webp" alt="Prévia de mapa mental" loading="lazy"></div>
-      <div class="ph" style="--ar:3/4" data-label="img/mapa-08.webp"><img src="img/mapa-08.webp" alt="Prévia de mapa mental" loading="lazy"></div>
+      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-04.jpg" alt="Mapa mental Reinos e Civilizações Africanas" width="540" height="357" loading="lazy"></div><figcaption>1. Reinos e Civilizações Africanas<small>Gana, Mali, Songhai, Benin, Kongo e Axum</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-03.jpg" alt="Mapa mental Diáspora Africana" width="540" height="357" loading="lazy"></div><figcaption>2. Diáspora Africana<small>Causas, rotas, consequências e legado</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-01.jpg" alt="Mapa mental Zumbi dos Palmares" width="540" height="357" loading="lazy"></div><figcaption>3. Zumbi dos Palmares<small>Quem foi, contexto, resistência e importância</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-02.jpg" alt="Mapa mental Quilombos e Resistência" width="540" height="357" loading="lazy"></div><figcaption>4. Quilombos e Resistência<small>O que são, organização e exemplos</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-08.jpg" alt="Mapa mental Abolição e Pós-Abolição" width="540" height="357" loading="lazy"></div><figcaption>5. Abolição e Pós-Abolição<small>Caminho até 1888, conquistas e desafios atuais</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-05.jpg" alt="Mapa mental Personalidades Negras" width="540" height="357" loading="lazy"></div><figcaption>6. Personalidades Negras<small>Dandara, Luiz Gama, Carolina Maria de Jesus e mais</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-06.jpg" alt="Mapa mental Cultura Afro-Brasileira" width="540" height="357" loading="lazy"></div><figcaption>7. Cultura Afro-Brasileira<small>Música, dança, culinária, arte e religiosidade</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:540/357"><img src="img/mapa-07.jpg" alt="Mapa mental Arte, Música e Literatura" width="540" height="357" loading="lazy"></div><figcaption>8. Arte, Música e Literatura<small>Artes visuais, literatura e expressões culturais</small></figcaption></figure>
     </div>
     <div class="dots" id="d1"></div>
     <p class="hint">← deslize para ver mais →</p>
@@ -361,22 +398,22 @@
   <div class="wrap">
     <h2 class="rv">Bônus inclusos hoje</h2>
     <p class="sub rv">Comprando agora, você leva também:</p>
-    <div class="grid g4">
+    <div class="grid bonus-grid">
       <div class="card bonus rv">
-        <div class="ph" data-label="bonus-1.png"><img src="img/bonus-1.png" alt="Bônus 1" loading="lazy"></div>
-        <div><span class="tag new">Novo</span><h3>Projeto 20 de Novembro</h3><p>Sequência de 2 semanas com roteiro diário e culminância.</p><div class="price"><s>R$ 47</s><b>GRÁTIS</b></div></div>
+        <div class="ph" data-label="Bônus 1"><img src="img/bonus-1.jpg" alt="Bônus 1: Projeto 20 de Novembro, sequência didática completa" width="766" height="510" loading="lazy"></div>
+        <div><span class="tag new">Bônus 1</span><h3>Projeto 20 de Novembro</h3><p>Sequência didática completa em 5 etapas: sensibilização, pesquisa, atividades, socialização e culminância.</p><div class="price"><s>R$ 47</s><b>GRÁTIS</b></div></div>
       </div>
       <div class="card bonus rv" style="--d:.06s">
-        <div class="ph" data-label="bonus-2.png"><img src="img/bonus-2.png" alt="Bônus 2" loading="lazy"></div>
-        <div><span class="tag">Bônus</span><h3>+100 atividades com gabarito</h3><p>Caça-palavras, linha do tempo e interpretação, por etapa.</p><div class="price"><s>R$ 37</s><b>GRÁTIS</b></div></div>
+        <div class="ph" data-label="Bônus 2"><img src="img/bonus-2.jpg" alt="Bônus 2: +100 atividades com gabarito" width="766" height="510" loading="lazy"></div>
+        <div><span class="tag">Bônus 2</span><h3>+100 atividades com gabarito</h3><p>Múltipla escolha, verdadeiro ou falso, produção de texto, caça-palavras e “complete o mapa”.</p><div class="price"><s>R$ 37</s><b>GRÁTIS</b></div></div>
       </div>
-      <div class="card bonus rv" style="--d:.12s">
-        <div class="ph" data-label="bonus-3.png"><img src="img/bonus-3.png" alt="Bônus 3" loading="lazy"></div>
-        <div><span class="tag">Bônus</span><h3>Linha do tempo gigante</h3><p>Painel em folhas A4 para montar no mural da sala.</p><div class="price"><s>R$ 27</s><b>GRÁTIS</b></div></div>
+      <div class="card bonus rv">
+        <div class="ph" data-label="Bônus 3"><img src="img/bonus-3.jpg" alt="Bônus 3: Linha do tempo gigante da África ao Brasil" width="766" height="510" loading="lazy"></div>
+        <div><span class="tag">Bônus 3</span><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição, pronta para imprimir e montar no mural da sala.</p><div class="price"><s>R$ 27</s><b>GRÁTIS</b></div></div>
       </div>
-      <div class="card bonus rv" style="--d:.18s">
-        <div class="ph" data-label="bonus-4.png"><img src="img/bonus-4.png" alt="Bônus 4" loading="lazy"></div>
-        <div><span class="tag">Bônus</span><h3>+50 dinâmicas e jogos</h3><p>Quiz, júri simulado e brincadeiras de origem africana.</p><div class="price"><s>R$ 27</s><b>GRÁTIS</b></div></div>
+      <div class="card bonus rv" style="--d:.06s">
+        <div class="ph" data-label="Bônus 4"><img src="img/bonus-4.jpg" alt="Bônus 4: +50 dinâmicas e jogos" width="766" height="510" loading="lazy"></div>
+        <div><span class="tag">Bônus 4</span><h3>+50 dinâmicas e jogos</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história e rodas de conversa.</p><div class="price"><s>R$ 27</s><b>GRÁTIS</b></div></div>
       </div>
     </div>
   </div>
@@ -409,6 +446,7 @@
     <div class="offer rv zoom" id="offer">
       <span class="ribbon">🔥 Oferta de lançamento</span>
       <h3 style="font-size:1.35rem;margin-top:6px">Kit Raízes em Mapas</h3>
+      <div class="offer-img"><img src="img/kit-oferta.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1000" height="1000" loading="lazy"></div>
       <ul>
         <li><span>+300 mapas mentais (3 versões)</span><span>R$ 97</span></li>
         <li><span>Guia de abordagem + calendário</span><span>R$ 27</span></li>
@@ -439,11 +477,11 @@
   <div class="wrap">
     <h2 class="rv">Como professores estão usando</h2>
     <p class="sub rv">Na lousa digital, impresso em A3 no mural ou em folha para o aluno completar.</p>
-    <div class="carousel rv" data-dots="d2">
-      <div class="ph" style="--ar:4/5" data-label="img/uso-1.jpg — foto real"><img src="img/uso-1.jpg" alt="Material em uso em sala" loading="lazy"></div>
-      <div class="ph" style="--ar:4/5" data-label="img/uso-2.jpg — foto real"><img src="img/uso-2.jpg" alt="Material em uso em sala" loading="lazy"></div>
-      <div class="ph" style="--ar:4/5" data-label="img/uso-3.jpg — foto real"><img src="img/uso-3.jpg" alt="Material em uso em sala" loading="lazy"></div>
-      <div class="ph" style="--ar:4/5" data-label="img/uso-4.jpg — foto real"><img src="img/uso-4.jpg" alt="Material em uso em sala" loading="lazy"></div>
+    <div class="carousel c2 rv" data-dots="d2">
+      <figure class="shot"><div class="ph" style="--ar:1000/660"><img src="img/uso-2.jpg" alt="Professora planejando a aula com o mapa Personalidades Negras" width="1000" height="660" loading="lazy"></div><figcaption>Planejamento em minutos<small>Mapa em mãos, plano de aula pronto</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1000/660"><img src="img/uso-3.jpg" alt="Mapas mentais impressos no mural da sala de aula" width="1000" height="660" loading="lazy"></div><figcaption>Mural da sala<small>Impresso em A3 para a turma consultar</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1000/660"><img src="img/uso-4.jpg" alt="Aluno estudando o mapa Reinos e Civilizações Africanas" width="1000" height="660" loading="lazy"></div><figcaption>Aluno em atividade<small>O mapa vira material de estudo e revisão</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1000/660"><img src="img/uso-1.jpg" alt="Mapas mentais impressos sobre a mesa" width="1000" height="660" loading="lazy"></div><figcaption>Trabalho em grupo<small>Vários temas na mesa para comparar e debater</small></figcaption></figure>
     </div>
     <div class="dots" id="d2"></div>
   </div>
@@ -503,6 +541,7 @@
 
 <div class="pattern"></div>
 <footer>
+  <span class="foot-logo"><img src="img/logo.png" alt="Raízes em Mapas" width="520" height="247" loading="lazy"></span><br>
   © <span id="ano">2026</span> Raízes em Mapas. Todos os direitos reservados.<br>
   Este site não é afiliado ao Facebook nem ao Google.
 </footer>
@@ -512,10 +551,32 @@
   <a class="btn" href="#oferta">QUERO MEU KIT →</a>
 </div>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+  <button type="button" aria-label="Fechar">×</button>
+  <img alt="">
+  <p></p>
+</div>
+
 <script>
 (() => {
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // zoom: toque em mapas, bônus e mockups para ampliar
+  const lb = $('#lb'), lbImg = lb.querySelector('img'), lbTxt = lb.querySelector('p');
+  document.addEventListener('click', e => {
+    const box = e.target.closest('figure.shot .ph, .bonus .ph, .offer-img, .panel-img');
+    if (!box) return;
+    const img = box.querySelector('img');
+    if (!img || !img.naturalWidth) return;
+    const cap = box.closest('figure')?.querySelector('figcaption');
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbTxt.textContent = cap ? cap.firstChild.textContent : img.alt;
+    lb.classList.add('open'); document.body.style.overflow = 'hidden';
+  });
+  const fechar = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+  lb.addEventListener('click', e => { if (e.target !== lbImg) fechar(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') fechar(); });
 
   // imagens: troca o placeholder pela imagem quando ela existir
   $$('.ph img').forEach(img => {
@@ -566,9 +627,17 @@
   };
   const panel = $('#panel');
   panel.classList.add('panel-in');
+  // mapa de exemplo de cada etapa (combina com os temas listados)
+  const fotos = {
+    ei: ['mapa-06.jpg', 'Mapa mental Cultura Afro-Brasileira'],
+    f1: ['mapa-01.jpg', 'Mapa mental Zumbi dos Palmares'],
+    f2: ['mapa-04.jpg', 'Mapa mental Reinos e Civilizações Africanas'],
+    em: ['mapa-08.jpg', 'Mapa mental Abolição e Pós-Abolição']
+  };
+  Object.values(fotos).forEach(([f]) => { new Image().src = 'img/' + f; });
   const render = k => {
-    const [t, d, items] = etapas[k];
-    panel.innerHTML = `<h3>${t}</h3><p style="color:var(--muted);margin-bottom:12px;font-size:.95rem">${d}</p><ul>${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+    const [t, d, items] = etapas[k], [f, alt] = fotos[k];
+    panel.innerHTML = `<div class="panel-img" data-zoom><img src="img/${f}" alt="${alt}" width="540" height="357"></div><div><h3>${t}</h3><p style="color:var(--muted);margin-bottom:12px;font-size:.95rem">${d}</p><ul>${items.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
   };
   render('ei');
   $$('.tab').forEach(b => b.addEventListener('click', () => {
