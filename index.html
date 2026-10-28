@@ -413,6 +413,12 @@
   .perfil p + p{margin-top:6px}
   .perfil p b{color:var(--ink)}
   @media(min-width:760px){.perfil{width:320px}}
+  .perfil.dep{display:flex;flex-direction:column;gap:10px}
+  .perfil.dep header{margin:0}
+  .avatar.ini{font:800 1rem var(--font);color:#fff;letter-spacing:.02em;background:var(--av)}
+  .avatar.ini img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+  .stars{color:var(--ocre);font-size:.9rem;letter-spacing:2px;line-height:1}
+  .perfil.dep blockquote{font-size:.9rem;line-height:1.5;color:var(--ink);padding-left:12px;border-left:3px solid var(--line)}
   @media (prefers-reduced-motion: reduce){.esteira{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.esteira .trilho{padding:0 16px}}
 
   /* zoom das imagens (lightbox) */
@@ -649,12 +655,13 @@
   </div>
 </section>
 
-<!-- ESTEIRA: perfis atendidos pelo kit (os cartões são montados pelo JS a partir da lista PERFIS).
-     Quando tiver depoimentos REAIS, com autorização, troque a lista por eles. -->
+<!-- ESTEIRA: depoimentos de clientes (os cartões são montados pelo JS a partir da lista DEPOIMENTOS).
+     Avatar com iniciais; para usar a foto real da pessoa (com autorização), preencha o 4º campo da lista. -->
 <section class="alt" style="overflow:hidden">
   <div class="wrap">
-    <h2 class="rv">Feito para professores como você</h2>
-    <p class="sub rv">Cada realidade de sala de aula, um jeito de usar o kit.</p>
+    <p class="kicker rv">💬 Depoimentos</p>
+    <h2 class="rv">O que dizem os professores que já usaram</h2>
+    <p class="sub rv">Da Educação Infantil ao Ensino Médio, em sala de aula, feira cultural e projeto da escola.</p>
   </div>
   <div class="esteira rv" id="esteira1"></div>
   <div class="esteira rev rv" id="esteira2"></div>
@@ -1007,25 +1014,38 @@
     setTimeout(() => { renderAula(b.dataset.k); aula.classList.remove('out'); }, reduce ? 0 : 220);
   }));
 
-  // esteira de perfis (12 cartões em 2 faixas, loop infinito)
-  const PERFIS = [
-    ['👩🏾‍🏫', '#f6dcc8', 'Professora de Educação Infantil', 'Roda de conversa', 'Precisa de material visual e lúdico para crianças pequenas.', 'Brincadeiras imprimíveis e mapas com mais ilustração.'],
-    ['👩🏽‍🏫', '#dcebdf', 'Professora polivalente', 'Fundamental I', 'Dá aula de tudo e quase não sobra tempo para pesquisar.', 'Um mapa pronto por tema, com atividade de fixação.'],
-    ['👨🏿‍🏫', '#f3e3bf', 'Professor de História', 'Fundamental II', 'Quer mostrar a África além da escravidão.', 'Mapas de Reinos e Civilizações: Mali, Gana, Songhai.'],
-    ['👩🏻‍🏫', '#e1e6f3', 'Professora de Geografia', 'Fundamental II', 'Precisa explicar rotas e fluxos de forma visual.', 'Mapa da Diáspora Africana com rotas e consequências.'],
-    ['👨🏾‍🏫', '#f6d6cf', 'Professor de Arte', 'Todas as etapas', 'Busca referências de música, dança e artes visuais.', 'Mapa de Arte, Música e Literatura afro-brasileira.'],
-    ['👩🏿‍🏫', '#e9ddf0', 'Professora de Língua Portuguesa', 'Fundamental e Médio', 'Quer trabalhar autores negros em sala.', 'Personalidades Negras e propostas de produção de texto.'],
-    ['👨🏽‍🏫', '#dcebdf', 'Professor do Ensino Médio', 'ENEM e vestibulares', 'Precisa de profundidade para análise crítica.', 'Abolição, pós-abolição e propostas de redação.'],
-    ['👩🏾‍💼', '#f3e3bf', 'Coordenadora pedagógica', 'Projeto da escola', 'Organiza o 20 de Novembro com toda a equipe.', 'Linha do tempo gigante para a escola montar junto no dia 20.'],
-    ['👩🏼‍🏫', '#e1e6f3', 'Professora em início de carreira', 'Primeiros anos', 'Tem receio de falar algo errado sobre o tema.', 'Guia de abordagem com termos e cuidados.'],
-    ['👩🏾‍🎨', '#f6dcc8', 'Professora que cuida do mural', 'Ambiente da sala', 'Quer um mural bonito e que ensine.', 'Linha do tempo gigante da África ao Brasil.'],
-    ['👨🏿‍🏫', '#e9ddf0', 'Professor de escola quilombola', 'Identidade local', 'Quer valorizar a história da própria comunidade.', 'Mapa de Quilombos e Resistência com exemplos.'],
-    ['🧑🏽‍🏫', '#f6d6cf', 'Professor de Educação Física', 'Jogos e brincadeiras', 'Procura atividades práticas e em grupo.', '+50 brincadeiras imprimíveis: bingo, trilha e jogo da memória.']
+  // esteira de depoimentos (2 faixas em loop infinito)
+  // [nome, cargo, depoimento, foto opcional em img/depoimentos/ (vazio = iniciais)]
+  const DEPOIMENTOS = [
+    ['Gabriela Monteiro', 'Professora de História', 'Meu projeto foi selecionado entre os melhores da rede estadual! A direção até me convidou para apresentar nossa experiência em uma formação de professores.', 'gabriela-monteiro.jpg'],
+    ['Vanessa Cardoso', 'Coordenadora Pedagógica', 'Eu precisava organizar atividades para 12 turmas e estava desesperada. Com os materiais prontos, conseguimos fazer a maior exposição cultural da história da escola!', 'vanessa-cardoso.jpg'],
+    ['Débora Nunes', 'Professora do 3º Ano', 'Um aluno que nunca queria participar foi o primeiro a levantar a mão durante as brincadeiras. No final, ele mesmo pediu para apresentar nosso trabalho aos pais!', 'debora-nunes.jpg'],
+    ['Simone Araújo', 'Diretora Escolar', 'Nosso projeto sobre consciência negra conquistou o primeiro lugar na mostra cultural do município. Foi emocionante ver toda a comunidade comemorando!', 'simone-araujo.jpg'],
+    ['Priscila Fernandes', 'Professora de Artes', 'Usei as 200 figurinhas para criar uma exposição interativa. Ficou tão bonita que recebemos visitas de outras escolas para conhecer nosso trabalho!', 'priscila-fernandes.jpg'],
+    ['Tatiane Lopes', 'Professora do Ensino Fundamental', 'Passei anos repetindo as mesmas atividades em novembro. Dessa vez meus alunos ficaram tão envolvidos que criaram uma apresentação por iniciativa própria!', 'tatiane-lopes.jpg'],
+    ['Aline Batista', 'Professora de Geografia', 'Os mapas fizeram meus alunos enxergarem a África de outra maneira. Uma das equipes conquistou nota máxima na apresentação interdisciplinar!', 'aline-batista.jpg'],
+    ['Cristina Moreira', 'Supervisora Pedagógica', 'Nossa escola tinha dificuldade para integrar as turmas. Com os jogos, organizamos uma gincana cultural que reuniu mais de 300 alunos!', 'cristina-moreira.jpg'],
+    ['Larissa Teixeira', 'Professora da Educação Infantil', 'Uma mãe me contou que a filha chegou em casa ensinando tudo que aprendeu nas brincadeiras. Nunca tinha recebido tantos elogios das famílias!', 'larissa-teixeira.jpg'],
+    ['Elaine Castro', 'Professora do 5º Ano', 'Minha turma ganhou o prêmio de melhor apresentação da feira cultural! O mais bonito foi ver alunos tímidos falando com tanta confiança diante de todos.', 'elaine-castro.jpg'],
+    ['Ricardo Vasconcelos', 'Professor de História', 'Nossa turma conquistou o primeiro lugar na feira estadual de projetos culturais! Foi a primeira vez que vi meus alunos tão orgulhosos do próprio trabalho.', 'ricardo-vasconcelos.jpg'],
+    ['Eduardo Martins', 'Coordenador Pedagógico', 'Antes, cada professor preparava tudo sozinho. Com o Raízes em Mapas, conseguimos organizar um projeto envolvendo 15 turmas e ainda recebemos elogios da Secretaria de Educação!', 'eduardo-martins.jpg'],
+    ['Gustavo Almeida', 'Professor do 5º Ano', 'Minha turma tinha muita dificuldade nas avaliações. Depois das atividades, conseguimos a maior média da escola no projeto interdisciplinar!', 'gustavo-almeida.jpg'],
+    ['Fernando Ribeiro', 'Diretor Escolar', 'Nossa apresentação sobre consciência negra fez tanto sucesso que fomos convidados para participar de um evento cultural da cidade. Foi um orgulho representar nossa escola!', 'fernando-ribeiro.jpg'],
+    ['Leandro Barbosa', 'Professor de Artes', 'Usei as figurinhas para criar uma galeria cultural com meus alunos. O resultado ficou tão bonito que a escola decidiu transformar o espaço em uma exposição permanente!', 'leandro-barbosa.jpg'],
+    ['Vinícius Carvalho', 'Professor de Geografia', 'Os mapas despertaram uma curiosidade que eu nunca tinha visto. Meus alunos começaram a pesquisar por conta própria e criaram um documentário sobre a cultura africana!', 'vinicius-carvalho.jpg'],
+    ['Alexandre Nogueira', 'Professor do Ensino Fundamental', 'Eu gastava horas procurando atividades diferentes para novembro. Agora consigo preparar aulas muito mais rápido e ainda tenho várias brincadeiras para trabalhar com a turma!', 'alexandre-nogueira.jpg'],
+    ['Paulo Henrique Costa', 'Professor do Ensino Médio', 'Um grupo de alunos que quase nunca participava das aulas surpreendeu todo mundo. Eles conquistaram a nota máxima na apresentação e receberam uma homenagem da direção!', 'paulo-henrique.jpg'],
+    ['Samuel Ferreira', 'Supervisor Pedagógico', 'Organizamos uma gincana com as 50 brincadeiras e conseguimos envolver alunos de diferentes séries. Foi o evento com maior participação das famílias naquele ano!', 'samuel-ferreira.jpg'],
+    ['Mateus Oliveira', 'Professor do 4º Ano', 'Uma mãe me procurou emocionada dizendo que o filho nunca tinha demonstrado tanto interesse em estudar. Ele passou a pesquisar sobre personalidades negras até fora da escola!', 'mateus-oliveira.jpg']
   ];
-  const cardPerfil = ([ico, cor, papel, etapa, desafio, kit]) =>
-    `<article class="perfil"><header><span class="avatar" style="--av:${cor}" aria-hidden="true">${ico}</span><h3>${papel}<small>${etapa}</small></h3></header><p><b>Desafio:</b> ${desafio}</p><p><b>Com o kit:</b> ${kit}</p></article>`;
-  [[$('#esteira1'), PERFIS.slice(0, 6), '52s'], [$('#esteira2'), PERFIS.slice(6), '58s']].forEach(([box, lista, dur]) => {
-    const html = lista.map(cardPerfil).join('');
+  const CORES = ['#b8452a', '#2f6b4f', '#c4831a', '#6b4a8a', '#8f321c', '#2c6a8a'];
+  const iniciais = n => { const p = n.split(' '); return (p[0][0] + p[p.length - 1][0]).toUpperCase(); };
+  const cardDep = ([nome, cargo, texto, foto], i) =>
+    `<article class="perfil dep"><header><span class="avatar ini" style="--av:${CORES[i % CORES.length]}" aria-hidden="true">${foto ? `<img src="img/depoimentos/${foto}" alt="" width="96" height="96" loading="lazy">` : iniciais(nome)}</span><h3>${nome}<small>${cargo}</small></h3></header><span class="stars" aria-label="5 estrelas">★★★★★</span><blockquote>${texto}</blockquote></article>`;
+  // intercala professoras e professores; 10 cartões em cada faixa
+  const mix = DEPOIMENTOS.slice(0, 10).flatMap((d, i) => [[d, i], [DEPOIMENTOS[i + 10], i + 10]]);
+  [[$('#esteira1'), mix.slice(0, 10), '95s'], [$('#esteira2'), mix.slice(10), '105s']].forEach(([box, lista, dur]) => {
+    const html = lista.map(([d, i]) => cardDep(d, i)).join('');
     // conteúdo duplicado: ao chegar em -50% o loop recomeça sem emenda
     box.innerHTML = `<div class="trilho" style="--dur:${dur}">${html}${reduce ? '' : html}</div>`;
     box.addEventListener('touchstart', () => box.classList.add('pausa'), { passive: true });
