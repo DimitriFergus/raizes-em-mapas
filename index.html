@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#b8452a">
 <title>Raízes em Mapas — Cultura Africana e Afro-Brasileira para Professores</title>
-<meta name="description" content="+100 materiais prontos, +50 brincadeiras imprimíveis e a linha do tempo gigante para o 20 de Novembro. Alinhado à BNCC e à Lei 10.639/03.">
+<meta name="description" content="+100 materiais prontos, +50 brincadeiras imprimíveis e +200 figurinhas para o 20 de Novembro. Alinhado à BNCC e à Lei 10.639/03.">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Raízes em Mapas — +100 materiais e +50 brincadeiras de Cultura Africana e Afro-Brasileira">
-<meta property="og:description" content="Materiais por etapa, alinhados à BNCC, com brincadeiras imprimíveis e a linha do tempo gigante da África ao Brasil.">
+<meta property="og:description" content="Materiais por etapa, alinhados à BNCC, com brincadeiras imprimíveis e figurinhas para decorar a sala.">
 <meta property="og:image" content="https://dimitrifergus.github.io/raizes-em-mapas/img/kit-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="image" href="img/kit-hero.jpg">
@@ -294,15 +294,13 @@
   .bonus .ph::before{content:"";position:absolute;top:0;bottom:0;left:0;width:35%;z-index:2;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 3.4s var(--ease) infinite;will-change:transform}
   .bonus:nth-child(2) .ph::before,.bonus:nth-child(2){animation-delay:.6s}
   .bonus:nth-child(3) .ph::before,.bonus:nth-child(3){animation-delay:1.2s}
-  .bonus:nth-child(4) .ph::before,.bonus:nth-child(4){animation-delay:1.8s}
-  .bonus:nth-child(5) .ph::before,.bonus:nth-child(5){animation-delay:2.4s}
   .bonus .price b{display:inline-block;animation:pulse 1.8s ease-in-out infinite}
   @keyframes glow{0%,100%{box-shadow:var(--shadow)}50%{box-shadow:var(--shadow),0 0 0 3px rgba(196,131,26,.55),0 0 26px 2px rgba(196,131,26,.35)}}
   .bonus > div:last-child{padding:0 6px}
   .bonus .price{font-size:.85rem;color:var(--muted);margin-top:6px}
   .bonus .price s{margin-right:6px}
   .bonus .price b{color:var(--verde)}
-  @media(min-width:760px){.grid.bonus-grid{grid-template-columns:repeat(6,1fr)}.bonus{grid-column:span 2}.bonus:nth-child(4){grid-column:2/span 2}}
+  @media(min-width:760px){.grid.bonus-grid{grid-template-columns:repeat(3,1fr)}}
   /* cartela de figurinhas montada com recortes das ilustrações */
   .stickers{position:relative;aspect-ratio:766/510;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);place-items:center;padding:4% 8%;gap:2% 4%;
     background:radial-gradient(circle,rgba(184,69,42,.16) 1.5px,transparent 1.6px) 0 0/14px 14px,linear-gradient(135deg,#f6e7cf,#ecd3ad)}
@@ -335,6 +333,7 @@
   .bump:active{transform:scale(.98)}
   .bump:has(input:checked){border-style:solid;border-color:var(--cta)}
   .bump input{width:24px;height:24px;margin-top:1px;accent-color:var(--cta);flex-shrink:0}
+  .bump img{width:76px;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:8px;flex-shrink:0;box-shadow:0 2px 6px -2px rgba(60,30,10,.4)}
   .bump small{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
   .total{font-weight:700;margin:6px 0 16px;font-size:1.05rem}
   .total span{display:inline-block}
@@ -461,7 +460,7 @@
 <body>
 <div class="progress" id="progress"></div>
 
-<div class="bar" id="bar"><span class="dot"></span><span id="barTxt">Oferta especial expira em <b id="barTime">15:00</b></span></div>
+<div class="bar" id="bar"><span class="dot"></span><span id="barTxt">Oferta especial expira em <b id="barTime">30:00</b></span></div>
 <div class="pattern"></div>
 <div class="brand"><img src="img/logo.png" alt="Raízes em Mapas — História, cultura e resistência para sala de aula" width="520" height="247"></div>
 
@@ -475,7 +474,7 @@
       <ul class="checks">
         <li class="rv" style="--d:.3s"><b>+100 materiais</b> prontos por tema e etapa</li>
         <li class="rv" style="--d:.38s"><b>+50 brincadeiras e jogos imprimíveis</b> para fazer com os alunos</li>
-        <li class="rv" style="--d:.46s"><b>Linha do tempo gigante</b> da África ao Brasil para o mural</li>
+        <li class="rv" style="--d:.46s"><b>+200 figurinhas</b> para decorar a sala</li>
       </ul>
       <div class="cta-box rv" style="--d:.54s">
         <a class="btn pulse" href="#oferta">QUERO O KIT COMPLETO →</a>
@@ -548,7 +547,7 @@
     <div class="grid g3">
       <div class="card feat rv"><div class="ico">🗺️</div><div><h3>+100 materiais prontos</h3><p>Mapas mentais ilustrados e atividades com gabarito: reinos africanos, diáspora, quilombos, personalidades, arte e culinária.</p></div></div>
       <div class="card feat rv" style="--d:.06s"><div class="ico">🎲</div><div><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo, jogo da memória, trilha da história e rodas de conversa. É só imprimir e jogar com a turma.</p></div></div>
-      <div class="card feat rv" style="--d:.12s"><div class="ico">📜</div><div><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição, em painéis A4 para emendar e montar no mural.</p></div></div>
+      <div class="card feat rv" style="--d:.12s"><div class="ico">✂️</div><div><h3>+200 figurinhas</h3><p>Personalidades negras, símbolos africanos e frases de autoestima para decorar a sala.</p></div></div>
       <div class="card feat rv"><div class="ico">🎯</div><div><h3>Códigos da BNCC</h3><p>Habilidades indicadas em cada material, prontas para o plano de aula.</p></div></div>
       <div class="card feat rv" style="--d:.06s"><div class="ico">📆</div><div><h3>Calendário afro-brasileiro</h3><p>Datas e temas para os 12 meses, não só para novembro.</p></div></div>
       <div class="card feat rv" style="--d:.12s"><div class="ico">🧭</div><div><h3>Guia de abordagem</h3><p>Termos recomendados, erros comuns e como conduzir conversas sobre racismo.</p></div></div>
@@ -559,28 +558,20 @@
 <!-- BÔNUS -->
 <section class="alt">
   <div class="wrap">
-    <h2 class="rv">5 bônus exclusivos do Kit Completo</h2>
-    <p class="sub rv">Estes cinco <b>não vêm no Kit Básico</b>. Só quem escolhe o Completo leva:</p>
+    <h2 class="rv">3 bônus exclusivos do Kit Completo</h2>
+    <p class="sub rv">Estes três <b>não vêm no Kit Básico</b>. Só quem escolhe o Completo leva:</p>
     <div class="grid bonus-grid">
       <div class="card bonus rv">
-        <div class="ph" data-label="Bônus 1"><img src="img/bonus-20-de-novembro.jpg" alt="Bônus 1: Projeto 20 de Novembro, sequência didática completa" width="1000" height="750" loading="lazy"></div>
-        <div><span class="tag new">Bônus 1 · Para o 20 de Novembro</span><h3>Projeto 20 de Novembro</h3><p>Sequência didática completa para trabalhar em sala de aula: planejamento por etapas, sugestões de aulas, atividades práticas e ideias para a culminância do projeto.</p><div class="price"><b>GRÁTIS no Completo</b></div></div>
+        <div class="ph" data-label="Bônus 1"><img src="img/bonus-100-atividades.jpg" alt="Bônus 1: +100 atividades com gabarito" width="1000" height="750" loading="lazy"></div>
+        <div><span class="tag new">Bônus 1</span><h3>+100 atividades com gabarito</h3><p>Exercícios práticos e criativos para fixar a aprendizagem: questões dissertativas, múltipla escolha, jogos de interpretação e atividades lúdicas, todos com gabarito.</p><div class="price"><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv" style="--d:.06s">
-        <div class="ph" data-label="Bônus 2"><img src="img/bonus-100-atividades.jpg" alt="Bônus 2: +100 atividades com gabarito" width="1000" height="750" loading="lazy"></div>
-        <div><span class="tag">Bônus 2</span><h3>+100 atividades com gabarito</h3><p>Exercícios práticos e criativos para fixar a aprendizagem: questões dissertativas, múltipla escolha, jogos de interpretação e atividades lúdicas, todos com gabarito.</p><div class="price"><b>GRÁTIS no Completo</b></div></div>
+        <div class="ph" data-label="Bônus 2" style="--pos:top"><img src="img/bonus-brincadeiras.jpg" alt="Bônus 2: +50 dinâmicas, brincadeiras e jogos imprimíveis" width="810" height="1080" loading="lazy"></div>
+        <div><span class="tag">Bônus 2</span><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história, rodas de conversa e dinâmicas em grupo. É só imprimir e brincar com os alunos.</p><div class="price"><s>R$ 47</s><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv" style="--d:.12s">
-        <div class="ph" data-label="Bônus 3"><img src="img/bonus-linha-do-tempo.jpg" alt="Bônus 3: Linha do tempo gigante da África ao Brasil" width="1000" height="750" loading="lazy"></div>
-        <div><span class="tag">Bônus 3</span><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição em painéis A4 que se emendam e formam mais de 4 metros de mural. Vem colorida, para colorir e com cartões de fatos para a turma montar junto. Você monta no 20 de Novembro e ela fica na parede o ano inteiro.</p><div class="price"><s>R$ 37</s><b>GRÁTIS no Completo</b></div></div>
-      </div>
-      <div class="card bonus rv">
-        <div class="ph" data-label="Bônus 4" style="--pos:top"><img src="img/bonus-brincadeiras.jpg" alt="Bônus 4: +50 dinâmicas, brincadeiras e jogos imprimíveis" width="810" height="1080" loading="lazy"></div>
-        <div><span class="tag">Bônus 4</span><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história, rodas de conversa e dinâmicas em grupo. É só imprimir e brincar com os alunos.</p><div class="price"><s>R$ 47</s><b>GRÁTIS no Completo</b></div></div>
-      </div>
-      <div class="card bonus rv" style="--d:.06s">
-        <div class="ph" data-label="Bônus 5"><img src="img/bonus-figurinhas.jpg" alt="Bônus 5: +200 figurinhas decorativas" width="1050" height="700" loading="lazy"></div>
-        <div><span class="tag new">Bônus 5 · Novo</span><h3>+200 figurinhas para imprimir e decorar</h3><p>Deixe a sala com cara de 20 de Novembro em uma tarde: personalidades negras, Zumbi e Dandara, símbolos africanos e frases de autoestima para o mural, o caderno e os cartazes. E ainda viram prêmio nas brincadeiras, porque criança faz tudo por uma figurinha. É só imprimir em papel adesivo ou comum e recortar.</p><div class="price"><s>R$ 27</s><b>GRÁTIS no Completo</b></div></div>
+        <div class="ph" data-label="Bônus 3"><img src="img/bonus-figurinhas.jpg" alt="Bônus 3: +200 figurinhas decorativas" width="1050" height="700" loading="lazy"></div>
+        <div><span class="tag new">Bônus 3 · Novo</span><h3>+200 figurinhas para imprimir e decorar</h3><p>Deixe a sala com cara de 20 de Novembro em uma tarde: personalidades negras, Zumbi e Dandara, símbolos africanos e frases de autoestima para o mural, o caderno e os cartazes. E ainda viram prêmio nas brincadeiras, porque criança faz tudo por uma figurinha. É só imprimir em papel adesivo ou comum e recortar.</p><div class="price"><s>R$ 27</s><b>GRÁTIS no Completo</b></div></div>
       </div>
     </div>
   </div>
@@ -603,10 +594,10 @@
   <div class="wrap">
     <h2 class="rv" id="offerTitle">Sua oferta especial expira em</h2>
     <div class="count rv" id="count" aria-label="Contagem regressiva">
-      <div><b id="cd-m">15</b><span>min</span></div>
+      <div><b id="cd-m">30</b><span>min</span></div>
       <div><b id="cd-s">00</b><span>seg</span></div>
     </div>
-    <p class="sub rv" id="offerSub" style="margin-bottom:28px">Garanta o Kit Completo por <b data-preco>R$ 24,99</b> antes que o preço suba.</p>
+    <p class="sub rv" id="offerSub" style="margin-bottom:28px">Garanta o Kit Completo por <b data-preco>R$ 23,99</b> antes que o preço suba.</p>
 
     <div class="plans">
     <div class="offer basic rv" id="basic">
@@ -616,10 +607,9 @@
         <li><i>✔</i> <span>10 mapas mentais (só versão colorida)</span></li>
         <li class="no"><i>✖</i> <span>+100 materiais e atividades com gabarito</span></li>
         <li class="no"><i>✖</i> <span>+50 brincadeiras e jogos imprimíveis</span></li>
-        <li class="no"><i>✖</i> <span>Linha do tempo gigante</span></li>
         <li class="no"><i>✖</i> <span>+200 figurinhas para decorar</span></li>
         <li class="no"><i>✖</i> <span>Códigos da BNCC</span></li>
-        <li class="no"><i>✖</i> <span>Guia de abordagem + calendário</span></li>
+        <li class="no"><i>✖</i> <span>+50 mapas mentais</span></li>
         <li class="no"><i>✖</i> <span>Atualizações futuras</span></li>
       </ul>
       <p class="price-mid" id="basicPrice">R$ 18,99</p>
@@ -629,27 +619,27 @@
 
     <div class="offer main rv zoom" id="offer">
       <span class="ribbon">⭐ Mais escolhido · Kit Completo</span>
-      <h3 style="font-size:1.35rem;margin-top:6px">Raízes em Mapas + 5 Bônus Exclusivos</h3>
+      <h3 style="font-size:1.35rem;margin-top:6px">Raízes em Mapas + 3 Bônus Exclusivos</h3>
       <div class="offer-img"><img src="img/kit-oferta.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1254" height="1254" loading="lazy"></div>
       <ul>
         <li><span>✔ +100 materiais prontos (com BNCC)</span><span>R$ 97</span></li>
         <li><span>✔ +100 atividades com gabarito</span><span>bônus</span></li>
         <li><span>✔ +50 brincadeiras e jogos imprimíveis</span><span>R$ 47</span></li>
         <li><span>✔ +200 figurinhas para imprimir</span><span>R$ 27</span></li>
-        <li><span>✔ Guia de abordagem + calendário</span><span>R$ 27</span></li>
+        <li><span>✔ +50 mapas mentais</span><span>R$ 27</span></li>
         <li><span>✔ Atualizações futuras</span><span>incluso</span></li>
       </ul>
-      <p class="from">Valor total: R$ 235</p>
+      <p class="from">Valor total: R$ 234,99</p>
       <p class="micro" style="margin:0" id="priceLabel">por apenas</p>
-      <p class="price-big" id="priceBig">R$ 24,99</p>
+      <p class="price-big" id="priceBig">R$ 23,99</p>
       <p class="micro" style="margin-top:0">pagamento único · acesso vitalício</p>
-      <p class="diff">Só <b data-diff>R$ 6</b> a mais que o Básico para levar tudo isso</p>
+      <p class="diff">Só <b data-diff>R$ 5</b> a mais que o Básico para levar tudo isso</p>
 
       <div class="bumps">
-        <label class="bump"><input type="checkbox" data-v="9.9"><span><b>Sim! Quero a versão editável no Canva por + R$ 9,90</b><small>Mude cores, fontes e coloque o nome da sua escola.</small></span></label>
-        <label class="bump"><input type="checkbox" data-v="12.9"><span><b>Sim! Quero os slides prontos por + R$ 12,90</b><small>40 apresentações de 10 a 15 slides, uma por tema.</small></span></label>
+        <label class="bump"><input type="checkbox" data-v="7.99"><img src="img/bonus-20-de-novembro.jpg" alt="" width="1000" height="750" loading="lazy"><span><b>Sim! Quero o Projeto 20 de Novembro por + R$ 7,99</b><small>Sequência didática completa, com planejamento por etapas, sugestões de aulas, atividades práticas e ideias para a culminância.</small></span></label>
+        <label class="bump"><input type="checkbox" data-v="9.99"><img src="img/bonus-linha-do-tempo.jpg" alt="" width="1000" height="750" loading="lazy"><span><b>Sim! Quero a Linha do Tempo Gigante por + R$ 9,99</b><small>Da África Antiga ao pós-abolição em painéis A4 que formam mais de 4 metros de mural para a turma montar junto.</small></span></label>
       </div>
-      <p class="total">Total: <span id="total">R$ 24,99</span></p>
+      <p class="total">Total: <span id="total">R$ 23,99</span></p>
 
       <a class="btn pulse" id="buy" href="#checkout">QUERO O KIT COMPLETO →</a>
       <p class="micro">🔒 Compra segura · PIX, cartão e boleto · Acesso no e-mail</p>
@@ -703,7 +693,7 @@
   <div class="wrap" style="max-width:760px">
     <h2 class="rv">Perguntas frequentes</h2>
     <div class="rv" style="margin-top:20px">
-      <details><summary>Qual a diferença entre o Básico e o Completo?</summary><p>O Básico tem só 10 mapas mentais na versão colorida. O Completo traz +100 materiais com BNCC, +50 brincadeiras e jogos imprimíveis, a linha do tempo gigante, +200 figurinhas, o guia de abordagem, o calendário e as atualizações futuras, por poucos reais a mais.</p></details>
+      <details><summary>Qual a diferença entre o Básico e o Completo?</summary><p>O Básico tem só 10 mapas mentais na versão colorida. O Completo traz +100 materiais com BNCC, +50 brincadeiras e jogos imprimíveis, +200 figurinhas, +50 mapas mentais e as atualizações futuras, por poucos reais a mais.</p></details>
       <details><summary>Como recebo o material?</summary><p>Logo após a confirmação do pagamento, você recebe no e-mail o link da área de acesso. No PIX, a liberação é imediata.</p></details>
       <details><summary>Serve para qual etapa de ensino?</summary><p>Da Educação Infantil ao Ensino Médio. Os mapas são separados por etapa, com linguagem e profundidade adequadas.</p></details>
       <details><summary>Posso imprimir quantas vezes quiser?</summary><p>Sim. Os arquivos são em PDF de alta resolução, para A4 e A3, colorido ou P&amp;B, para uso com as suas turmas.</p></details>
@@ -719,8 +709,8 @@
 <section>
   <div class="wrap rv" style="text-align:center">
     <h2>Seu novembro (e o ano todo) planejado hoje</h2>
-    <p class="sub">+100 materiais, +50 brincadeiras imprimíveis e a linha do tempo gigante por menos que um lanche.</p>
-    <a class="btn pulse" href="#offer">QUERO O COMPLETO POR <span data-preco>R$ 24,99</span> →</a>
+    <p class="sub">+100 materiais, +50 brincadeiras imprimíveis e +200 figurinhas por menos que um lanche.</p>
+    <a class="btn pulse" href="#offer">QUERO O COMPLETO POR <span data-preco>R$ 23,99</span> →</a>
   </div>
 </section>
 
@@ -732,7 +722,7 @@
 </footer>
 
 <div class="sticky" id="sticky">
-  <span class="p"><small>R$ 235</small><b id="stickyPrice">R$ 24,99</b></span>
+  <span class="p"><small>R$ 234,99</small><b id="stickyPrice">R$ 23,99</b></span>
   <a class="btn" href="#offer">QUERO O COMPLETO →</a>
 </div>
 
@@ -761,15 +751,14 @@
 <div class="up" id="up" role="dialog" aria-modal="true" aria-labelledby="upT">
   <div class="up-box">
     <p class="up-eyebrow">Espera! Antes de fechar…</p>
-    <h3 id="upT">Por só <span data-diff>R$ 6</span> a mais você leva o Kit Completo</h3>
+    <h3 id="upT">Por só <span data-diff>R$ 5</span> a mais você leva o Kit Completo</h3>
     <ul>
       <li>+100 materiais prontos com BNCC <small>(no Básico: 10 mapas)</small></li>
       <li>+50 brincadeiras e jogos imprimíveis</li>
-      <li>Linha do tempo gigante para o 20 de Novembro</li>
       <li>+200 figurinhas para decorar a sala</li>
-      <li>Guia de abordagem, calendário e atualizações</li>
+      <li>+50 mapas mentais e atualizações futuras</li>
     </ul>
-    <a class="btn pulse" id="upYes" href="#checkout">SIM, QUERO O COMPLETO POR <span data-preco>R$ 24,99</span></a>
+    <a class="btn pulse" id="upYes" href="#checkout">SIM, QUERO O COMPLETO POR <span data-preco>R$ 23,99</span></a>
     <a class="skip" id="upNo" href="#checkout-basico">Não, prefiro ficar só com 10 mapas</a>
   </div>
 </div>
@@ -830,13 +819,13 @@
     els.forEach(el => el.classList.add('in')); $('#hero').classList.add('in');
   }
 
-  // ===== oferta de 15 minutos por visitante =====
+  // ===== oferta de 30 minutos por visitante =====
   // Quando o tempo acaba, o Kit Completo passa de fato para PRECO_CHEIO (a urgência é verdadeira).
   // O Kit Básico tem preço fixo. Use um link de checkout diferente para cada preço.
   const OFERTA = {
-    minutos: 15,
-    PRECO_PROMO: 24.99,
-    PRECO_CHEIO: 37.99,
+    minutos: 30,
+    PRECO_PROMO: 23.99,
+    PRECO_CHEIO: 29.99,
     PRECO_BASICO: 18.99,
     CHECKOUT_PROMO: '#checkout',
     CHECKOUT_CHEIO: '#checkout',
