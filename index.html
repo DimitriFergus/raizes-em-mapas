@@ -614,7 +614,7 @@
       </ul>
       <p class="price-mid" id="basicPrice">R$ 18,99</p>
       <p class="micro" style="margin:0 0 14px">pagamento único</p>
-      <a class="btn ghost" id="buyBasic" href="#checkout-basico">QUERO SÓ O BÁSICO</a>
+      <a class="btn ghost" id="buyBasic" href="https://pay.cakto.com.br/ommkj4n_1259275">QUERO SÓ O BÁSICO</a>
     </div>
 
     <div class="offer main rv zoom" id="offer">
@@ -636,12 +636,12 @@
       <p class="diff">Só <b data-diff>R$ 5</b> a mais que o Básico para levar tudo isso</p>
 
       <div class="bumps">
-        <label class="bump"><input type="checkbox" data-v="7.99"><img src="img/bonus-20-de-novembro.jpg" alt="" width="1000" height="750" loading="lazy"><span><b>Sim! Quero o Projeto 20 de Novembro por + R$ 7,99</b><small>Sequência didática completa, com planejamento por etapas, sugestões de aulas, atividades práticas e ideias para a culminância.</small></span></label>
-        <label class="bump"><input type="checkbox" data-v="9.99"><img src="img/bonus-linha-do-tempo.jpg" alt="" width="1000" height="750" loading="lazy"><span><b>Sim! Quero a Linha do Tempo Gigante por + R$ 9,99</b><small>Da África Antiga ao pós-abolição em painéis A4 que formam mais de 4 metros de mural para a turma montar junto.</small></span></label>
+        <label class="bump"><input type="checkbox" data-v="7.99" data-k="nov"><img src="img/bonus-20-de-novembro.jpg" alt="" width="1000" height="750" loading="lazy"><span><b>Sim! Quero o Projeto 20 de Novembro por + R$ 7,99</b><small>Sequência didática completa, com planejamento por etapas, sugestões de aulas, atividades práticas e ideias para a culminância.</small></span></label>
+        <label class="bump"><input type="checkbox" data-v="9.99" data-k="linha"><img src="img/bonus-linha-do-tempo.jpg" alt="" width="1000" height="750" loading="lazy"><span><b>Sim! Quero a Linha do Tempo Gigante por + R$ 9,99</b><small>Da África Antiga ao pós-abolição em painéis A4 que formam mais de 4 metros de mural para a turma montar junto.</small></span></label>
       </div>
       <p class="total">Total: <span id="total">R$ 23,99</span></p>
 
-      <a class="btn pulse" id="buy" href="#checkout">QUERO O KIT COMPLETO →</a>
+      <a class="btn pulse" id="buy" href="https://pay.cakto.com.br/355pkiu_1258881">QUERO O KIT COMPLETO →</a>
       <p class="micro">🔒 Compra segura · PIX, cartão e boleto · Acesso no e-mail</p>
     </div>
     </div>
@@ -758,8 +758,8 @@
       <li>+200 figurinhas para decorar a sala</li>
       <li>+50 mapas mentais e atualizações futuras</li>
     </ul>
-    <a class="btn pulse" id="upYes" href="#checkout">SIM, QUERO O COMPLETO POR <span data-preco>R$ 23,99</span></a>
-    <a class="skip" id="upNo" href="#checkout-basico">Não, prefiro ficar só com 10 mapas</a>
+    <a class="btn pulse" id="upYes" href="https://pay.cakto.com.br/355pkiu_1258881">SIM, QUERO O COMPLETO POR <span data-preco>R$ 23,99</span></a>
+    <a class="skip" id="upNo" href="https://pay.cakto.com.br/ommkj4n_1259275">Não, prefiro ficar só com 10 mapas</a>
   </div>
 </div>
 
@@ -827,9 +827,20 @@
     PRECO_PROMO: 23.99,
     PRECO_CHEIO: 29.99,
     PRECO_BASICO: 18.99,
-    CHECKOUT_PROMO: '#checkout',
-    CHECKOUT_CHEIO: '#checkout',
-    CHECKOUT_BASICO: '#checkout-basico'
+    // Kit Completo: um link para cada combinação de order bumps (nov = Projeto 20 de Novembro, linha = Linha do Tempo Gigante)
+    CHECKOUT_PROMO: {
+      nenhum: 'https://pay.cakto.com.br/355pkiu_1258881',
+      nov: 'https://pay.cakto.com.br/qn9y3gg_1259185',
+      linha: 'https://pay.cakto.com.br/32um623_1259199',
+      ambos: 'https://pay.cakto.com.br/cd63i43_1259218'
+    },
+    CHECKOUT_CHEIO: {
+      nenhum: 'https://pay.cakto.com.br/3ehqftm',
+      nov: 'https://pay.cakto.com.br/3848r2p',
+      linha: 'https://pay.cakto.com.br/djum8uh',
+      ambos: 'https://pay.cakto.com.br/q3sczov'
+    },
+    CHECKOUT_BASICO: 'https://pay.cakto.com.br/ommkj4n_1259275'
   };
   const KEY = 'raizes_oferta_inicio';
   let inicio = Date.now();
@@ -847,7 +858,7 @@
     $$('[data-preco]').forEach(el => el.textContent = fmtBRL(precoAtual));
     $$('[data-diff]').forEach(el => el.textContent = fmtBRL(+(precoAtual - OFERTA.PRECO_BASICO).toFixed(2)));
     $('#basicPrice').textContent = fmtBRL(OFERTA.PRECO_BASICO);
-    $('#buy').href = $('#upYes').href = expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO;
+    $('#upYes').href = (expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO).nenhum;
     $('#upNo').href = OFERTA.CHECKOUT_BASICO;
     atualizarTotal && atualizarTotal(false);
   }
@@ -1102,6 +1113,9 @@
   atualizarTotal = animar => {
     const t = $$('.bump input:checked').reduce((s, c) => s + +c.dataset.v, precoAtual);
     totalEl.textContent = fmt(t);
+    // link do checkout conforme os order bumps marcados
+    const k = $$('.bump input:checked').map(c => c.dataset.k);
+    $('#buy').href = (expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO)[k.length === 2 ? 'ambos' : k[0] || 'nenhum'];
     if (animar) { totalEl.classList.remove('pop'); void totalEl.offsetWidth; totalEl.classList.add('pop'); }
   };
   $$('.bump input').forEach(cb => cb.addEventListener('change', () => {
