@@ -91,7 +91,7 @@
   .hero h1 em{font-style:normal;color:var(--terra);position:relative;white-space:nowrap}
   .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.18em;background:var(--ocre);opacity:.45;z-index:-1;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--ease) .5s}
   .hero.in h1 em::after{transform:scaleX(1)}
-  .hero-media{order:3;width:calc(100% + 16px);max-width:640px;align-self:center;margin:4px -8px 24px}
+  .hero-media{order:3;width:calc(100% + 24px);max-width:720px;align-self:center;margin:4px -12px 24px}
   .hero-media .ph{border-radius:20px}
   .hero-media .ph{animation:floaty 6s ease-in-out infinite;will-change:transform}
   .hero p.lead{order:4;font-size:1.02rem;color:var(--muted);margin-bottom:18px;text-align:center}
@@ -101,8 +101,8 @@
   .hero .cta-box{order:6;text-align:center}
   @media(min-width:860px){
     .hero{padding:56px 0 64px}
-    .hero .wrap{max-width:1240px}
-    .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+    .hero .wrap{max-width:1320px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:center}
     .hero-text{display:block}
     .eyebrow{align-self:auto}
     .hero h1,.hero p.lead{text-align:left}
@@ -288,7 +288,7 @@
 
   /* bônus: imagem à esquerda no mobile */
   .bonus{display:flex;flex-direction:column;gap:14px;padding:12px 12px 18px}
-  .bonus .ph{--ar:766/510;border-radius:12px;cursor:zoom-in}
+  .bonus .ph{--ar:3/4;border-radius:12px;cursor:zoom-in}
   .bonus > div:last-child{padding:0 6px}
   .bonus .price{font-size:.85rem;color:var(--muted);margin-top:6px}
   .bonus .price s{margin-right:6px}
@@ -554,11 +554,11 @@
     <p class="sub rv">Estes três <b>não vêm no Kit Básico</b>. Só quem escolhe o Completo leva:</p>
     <div class="grid bonus-grid">
       <div class="card bonus rv">
-        <div class="ph" data-label="Bônus 1"><img src="img/bonus-linha-do-tempo.jpg" alt="Bônus 1: Linha do tempo gigante da África ao Brasil" width="766" height="510" loading="lazy"></div>
+        <div class="ph" data-label="Bônus 1"><img src="img/bonus-linha-do-tempo.jpg" alt="Bônus 1: Linha do tempo gigante da África ao Brasil" width="810" height="1080" loading="lazy"></div>
         <div><span class="tag new">Bônus 1 · Para o 20 de Novembro</span><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição em painéis A4 que se emendam e formam mais de 4 metros de mural. Vem colorida, para colorir e com cartões de fatos para a turma montar junto. Você monta no 20 de Novembro e ela fica na parede o ano inteiro.</p><div class="price"><s>R$ 37</s><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv" style="--d:.06s">
-        <div class="ph" data-label="Bônus 2"><img src="img/bonus-brincadeiras.jpg" alt="Bônus 2: +50 brincadeiras e jogos imprimíveis" width="766" height="510" loading="lazy"></div>
+        <div class="ph" data-label="Bônus 2"><img src="img/bonus-brincadeiras.jpg" alt="Bônus 2: +50 brincadeiras e jogos imprimíveis" width="810" height="1080" loading="lazy"></div>
         <div><span class="tag">Bônus 2</span><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história, rodas de conversa e dinâmicas em grupo. É só imprimir e brincar com os alunos.</p><div class="price"><s>R$ 47</s><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv">
@@ -612,7 +612,7 @@
     <div class="offer main rv zoom" id="offer">
       <span class="ribbon">⭐ Mais escolhido · Kit Completo</span>
       <h3 style="font-size:1.35rem;margin-top:6px">Kit Raízes em Mapas Completo</h3>
-      <div class="offer-img"><img src="img/kit-oferta.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1254" height="1254" loading="lazy"></div>
+      <div class="offer-img"><img src="img/kit-hero.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1254" height="1254" loading="lazy"></div>
       <ul>
         <li><span>✔ +100 materiais prontos (com BNCC)</span><span>R$ 97</span></li>
         <li><span>✔ +50 brincadeiras e jogos imprimíveis</span><span>R$ 47</span></li>
