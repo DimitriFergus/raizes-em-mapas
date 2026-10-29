@@ -287,13 +287,22 @@
   .fit-no h3,.fit-no li{color:var(--muted)}
 
   /* bônus: imagem à esquerda no mobile */
-  .bonus{display:flex;flex-direction:column;gap:14px;padding:12px 12px 18px}
-  .bonus .ph{--ar:3/4;border-radius:12px;cursor:zoom-in}
+  .bonus{display:flex;flex-direction:column;gap:14px;padding:12px 12px 18px;position:relative;animation:glow 3s ease-in-out infinite}
+  .bonus .ph{--ar:4/3;border-radius:12px;cursor:zoom-in}
+  .bonus .ph img{object-position:var(--pos,center)}
+  /* brilho que atravessa a arte do bônus */
+  .bonus .ph::before{content:"";position:absolute;top:0;bottom:0;left:0;width:35%;z-index:2;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 3.4s var(--ease) infinite;will-change:transform}
+  .bonus:nth-child(2) .ph::before,.bonus:nth-child(2){animation-delay:.6s}
+  .bonus:nth-child(3) .ph::before,.bonus:nth-child(3){animation-delay:1.2s}
+  .bonus:nth-child(4) .ph::before,.bonus:nth-child(4){animation-delay:1.8s}
+  .bonus:nth-child(5) .ph::before,.bonus:nth-child(5){animation-delay:2.4s}
+  .bonus .price b{display:inline-block;animation:pulse 1.8s ease-in-out infinite}
+  @keyframes glow{0%,100%{box-shadow:var(--shadow)}50%{box-shadow:var(--shadow),0 0 0 3px rgba(196,131,26,.55),0 0 26px 2px rgba(196,131,26,.35)}}
   .bonus > div:last-child{padding:0 6px}
   .bonus .price{font-size:.85rem;color:var(--muted);margin-top:6px}
   .bonus .price s{margin-right:6px}
   .bonus .price b{color:var(--verde)}
-  @media(min-width:760px){.grid.bonus-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:760px){.grid.bonus-grid{grid-template-columns:repeat(6,1fr)}.bonus{grid-column:span 2}.bonus:nth-child(4){grid-column:2/span 2}}
   /* cartela de figurinhas montada com recortes das ilustrações */
   .stickers{position:relative;aspect-ratio:766/510;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);place-items:center;padding:4% 8%;gap:2% 4%;
     background:radial-gradient(circle,rgba(184,69,42,.16) 1.5px,transparent 1.6px) 0 0/14px 14px,linear-gradient(135deg,#f6e7cf,#ecd3ad)}
@@ -550,20 +559,29 @@
 <!-- BÔNUS -->
 <section class="alt">
   <div class="wrap">
-    <h2 class="rv">Bônus exclusivos do Kit Completo</h2>
-    <p class="sub rv">Estes três <b>não vêm no Kit Básico</b>. Só quem escolhe o Completo leva:</p>
+    <h2 class="rv">5 bônus exclusivos do Kit Completo</h2>
+    <p class="sub rv">Estes cinco <b>não vêm no Kit Básico</b>. Só quem escolhe o Completo leva:</p>
     <div class="grid bonus-grid">
       <div class="card bonus rv">
-        <div class="ph" data-label="Bônus 1"><img src="img/bonus-linha-do-tempo.jpg" alt="Bônus 1: Linha do tempo gigante da África ao Brasil" width="810" height="1080" loading="lazy"></div>
-        <div><span class="tag new">Bônus 1 · Para o 20 de Novembro</span><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição em painéis A4 que se emendam e formam mais de 4 metros de mural. Vem colorida, para colorir e com cartões de fatos para a turma montar junto. Você monta no 20 de Novembro e ela fica na parede o ano inteiro.</p><div class="price"><s>R$ 37</s><b>GRÁTIS no Completo</b></div></div>
+        <div class="ph" data-label="Bônus 1"><img src="img/bonus-20-de-novembro.jpg" alt="Bônus 1: Projeto 20 de Novembro, sequência didática completa" width="1000" height="750" loading="lazy"></div>
+        <div><span class="tag new">Bônus 1 · Para o 20 de Novembro</span><h3>Projeto 20 de Novembro</h3><p>Sequência didática completa para trabalhar em sala de aula: planejamento por etapas, sugestões de aulas, atividades práticas e ideias para a culminância do projeto.</p><div class="price"><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv" style="--d:.06s">
-        <div class="ph" data-label="Bônus 2"><img src="img/bonus-brincadeiras.jpg" alt="Bônus 2: +50 brincadeiras e jogos imprimíveis" width="810" height="1080" loading="lazy"></div>
-        <div><span class="tag">Bônus 2</span><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história, rodas de conversa e dinâmicas em grupo. É só imprimir e brincar com os alunos.</p><div class="price"><s>R$ 47</s><b>GRÁTIS no Completo</b></div></div>
+        <div class="ph" data-label="Bônus 2"><img src="img/bonus-100-atividades.jpg" alt="Bônus 2: +100 atividades com gabarito" width="1000" height="750" loading="lazy"></div>
+        <div><span class="tag">Bônus 2</span><h3>+100 atividades com gabarito</h3><p>Exercícios práticos e criativos para fixar a aprendizagem: questões dissertativas, múltipla escolha, jogos de interpretação e atividades lúdicas, todos com gabarito.</p><div class="price"><b>GRÁTIS no Completo</b></div></div>
+      </div>
+      <div class="card bonus rv" style="--d:.12s">
+        <div class="ph" data-label="Bônus 3"><img src="img/bonus-linha-do-tempo.jpg" alt="Bônus 3: Linha do tempo gigante da África ao Brasil" width="1000" height="750" loading="lazy"></div>
+        <div><span class="tag">Bônus 3</span><h3>Linha do tempo gigante</h3><p>Da África Antiga ao pós-abolição em painéis A4 que se emendam e formam mais de 4 metros de mural. Vem colorida, para colorir e com cartões de fatos para a turma montar junto. Você monta no 20 de Novembro e ela fica na parede o ano inteiro.</p><div class="price"><s>R$ 37</s><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv">
-        <div class="stickers" role="img" aria-label="Exemplos das figurinhas: personalidades negras, Zumbi e Dandara, astronomia africana e batuque"><img src="img/figurinhas/f1.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f2.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f3.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f4.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f5.jpg" alt="" width="240" height="240" loading="lazy"><img src="img/figurinhas/f6.jpg" alt="" width="240" height="240" loading="lazy"><span class="st-badge">+200</span></div>
-        <div><span class="tag new">Bônus 3 · Novo</span><h3>+200 figurinhas para imprimir e decorar</h3><p>Deixe a sala com cara de 20 de Novembro em uma tarde: personalidades negras, Zumbi e Dandara, símbolos africanos e frases de autoestima para o mural, o caderno e os cartazes. E ainda viram prêmio nas brincadeiras, porque criança faz tudo por uma figurinha. É só imprimir em papel adesivo ou comum e recortar.</p><div class="price"><s>R$ 27</s><b>GRÁTIS no Completo</b></div></div></div>
+        <div class="ph" data-label="Bônus 4" style="--pos:top"><img src="img/bonus-brincadeiras.jpg" alt="Bônus 4: +50 dinâmicas, brincadeiras e jogos imprimíveis" width="810" height="1080" loading="lazy"></div>
+        <div><span class="tag">Bônus 4</span><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história, rodas de conversa e dinâmicas em grupo. É só imprimir e brincar com os alunos.</p><div class="price"><s>R$ 47</s><b>GRÁTIS no Completo</b></div></div>
+      </div>
+      <div class="card bonus rv" style="--d:.06s">
+        <div class="ph" data-label="Bônus 5"><img src="img/bonus-figurinhas.jpg" alt="Bônus 5: +200 figurinhas decorativas" width="1050" height="700" loading="lazy"></div>
+        <div><span class="tag new">Bônus 5 · Novo</span><h3>+200 figurinhas para imprimir e decorar</h3><p>Deixe a sala com cara de 20 de Novembro em uma tarde: personalidades negras, Zumbi e Dandara, símbolos africanos e frases de autoestima para o mural, o caderno e os cartazes. E ainda viram prêmio nas brincadeiras, porque criança faz tudo por uma figurinha. É só imprimir em papel adesivo ou comum e recortar.</p><div class="price"><s>R$ 27</s><b>GRÁTIS no Completo</b></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -611,10 +629,12 @@
 
     <div class="offer main rv zoom" id="offer">
       <span class="ribbon">⭐ Mais escolhido · Kit Completo</span>
-      <h3 style="font-size:1.35rem;margin-top:6px">Kit Raízes em Mapas Completo</h3>
-      <div class="offer-img"><img src="img/kit-hero.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1254" height="1254" loading="lazy"></div>
+      <h3 style="font-size:1.35rem;margin-top:6px">Raízes em Mapas + 5 Bônus Exclusivos</h3>
+      <div class="offer-img"><img src="img/kit-oferta.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1254" height="1254" loading="lazy"></div>
       <ul>
         <li><span>✔ +100 materiais prontos (com BNCC)</span><span>R$ 97</span></li>
+        <li><span>✔ Projeto 20 de Novembro</span><span>bônus</span></li>
+        <li><span>✔ +100 atividades com gabarito</span><span>bônus</span></li>
         <li><span>✔ +50 brincadeiras e jogos imprimíveis</span><span>R$ 47</span></li>
         <li><span>✔ Linha do tempo gigante</span><span>R$ 37</span></li>
         <li><span>✔ +200 figurinhas para imprimir</span><span>R$ 27</span></li>
