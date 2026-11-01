@@ -477,7 +477,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
 <body>
 <div class="progress" id="progress"></div>
 
-<div class="bar" id="bar"><span class="dot"></span><span id="barTxt">Oferta especial expira em <b id="barTime">30:00</b></span></div>
+<div class="bar" id="bar"><span class="dot"></span><span id="barTxt">Oferta do dia expira em <b id="barTime">24:00:00</b></span></div>
 <div class="pattern"></div>
 <div class="brand"><img src="img/logo.png" alt="Raízes em Mapas — História, cultura e resistência para sala de aula" width="520" height="247"></div>
 
@@ -609,9 +609,10 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
 <!-- OFERTA -->
 <section class="alt" id="oferta">
   <div class="wrap">
-    <h2 class="rv" id="offerTitle">Sua oferta especial expira em</h2>
+    <h2 class="rv" id="offerTitle">Sua oferta do dia expira em</h2>
     <div class="count rv" id="count" aria-label="Contagem regressiva">
-      <div><b id="cd-m">30</b><span>min</span></div>
+      <div><b id="cd-h">24</b><span>horas</span></div>
+      <div><b id="cd-m">00</b><span>min</span></div>
       <div><b id="cd-s">00</b><span>seg</span></div>
     </div>
     <p class="sub rv" id="offerSub" style="margin-bottom:28px">Garanta o Kit Completo por <b data-preco>R$ 23,99</b> antes que o preço suba.</p>
@@ -836,11 +837,11 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     els.forEach(el => el.classList.add('in')); $('#hero').classList.add('in');
   }
 
-  // ===== oferta de 30 minutos por visitante =====
+  // ===== oferta de 24 horas por visitante =====
   // Quando o tempo acaba, o Kit Completo passa de fato para PRECO_CHEIO (a urgência é verdadeira).
   // O Kit Básico tem preço fixo. Use um link de checkout diferente para cada preço.
   const OFERTA = {
-    minutos: 30,
+    minutos: 24 * 60,
     PRECO_PROMO: 23.99,
     PRECO_CHEIO: 29.99,
     PRECO_BASICO: 18.99,
@@ -872,7 +873,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     if (salvo && salvo <= Date.now()) inicio = salvo; else localStorage.setItem(KEY, inicio);
   } catch (e) {}
   const fim = inicio + OFERTA.minutos * 6e4;
-  const cd = [$('#cd-m'), $('#cd-s')];
+  const cd = [$('#cd-h'), $('#cd-m'), $('#cd-s')];
   const fmtBRL = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: v % 1 ? 2 : 0 });
   let precoAtual = OFERTA.PRECO_PROMO, expirou = false, timer = 0;
   function aplicarPreco() {
@@ -897,14 +898,14 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
   function tick() {
     const ms = fim - Date.now();
     if (ms <= 0) return expirar();
-    const v = [Math.floor(ms / 6e4), Math.floor(ms / 1e3) % 60].map(n => String(n).padStart(2, '0'));
+    const v = [Math.floor(ms / 36e5), Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60].map(n => String(n).padStart(2, '0'));
     v.forEach((t, i) => {
       if (cd[i].textContent !== t) {
         cd[i].textContent = t;
         cd[i].classList.remove('flip'); void cd[i].offsetWidth; cd[i].classList.add('flip');
       }
     });
-    $('#barTime').textContent = v[0] + ':' + v[1];
+    $('#barTime').textContent = v.join(':');
   }
   var atualizarTotal;
   $('#ano').textContent = new Date().getFullYear();
