@@ -859,6 +859,12 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     },
     CHECKOUT_BASICO: 'https://pay.cakto.com.br/ommkj4n_1259275'
   };
+  // repassa os parâmetros da página (UTMs, fbclid...) para o checkout, também quando o link muda
+  const comParams = link => {
+    const url = new URL(link);
+    new URLSearchParams(location.search).forEach((v, k) => { if (!url.searchParams.has(k)) url.searchParams.set(k, v); });
+    return url.toString();
+  };
   const KEY = 'raizes_oferta_inicio';
   let inicio = Date.now();
   try {
@@ -875,8 +881,8 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     $$('[data-preco]').forEach(el => el.textContent = fmtBRL(precoAtual));
     $$('[data-diff]').forEach(el => el.textContent = fmtBRL(+(precoAtual - OFERTA.PRECO_BASICO).toFixed(2)));
     $('#basicPrice').textContent = fmtBRL(OFERTA.PRECO_BASICO);
-    $('#upYes').href = (expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO).nenhum;
-    $('#upNo').href = OFERTA.CHECKOUT_BASICO;
+    $('#upYes').href = comParams((expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO).nenhum);
+    $('#upNo').href = comParams(OFERTA.CHECKOUT_BASICO);
     atualizarTotal && atualizarTotal(false);
   }
   function expirar() {
@@ -1132,7 +1138,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     totalEl.textContent = fmt(t);
     // link do checkout conforme os order bumps marcados
     const k = $$('.bump input:checked').map(c => c.dataset.k);
-    $('#buy').href = (expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO)[k.length === 2 ? 'ambos' : k[0] || 'nenhum'];
+    $('#buy').href = comParams((expirou ? OFERTA.CHECKOUT_CHEIO : OFERTA.CHECKOUT_PROMO)[k.length === 2 ? 'ambos' : k[0] || 'nenhum']);
     if (animar) { totalEl.classList.remove('pop'); void totalEl.offsetWidth; totalEl.classList.add('pop'); }
   };
   $$('.bump input').forEach(cb => cb.addEventListener('change', () => {
@@ -1161,6 +1167,20 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       ticking = false;
     });
   }, { passive: true });
+})();
+</script>
+<script>
+(function () {
+  var q = window.location.search;
+  if (!q) return;
+  var params = new URLSearchParams(q);
+  document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function (a) {
+    var url = new URL(a.href);
+    params.forEach(function (v, k) {
+      if (!url.searchParams.has(k)) url.searchParams.set(k, v);
+    });
+    a.href = url.toString();
+  });
 })();
 </script>
 </body>
