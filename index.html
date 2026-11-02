@@ -442,11 +442,15 @@
   .lb button{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:1.6rem;cursor:pointer}
 
   /* CTA fixo mobile */
-  .sticky{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px calc(10px + var(--safe-b));display:flex;align-items:center;gap:12px;z-index:50;transform:translate3d(0,110%,0);transition:transform .4s var(--ease);will-change:transform}
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px calc(10px + var(--safe-b) + var(--selo,0px));display:flex;align-items:center;gap:12px;z-index:50;transform:translate3d(0,110%,0);transition:transform .4s var(--ease);will-change:transform}
   .sticky.show{transform:none}
   .sticky .btn{min-height:50px;padding:12px 16px;font-size:.95rem;box-shadow:none;flex:1}
   .sticky .p{line-height:1.1;white-space:nowrap}
   .sticky .p small{display:block;font-size:.7rem;color:var(--muted);text-decoration:line-through}
+  .sticky .p em{display:block;font-style:normal;font-size:.7rem;font-weight:700;color:#c0392b;margin-top:2px}
+  .cta-mid{margin-top:32px;text-align:center}
+  .cta-mid .micro s{opacity:.8}
+  .cta-mid .micro b{color:var(--verde)}
   .sticky .p b{font-weight:800;letter-spacing:-.02em;font-size:1.4rem;color:var(--verde)}
   @media(min-width:860px){.sticky{display:none}footer{padding-bottom:32px}}
 
@@ -521,6 +525,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     <div class="carousel mapas rv" id="mapGrid" data-dots="d1"></div>
     <div class="dots" id="d1"></div>
     <p class="hint">← deslize e toque para abrir →</p>
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">QUERO TODOS OS MAPAS DO KIT →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
   </div>
 </section>
 
@@ -537,6 +542,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       <button class="etapa" role="tab" aria-selected="false" data-k="em"><span>🎓</span><b>Ensino Médio</b><small>15 a 17 anos</small></button>
     </div>
     <div class="aula rv" id="aula"></div>
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">QUERO ESSA AULA PRONTA →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
   </div>
 </section>
 
@@ -559,6 +565,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       <div class="card fit-yes rv"><h3>✔ É para você se…</h3><ul><li>quer cumprir a Lei 10.639 sem passar o fim de semana pesquisando</li><li>precisa de algo que funcione com a turma inteira, não só com quem lê bem</li><li>quer trabalhar o tema o ano todo, não só em novembro</li></ul></div>
       <div class="card fit-no rv" style="--d:.08s"><h3>✖ Não é para você se…</h3><ul><li>procura videoaulas: o kit é material para imprimir e projetar</li><li>quer só um cartaz para o dia 20 e nada mais</li></ul></div>
     </div>
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">QUERO A AULA COM O KIT →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
   </div>
 </section>
 
@@ -575,6 +582,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       <div class="card feat rv" style="--d:.06s"><div class="ico">📆</div><div><h3>Calendário afro-brasileiro</h3><p>Datas e temas para os 12 meses, não só para novembro.</p></div></div>
       <div class="card feat rv" style="--d:.12s"><div class="ico">🧭</div><div><h3>Guia de abordagem</h3><p>Termos recomendados, erros comuns e como conduzir conversas sobre racismo.</p></div></div>
     </div>
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">QUERO RECEBER TUDO ISSO →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
   </div>
 </section>
 
@@ -597,6 +605,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
         <div><span class="tag new">Bônus 3 · Novo</span><h3>+200 figurinhas para imprimir e decorar</h3><p>Deixe a sala com cara de 20 de Novembro em uma tarde: personalidades negras, Zumbi e Dandara, símbolos africanos e frases de autoestima para o mural, o caderno e os cartazes. E ainda viram prêmio nas brincadeiras, porque criança faz tudo por uma figurinha. É só imprimir em papel adesivo ou comum e recortar.</p><div class="price"><s>R$ 27</s><b>GRÁTIS no Completo</b></div></div>
       </div>
     </div>
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">QUERO OS 3 BÔNUS GRÁTIS →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
   </div>
 </section>
 
@@ -609,6 +618,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     <p><b id="aulasTxt">6</b> aulas/mês × ~1h30 de preparo cada</p>
     <p class="big"><span id="horas">108</span> horas/ano</p>
     <p class="micro">de volta para você. Estimativa ilustrativa.</p>
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">QUERO ECONOMIZAR ESSE TEMPO →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
   </div>
 </section>
 
@@ -684,6 +694,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-1.webp" alt="Mapas mentais impressos sobre a mesa" width="800" height="528" loading="lazy" decoding="async"></div><figcaption>Trabalho em grupo<small>Vários temas na mesa para comparar e debater</small></figcaption></figure>
     </div>
     <div class="dots" id="d2"></div>
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">QUERO O KIT COMPLETO →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
   </div>
 </section>
 
@@ -697,6 +708,9 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
   </div>
   <div class="esteira rv" id="esteira1"></div>
   <div class="esteira rev rv" id="esteira2"></div>
+  <div class="wrap">
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">QUERO O MESMO RESULTADO →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
+  </div>
 </section>
 
 <!-- GARANTIA -->
@@ -709,6 +723,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
         <p style="color:var(--muted)">Acesse tudo, baixe, imprima e teste com a sua turma. Se em até 7 dias achar que o material não serve para você, é só pedir o reembolso por e-mail. Devolvemos 100% do valor, sem perguntas.</p>
       </div>
     </div>
+    <div class="cta-mid rv"><a class="btn pulse" href="#offer">TESTAR SEM RISCO POR 7 DIAS →</a><p class="micro"><s>R$ 234,99</s> por <b data-preco>R$ 23,99</b><span data-tempo-wrap> · oferta acaba em <b data-tempo>24:00:00</b></span></p></div>
   </div>
 </section>
 
@@ -746,7 +761,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
 </footer>
 
 <div class="sticky" id="sticky">
-  <span class="p"><small>R$ 234,99</small><b id="stickyPrice">R$ 23,99</b></span>
+  <span class="p"><small>R$ 234,99</small><b id="stickyPrice">R$ 23,99</b><em data-tempo-wrap>⏱ <span data-tempo>24:00:00</span></em></span>
   <a class="btn" href="#offer">QUERO O COMPLETO →</a>
 </div>
 
@@ -898,6 +913,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     $('#offerTitle').textContent = 'O tempo da oferta acabou';
     $('#offerSub').textContent = 'O Kit Completo continua disponível pelo preço normal.';
     $('#count').style.display = 'none';
+    $$('[data-tempo-wrap]').forEach(el => el.remove());
     $('#priceLabel').textContent = 'preço atual';
     aplicarPreco();
   }
@@ -913,6 +929,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       }
     });
     $('#barTime').textContent = v.join(':');
+    $$('[data-tempo]').forEach(el => el.textContent = v.join(':'));
   }
   var atualizarTotal;
   $('#ano').textContent = new Date().getFullYear();
@@ -1162,6 +1179,25 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
   // inicia o cronômetro da oferta
   aplicarPreco();
   tick(); if (!expirou) timer = setInterval(tick, 1000);
+
+  // selo "Powered by Netlify" (injetado pela hospedagem): reserva espaço na barra fixa para ele não cobrir o botão
+  const acharSelo = () => {
+    for (const el of document.body.children) {
+      if (el.closest('#sticky, #mm, #up')) continue;
+      const id = (el.tagName + ' ' + el.id + ' ' + el.className + ' ' + (el.getAttribute('href') || el.getAttribute('src') || '') + ' ' + (el.textContent || '').slice(0, 120)).toLowerCase();
+      if (id.includes('netlify')) {
+        const r = el.getBoundingClientRect();
+        const alt = r.height > 0 && r.top > innerHeight / 2 ? innerHeight - r.top : 64;
+        document.documentElement.style.setProperty('--selo', Math.min(alt + 8, 110) + 'px');
+        return true;
+      }
+    }
+  };
+  if (!acharSelo() && 'MutationObserver' in window) {
+    const mo = new MutationObserver(() => acharSelo() && mo.disconnect());
+    mo.observe(document.body, { childList: true });
+    setTimeout(() => mo.disconnect(), 15000);
+  }
 
   // barra de progresso + CTA fixo (aparece após o hero, some na oferta)
   const sticky = $('#sticky'), prog = $('#progress');
