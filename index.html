@@ -6,19 +6,23 @@
 <meta name="theme-color" content="#b8452a">
 <title>Raízes em Mapas — Cultura Africana e Afro-Brasileira para Professores</title>
 <meta name="description" content="+100 materiais prontos, +50 brincadeiras imprimíveis e +200 figurinhas para o 20 de Novembro. Alinhado à BNCC e à Lei 10.639/03.">
-<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="icon" type="image/png" href="img/favicon-64.png">
 <link rel="apple-touch-icon" href="img/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Raízes em Mapas — +100 materiais e +50 brincadeiras de Cultura Africana e Afro-Brasileira">
 <meta property="og:description" content="Materiais por etapa, alinhados à BNCC, com brincadeiras imprimíveis e figurinhas para decorar a sala.">
 <meta property="og:image" content="https://dimitrifergus.github.io/raizes-em-mapas/img/kit-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="img/kit-hero.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" imagesrcset="img/kit-hero-480.webp 480w, img/kit-hero-800.webp 800w, img/kit-hero-1080.webp 1080w" imagesizes="(min-width:860px) 680px, 100vw" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="fonts/poppins-800.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/poppins-400.woff2" crossorigin>
 <script>document.documentElement.classList.add('js')</script>
 <style>
+  /* Poppins hospedada no próprio site (subconjunto latino) */
+  @font-face{font-family:Poppins;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/poppins-400.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:Poppins;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/poppins-600.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:Poppins;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/poppins-700.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:Poppins;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/poppins-800.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
   :root{
     --bg:#fbf6ee; --surface:#ffffff; --ink:#1d1410; --muted:#6b5a4e;
     --terra:#b8452a; --terra-dark:#8f321c; --ocre:#e0a028; --verde:#2f6b4f;
@@ -464,7 +468,9 @@ n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
 n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
+var go=function(){if(go.ok)return;go.ok=1;s.parentNode.insertBefore(t,s)};
+['scroll','pointerdown','touchstart','keydown'].forEach(function(ev){addEventListener(ev,go,{once:true,passive:true})});
+addEventListener('load',function(){setTimeout(go,3000)})}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1444816437741366');
 fbq('track', 'PageView');
@@ -479,28 +485,28 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
 
 <div class="bar" id="bar"><span class="dot"></span><span id="barTxt">Oferta do dia expira em <b id="barTime">24:00:00</b></span></div>
 <div class="pattern"></div>
-<div class="brand"><img src="img/logo.png" alt="Raízes em Mapas — História, cultura e resistência para sala de aula" width="520" height="247"></div>
+<div class="brand"><img src="img/logo.webp" alt="Raízes em Mapas — História, cultura e resistência para sala de aula" width="286" height="136"></div>
 
 <!-- HERO -->
 <header class="hero" id="hero">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <span class="eyebrow rv">Lei 10.639/03 • Alinhado à BNCC</span>
-      <h1 class="rv" style="--d:.08s">Ensine Cultura Africana e Afro-Brasileira com <em>segurança</em> e aulas que os alunos lembram</h1>
-      <p class="lead rv" style="--d:.24s">Mapas mentais ilustrados, atividades e brincadeiras prontas para imprimir, organizados por etapa de ensino.</p>
+      <span class="eyebrow">Lei 10.639/03 • Alinhado à BNCC</span>
+      <h1>Ensine Cultura Africana e Afro-Brasileira com <em>segurança</em> e aulas que os alunos lembram</h1>
+      <p class="lead">Mapas mentais ilustrados, atividades e brincadeiras prontas para imprimir, organizados por etapa de ensino.</p>
       <ul class="checks">
-        <li class="rv" style="--d:.3s"><b>+100 materiais</b> prontos por tema e etapa</li>
-        <li class="rv" style="--d:.38s"><b>+50 brincadeiras e jogos imprimíveis</b> para fazer com os alunos</li>
-        <li class="rv" style="--d:.46s"><b>+200 figurinhas</b> para decorar a sala</li>
+        <li><b>+100 materiais</b> prontos por tema e etapa</li>
+        <li><b>+50 brincadeiras e jogos imprimíveis</b> para fazer com os alunos</li>
+        <li><b>+200 figurinhas</b> para decorar a sala</li>
       </ul>
-      <div class="cta-box rv" style="--d:.54s">
+      <div class="cta-box">
         <a class="btn pulse" href="#oferta">QUERO O KIT COMPLETO →</a>
         <p class="micro">✔ Acesso imediato · 🔒 Pagamento seguro · 🛡 7 dias de garantia</p>
       </div>
     </div>
-    <div class="hero-media rv zoom" style="--d:.16s">
-      <div class="ph" style="--ar:1/1" data-label="Kit Raízes em Mapas">
-        <img src="img/kit-hero.jpg" alt="Kit Raízes em Mapas: livro, mapas mentais de Zumbi dos Palmares, Cultura Afro-Brasileira e Diáspora Africana" width="1254" height="1254" fetchpriority="high">
+    <div class="hero-media">
+      <div class="ph ok" style="--ar:1/1" data-label="Kit Raízes em Mapas">
+        <img src="img/kit-hero-800.webp" srcset="img/kit-hero-480.webp 480w, img/kit-hero-800.webp 800w, img/kit-hero-1080.webp 1080w" sizes="(min-width:860px) 680px, 100vw" alt="Kit Raízes em Mapas: livro, mapas mentais de Zumbi dos Palmares, Cultura Afro-Brasileira e Diáspora Africana" width="1080" height="1080" fetchpriority="high" decoding="async">
       </div>
     </div>
   </div>
@@ -579,15 +585,15 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     <p class="sub rv">Estes três <b>não vêm no Kit Básico</b>. Só quem escolhe o Completo leva:</p>
     <div class="grid bonus-grid">
       <div class="card bonus rv">
-        <div class="ph" data-label="Bônus 1"><img src="img/bonus-100-atividades.jpg" alt="Bônus 1: +100 atividades com gabarito" width="1000" height="750" loading="lazy"></div>
+        <div class="ph" data-label="Bônus 1"><img src="img/bonus-100-atividades.webp" alt="Bônus 1: +100 atividades com gabarito" width="800" height="600" loading="lazy"></div>
         <div><span class="tag new">Bônus 1</span><h3>+100 atividades com gabarito</h3><p>Exercícios práticos e criativos para fixar a aprendizagem: questões dissertativas, múltipla escolha, jogos de interpretação e atividades lúdicas, todos com gabarito.</p><div class="price"><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv" style="--d:.06s">
-        <div class="ph" data-label="Bônus 2" style="--pos:top"><img src="img/bonus-brincadeiras.jpg" alt="Bônus 2: +50 dinâmicas, brincadeiras e jogos imprimíveis" width="810" height="1080" loading="lazy"></div>
+        <div class="ph" data-label="Bônus 2" style="--pos:top"><img src="img/bonus-brincadeiras.webp" alt="Bônus 2: +50 dinâmicas, brincadeiras e jogos imprimíveis" width="640" height="853" loading="lazy"></div>
         <div><span class="tag">Bônus 2</span><h3>+50 brincadeiras e jogos imprimíveis</h3><p>Bingo da cultura afro-brasileira, jogo da memória, trilha da história, rodas de conversa e dinâmicas em grupo. É só imprimir e brincar com os alunos.</p><div class="price"><s>R$ 47</s><b>GRÁTIS no Completo</b></div></div>
       </div>
       <div class="card bonus rv" style="--d:.12s">
-        <div class="ph" data-label="Bônus 3"><img src="img/bonus-figurinhas.jpg" alt="Bônus 3: +200 figurinhas decorativas" width="1050" height="700" loading="lazy"></div>
+        <div class="ph" data-label="Bônus 3"><img src="img/bonus-figurinhas.webp" alt="Bônus 3: +200 figurinhas decorativas" width="800" height="533" loading="lazy"></div>
         <div><span class="tag new">Bônus 3 · Novo</span><h3>+200 figurinhas para imprimir e decorar</h3><p>Deixe a sala com cara de 20 de Novembro em uma tarde: personalidades negras, Zumbi e Dandara, símbolos africanos e frases de autoestima para o mural, o caderno e os cartazes. E ainda viram prêmio nas brincadeiras, porque criança faz tudo por uma figurinha. É só imprimir em papel adesivo ou comum e recortar.</p><div class="price"><s>R$ 27</s><b>GRÁTIS no Completo</b></div></div>
       </div>
     </div>
@@ -638,7 +644,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     <div class="offer main rv zoom" id="offer">
       <span class="ribbon">⭐ Mais escolhido · Kit Completo</span>
       <h3 style="font-size:1.35rem;margin-top:6px">Raízes em Mapas + 3 Bônus Exclusivos</h3>
-      <div class="offer-img"><img src="img/kit-oferta.jpg" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1254" height="1254" loading="lazy"></div>
+      <div class="offer-img"><img src="img/kit-hero-800.webp" srcset="img/kit-hero-480.webp 480w, img/kit-hero-800.webp 800w, img/kit-hero-1080.webp 1080w" sizes="(min-width:760px) 460px, 92vw" alt="Tudo o que vem no Kit Raízes em Mapas: livro, mapas mentais e planejamento de aula" width="1080" height="1080" loading="lazy" decoding="async"></div>
       <ul>
         <li><span>✔ +100 materiais prontos (com BNCC)</span><span>R$ 97</span></li>
         <li><span>✔ +100 atividades com gabarito</span><span>bônus</span></li>
@@ -654,8 +660,8 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       <p class="diff">Só <b data-diff>R$ 5</b> a mais que o Básico para levar tudo isso</p>
 
       <div class="bumps">
-        <label class="bump"><input type="checkbox" data-v="7.99" data-k="nov"><img src="img/bonus-20-de-novembro.jpg" alt="" width="1000" height="750" loading="lazy"><span><b>Sim! Quero o Projeto 20 de Novembro por + R$ 7,99</b><small>Sequência didática completa, com planejamento por etapas, sugestões de aulas, atividades práticas e ideias para a culminância.</small></span></label>
-        <label class="bump"><input type="checkbox" data-v="9.99" data-k="linha"><img src="img/bonus-linha-do-tempo.jpg" alt="" width="1000" height="750" loading="lazy"><span><b>Sim! Quero a Linha do Tempo Gigante por + R$ 9,99</b><small>Da África Antiga ao pós-abolição em painéis A4 que formam mais de 4 metros de mural para a turma montar junto.</small></span></label>
+        <label class="bump"><input type="checkbox" data-v="7.99" data-k="nov"><img src="img/bonus-20-de-novembro.webp" alt="" width="800" height="600" loading="lazy" decoding="async"><span><b>Sim! Quero o Projeto 20 de Novembro por + R$ 7,99</b><small>Sequência didática completa, com planejamento por etapas, sugestões de aulas, atividades práticas e ideias para a culminância.</small></span></label>
+        <label class="bump"><input type="checkbox" data-v="9.99" data-k="linha"><img src="img/bonus-linha-do-tempo.webp" alt="" width="800" height="600" loading="lazy" decoding="async"><span><b>Sim! Quero a Linha do Tempo Gigante por + R$ 9,99</b><small>Da África Antiga ao pós-abolição em painéis A4 que formam mais de 4 metros de mural para a turma montar junto.</small></span></label>
       </div>
       <p class="total">Total: <span id="total">R$ 23,99</span></p>
 
@@ -672,10 +678,10 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     <h2 class="rv">Como professores estão usando</h2>
     <p class="sub rv">Na lousa digital, impresso em A3 no mural ou em folha para o aluno completar.</p>
     <div class="carousel c2 rv" data-dots="d2">
-      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-2.jpg" alt="Professora planejando a aula com o mapa Personalidades Negras" width="1136" height="750" loading="lazy"></div><figcaption>Planejamento em minutos<small>Mapa em mãos, plano de aula pronto</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-3.jpg" alt="Mapas mentais impressos no mural da sala de aula" width="1136" height="750" loading="lazy"></div><figcaption>Mural da sala<small>Impresso em A3 para a turma consultar</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-4.jpg" alt="Aluno estudando o mapa Reinos e Civilizações Africanas" width="1136" height="750" loading="lazy"></div><figcaption>Aluno em atividade<small>O mapa vira material de estudo e revisão</small></figcaption></figure>
-      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-1.jpg" alt="Mapas mentais impressos sobre a mesa" width="1136" height="750" loading="lazy"></div><figcaption>Trabalho em grupo<small>Vários temas na mesa para comparar e debater</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-2.webp" alt="Professora planejando a aula com o mapa Personalidades Negras" width="800" height="528" loading="lazy" decoding="async"></div><figcaption>Planejamento em minutos<small>Mapa em mãos, plano de aula pronto</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-3.webp" alt="Mapas mentais impressos no mural da sala de aula" width="800" height="528" loading="lazy" decoding="async"></div><figcaption>Mural da sala<small>Impresso em A3 para a turma consultar</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-4.webp" alt="Aluno estudando o mapa Reinos e Civilizações Africanas" width="800" height="528" loading="lazy" decoding="async"></div><figcaption>Aluno em atividade<small>O mapa vira material de estudo e revisão</small></figcaption></figure>
+      <figure class="shot"><div class="ph" style="--ar:1136/750"><img src="img/uso-1.webp" alt="Mapas mentais impressos sobre a mesa" width="800" height="528" loading="lazy" decoding="async"></div><figcaption>Trabalho em grupo<small>Vários temas na mesa para comparar e debater</small></figcaption></figure>
     </div>
     <div class="dots" id="d2"></div>
   </div>
@@ -734,7 +740,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
 
 <div class="pattern"></div>
 <footer>
-  <span class="foot-logo"><img src="img/logo.png" alt="Raízes em Mapas" width="520" height="247" loading="lazy"></span><br>
+  <span class="foot-logo"><img src="img/logo.webp" alt="Raízes em Mapas" width="286" height="136" loading="lazy" decoding="async"></span><br>
   © <span id="ano">2026</span> Raízes em Mapas. Todos os direitos reservados.<br>
   Este site não é afiliado ao Facebook nem ao Google.
 </footer>
@@ -751,7 +757,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     <div class="mm-img"><img alt=""><span class="mm-zoom">⤢ Ampliar</span></div>
     <div class="mm-body">
       <p class="mm-count" id="mmCount"></p>
-      <h3 id="mmT"></h3>
+      <h3 id="mmT">Prévia do mapa mental</h3>
       <p class="mm-chips" id="mmChips"></p>
       <div class="mm-info">
         <div><i>📦</i><span><b>O que entrega</b><span id="mmEntrega"></span></span></div>
@@ -902,7 +908,8 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
     v.forEach((t, i) => {
       if (cd[i].textContent !== t) {
         cd[i].textContent = t;
-        cd[i].classList.remove('flip'); void cd[i].offsetWidth; cd[i].classList.add('flip');
+        // anima a troca do número sem forçar recálculo de layout (na abertura só escreve)
+        if (timer && !reduce && cd[i].animate) cd[i].animate([{ transform: 'translateY(-40%)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 450, easing: 'cubic-bezier(.22,1,.36,1)' });
       }
     });
     $('#barTime').textContent = v.join(':');
@@ -965,7 +972,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       'Caça-palavras e “de onde vem essa palavra?” em duplas.']
   ];
   $('#mapGrid').innerHTML = MAPAS.map(([f, t, et], i) =>
-    `<button type="button" class="mcard${i ? '' : ' first'}" data-i="${i}" aria-label="Ver prévia: ${t}"><span class="mthumb"><img src="img/mapas/${f}-p.jpg" alt="Mapa mental ${t}" width="640" height="480" loading="lazy">${i ? '' : '<span class="mtap" aria-hidden="true">👆</span>'}</span><span class="mtxt"><b>${t}</b><small>10 tópicos · ${et.join(' · ')}</small></span></button>`
+    `<button type="button" class="mcard${i ? '' : ' first'}" data-i="${i}" aria-label="Ver prévia: ${t}"><span class="mthumb"><img src="img/mapas/${f}-p.webp" alt="Mapa mental ${t}" width="480" height="360" loading="lazy" decoding="async">${i ? '' : '<span class="mtap" aria-hidden="true">👆</span>'}</span><span class="mtxt"><b>${t}</b><small>10 tópicos · ${et.join(' · ')}</small></span></button>`
   ).join('');
 
   const mm = $('#mm'), mmImg = mm.querySelector('.mm-img img');
@@ -973,7 +980,7 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
   const mostrarMapa = i => {
     mmI = (i + MAPAS.length) % MAPAS.length;
     const [f, t, et, entrega, ajuda, tempo, jogo] = MAPAS[mmI];
-    mmImg.src = `img/mapas/${f}.jpg`; mmImg.alt = `Mapa mental ${t}`;
+    mmImg.src = `img/mapas/${f}.webp`; mmImg.alt = `Mapa mental ${t}`;
     $('#mmCount').textContent = `Mapa ${mmI + 1} de ${MAPAS.length}`;
     $('#mmT').textContent = t;
     $('#mmChips').innerHTML = et.map(e => `<span>${e}</span>`).join('');
@@ -1037,14 +1044,15 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
        'Debate guiado “13 de maio ou 20 de novembro?” com proposta de redação.']]
   };
   const aula = $('#aula');
-  Object.keys(AULAS).forEach(k => { new Image().src = `img/cenas/${k}-1.jpg`; });
+  // pré-carrega as cenas das outras etapas só depois que a página terminou de abrir
+  addEventListener('load', () => setTimeout(() => Object.keys(AULAS).forEach(k => { new Image().src = `img/cenas/${k}-1.webp`; }), 3000));
   const renderAula = k => {
     const [tema, desc, nivel, mi, [p1, p2, p3]] = AULAS[k], [f, t] = MAPAS[mi];
     aula.innerHTML = `<div class="aula-head"><div><span class="aula-tag">Aula pronta · 50 min</span><h3>Tema: ${tema}</h3><p>${desc}</p></div><div class="nivel">Profundidade do conteúdo<i>${[1, 2, 3, 4].map(n => `<b class="${n <= nivel ? 'on' : ''}"></b>`).join('')}</i></div></div>
       <ol class="passos">
-        <li><span class="pimg"><img src="img/cenas/${k}-1.jpg" alt="" width="420" height="420"></span><div><span class="pmin">10 min</span><b>1. Abertura com a cena</b><p>${p1}</p></div></li>
-        <li><button type="button" class="pimg" data-i="${mi}" aria-label="Ver o mapa ${t}"><img src="img/mapas/${f}-p.jpg" alt="" width="640" height="480"><span>🔍 Ver o mapa</span></button><div><span class="pmin">20 min</span><b>2. Mapa mental</b><p>${p2}</p></div></li>
-        <li><span class="pimg"><img src="img/cenas/${k}-2.jpg" alt="" width="420" height="420"></span><div><span class="pmin">20 min</span><b>3. Brincadeira</b><p>${p3}</p></div></li>
+        <li><span class="pimg"><img src="img/cenas/${k}-1.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><div><span class="pmin">10 min</span><b>1. Abertura com a cena</b><p>${p1}</p></div></li>
+        <li><button type="button" class="pimg" data-i="${mi}" aria-label="Ver o mapa ${t}"><img src="img/mapas/${f}-p.webp" alt="" width="480" height="360" loading="lazy" decoding="async"><span>🔍 Ver o mapa</span></button><div><span class="pmin">20 min</span><b>2. Mapa mental</b><p>${p2}</p></div></li>
+        <li><span class="pimg"><img src="img/cenas/${k}-2.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><div><span class="pmin">20 min</span><b>3. Brincadeira</b><p>${p3}</p></div></li>
       </ol>
       <div class="aula-foot"><span>✔ Atividade de fixação com gabarito</span><span>✔ Habilidades da BNCC indicadas</span><span>✔ Tudo dentro do kit</span></div>`;
   };
@@ -1083,16 +1091,19 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
   const CORES = ['#b8452a', '#2f6b4f', '#c4831a', '#6b4a8a', '#8f321c', '#2c6a8a'];
   const iniciais = n => { const p = n.split(' '); return (p[0][0] + p[p.length - 1][0]).toUpperCase(); };
   const cardDep = ([nome, cargo, texto, foto], i) =>
-    `<article class="perfil dep"><header><span class="avatar ini" style="--av:${CORES[i % CORES.length]}" aria-hidden="true">${foto ? `<img src="img/depoimentos/${foto}" alt="" width="96" height="96" loading="lazy">` : iniciais(nome)}</span><h3>${nome}<small>${cargo}</small></h3></header><span class="stars" aria-label="5 estrelas">★★★★★</span><blockquote>${texto}</blockquote></article>`;
+    `<article class="perfil dep"><header><span class="avatar ini" style="--av:${CORES[i % CORES.length]}" aria-hidden="true">${foto ? `<img src="img/depoimentos/${foto.replace('.jpg', '.webp')}" alt="" width="48" height="48" loading="lazy" decoding="async">` : iniciais(nome)}</span><h3>${nome}<small>${cargo}</small></h3></header><span class="stars" aria-label="5 estrelas">★★★★★</span><blockquote>${texto}</blockquote></article>`;
   // intercala professoras e professores; 10 cartões em cada faixa
   const mix = DEPOIMENTOS.slice(0, 10).flatMap((d, i) => [[d, i], [DEPOIMENTOS[i + 10], i + 10]]);
-  [[$('#esteira1'), mix.slice(0, 10), '95s'], [$('#esteira2'), mix.slice(10), '105s']].forEach(([box, lista, dur]) => {
+  // a esteira fica no fim da página: monta quando o navegador estiver livre, sem atrasar a abertura
+  const montarEsteira = () => [[$('#esteira1'), mix.slice(0, 10), '95s'], [$('#esteira2'), mix.slice(10), '105s']].forEach(([box, lista, dur]) => {
     const html = lista.map(([d, i]) => cardDep(d, i)).join('');
     // conteúdo duplicado: ao chegar em -50% o loop recomeça sem emenda
     box.innerHTML = `<div class="trilho" style="--dur:${dur}">${html}${reduce ? '' : html}</div>`;
     box.addEventListener('touchstart', () => box.classList.add('pausa'), { passive: true });
     box.addEventListener('touchend', () => box.classList.remove('pausa'), { passive: true });
   });
+  if ('requestIdleCallback' in window) requestIdleCallback(montarEsteira, { timeout: 2500 });
+  else setTimeout(montarEsteira, 1200);
 
   // carrosséis: largura dos itens + bolinhas
   $$('.carousel').forEach(c => {
@@ -1111,7 +1122,8 @@ src="https://www.facebook.com/tr?id=1444816437741366&ev=PageView&noscript=1"
       ds.forEach((d, i) => d.classList.toggle('on', i === best));
     };
     c.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
-    upd();
+    // na abertura o carrossel está no início: marca a 1ª bolinha sem medir o layout
+    ds[0] && ds[0].classList.add('on');
   });
 
   // calculadora com número animado
